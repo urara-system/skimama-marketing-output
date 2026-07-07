@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>skimama マーケティング戦略｜実行版</title>
-<meta name="description" content="skimamaのマーケティング戦略（実行版）。ポジショニング・競合分解・9セルマトリクス・KPIロードマップ等をまとめた公開資料。">
+<title>skimama マーケティング資料</title>
+<meta name="description" content="skimamaのマーケティング資料一覧。マーケティング戦略・SNS戦略（Organic）・LP戦略/LPOの公開版ドキュメントへのリンク集。">
 <style>
   :root{
     --paper:#F4EFF0;
@@ -75,575 +75,113 @@
   a{ color:var(--accent); }
   ::selection{ background:var(--accent-soft); }
 
-  .layout{
-    display:grid;
-    grid-template-columns:272px minmax(0,1fr);
-    max-width:1180px;
+  .page{
+    max-width:760px;
     margin:0 auto;
+    padding:clamp(2.4rem,6vw,5rem) clamp(1.2rem,4vw,2rem) 5rem;
   }
 
-  /* ---- rail / nav ---- */
-  .rail{
-    position:sticky; top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    padding:2.6rem 1.6rem 2rem 2rem;
-    border-right:1px solid var(--line);
-    display:flex; flex-direction:column; gap:1.6rem;
-  }
   .eyebrow{
     margin:0; font-size:0.72rem; letter-spacing:0.14em;
     color:var(--accent); text-transform:uppercase; font-weight:700;
   }
-  .rail-title{
-    margin:0.5rem 0 0; font-size:1.5rem; line-height:1.4;
+  h1.hub-title{
+    margin:0.6rem 0 0; font-size:clamp(1.8rem,4vw,2.3rem); line-height:1.4;
   }
-  .rail-title span{ color:var(--accent); }
-  .rail-meta{ margin:0.6rem 0 0; font-size:0.8rem; color:var(--ink-soft); }
-  .toc{ display:flex; flex-direction:column; gap:0.15rem; }
-  .toc a{
-    display:flex; gap:0.6rem; align-items:baseline;
-    padding:0.42rem 0.5rem; margin:0 -0.5rem;
-    border-radius:8px;
-    font-size:0.86rem; text-decoration:none; color:var(--ink-soft);
-    transition:background 0.15s ease, color 0.15s ease;
+  h1.hub-title span{ color:var(--accent); }
+  .hub-lede{
+    margin:1rem 0 0; font-size:1.02rem; color:var(--ink-soft); max-width:56ch;
   }
-  .toc a:hover{ background:var(--accent-soft); color:var(--ink); }
-  .toc a b{
-    font-variant-numeric:tabular-nums;
-    color:var(--accent); font-weight:700; font-size:0.78rem;
-    min-width:1.4em;
-  }
-  .rail-note{
-    margin-top:auto; padding-top:1rem; border-top:1px solid var(--line-soft);
-    font-size:0.76rem; color:var(--ink-soft); line-height:1.7;
-  }
-  .rail-note a{ color:var(--accent); }
-  details.mobile-toc{ display:none; }
 
-  /* ---- content ---- */
-  .content{ padding:3.2rem clamp(1.2rem,4vw,3.4rem) 6rem; min-width:0; }
-  .content > section{ max-width:740px; margin:0 0 4.6rem; scroll-margin-top:1.5rem; }
-  .content > section:last-child{ margin-bottom:2rem; }
-
-  .kicker{
-    display:flex; align-items:center; gap:0.7rem; margin-bottom:0.7rem;
-  }
-  .kicker .num{
-    font-family:"Noto Serif JP",serif; font-weight:600; color:var(--accent);
-    font-size:0.95rem; font-variant-numeric:tabular-nums;
-  }
-  .kicker .rule{ flex:1; height:1px; background:var(--line); }
-  h2.h{ font-size:1.5rem; margin:0 0 1rem; }
-  h3.h3{ font-size:1.08rem; margin:1.8rem 0 0.7rem; }
-  p{ margin:0 0 1rem; }
-  .lede{ font-size:1.05rem; color:var(--ink-soft); }
-
-  .tag{
-    display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.03em;
-    padding:0.16rem 0.5rem; border-radius:999px; vertical-align:middle;
-  }
-  .tag.hypo{ background:var(--hypo-soft); color:var(--hypo); }
-  .tag.core{ background:var(--accent-soft); color:var(--accent); }
-
-  ul.plain{ margin:0 0 1rem; padding-left:1.2rem; }
-  ul.plain li{ margin-bottom:0.45rem; }
-  ul.plain li::marker{ color:var(--accent); }
-
-  .callout{
+  .disclaimer{
+    margin:1.6rem 0 2.6rem;
     border-left:3px solid var(--accent-2);
     background:var(--accent-2-soft);
     padding:0.9rem 1.1rem;
     border-radius:0 10px 10px 0;
-    font-size:0.92rem;
-    margin:1.2rem 0;
-  }
-  .callout .label{
-    display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.05em;
-    color:var(--accent-2); margin-bottom:0.3rem;
+    font-size:0.86rem;
+    color:var(--ink);
   }
 
-  /* summary cards on s0 */
-  .summary-grid{
-    display:grid; grid-template-columns:1fr; gap:0.9rem; margin-top:1.4rem;
+  .doc-list{
+    display:flex; flex-direction:column; gap:1rem;
+    margin-top:0.6rem;
   }
-  .summary-grid .card{
-    background:var(--paper-raised); border:1px solid var(--line);
-    border-radius:12px; padding:1rem 1.15rem; box-shadow:var(--shadow);
+  .doc-card{
+    display:block;
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:1.4rem 1.5rem;
+    box-shadow:var(--shadow);
+    text-decoration:none;
+    color:inherit;
+    transition:transform 0.15s ease, border-color 0.15s ease;
   }
-  .summary-grid .card h4{
-    margin:0 0 0.4rem; font-size:0.86rem; color:var(--accent);
-    font-family:inherit; letter-spacing:0.02em;
+  .doc-card:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent);
   }
-  .summary-grid .card p{ margin:0; font-size:0.92rem; color:var(--ink-soft); }
-
-  /* positioning definition grid */
-  .define-grid{
-    display:grid; grid-template-columns:auto 1fr; gap:0.5rem 1.1rem;
-    background:var(--paper-raised); border:1px solid var(--line);
-    border-radius:12px; padding:1.3rem 1.4rem; box-shadow:var(--shadow);
-    margin:1rem 0 1.4rem;
+  .doc-card .kicker-row{
+    display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;
   }
-  .define-grid dt{
-    font-size:0.78rem; font-weight:700; color:var(--accent);
-    white-space:nowrap; padding-top:0.15rem;
+  .doc-card .num{
+    font-family:"Noto Serif JP",serif; font-weight:600; color:var(--accent);
+    font-size:0.85rem; font-variant-numeric:tabular-nums;
   }
-  .define-grid dd{ margin:0; padding-bottom:0.9rem; border-bottom:1px dashed var(--line-soft); }
-  .define-grid dt:last-of-type + dd, .define-grid dd:last-child{ border-bottom:none; padding-bottom:0; }
-  .tagline{
-    margin:1rem 0 0; padding:0.9rem 1.1rem; text-align:center;
-    background:var(--accent-soft); border-radius:10px;
-    font-family:"Noto Serif JP",serif; color:var(--ink); font-size:1.02rem;
+  .doc-card h2{
+    margin:0 0 0.5rem; font-size:1.2rem;
   }
-
-  /* tables */
-  .twrap{ overflow-x:auto; margin:1rem 0 1.4rem; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); }
-  table{ border-collapse:collapse; width:100%; min-width:560px; font-size:0.87rem; background:var(--paper-raised); }
-  table caption{ text-align:left; padding:0.7rem 1rem 0; font-size:0.78rem; color:var(--ink-soft); }
-  th, td{ padding:0.65rem 0.85rem; text-align:left; border-bottom:1px solid var(--line-soft); vertical-align:top; }
-  thead th{
-    background:var(--accent-soft); color:var(--accent);
-    font-size:0.72rem; letter-spacing:0.03em; font-weight:700;
-    position:sticky; top:0;
+  .doc-card p{
+    margin:0; font-size:0.92rem; color:var(--ink-soft);
   }
-  tbody tr:last-child td{ border-bottom:none; }
-  tbody th[scope="row"]{ font-weight:700; color:var(--ink); background:var(--line-soft); }
-  td.num, th.num{ font-variant-numeric:tabular-nums; }
-  td small, .muted{ color:var(--ink-soft); }
-
-  /* stars */
-  .stars{ color:var(--accent); letter-spacing:0.05em; font-variant-numeric:tabular-nums; }
-  .stars .off{ color:var(--line); }
-
-  /* timeline (CRM / sequential) */
-  .timeline{ list-style:none; margin:1.2rem 0; padding:0; border-left:2px solid var(--line); }
-  .timeline li{ position:relative; padding:0 0 1.4rem 1.5rem; }
-  .timeline li:last-child{ padding-bottom:0; }
-  .timeline li::before{
-    content:""; position:absolute; left:-6.5px; top:0.3rem;
-    width:11px; height:11px; border-radius:50%;
-    background:var(--paper-raised); border:2px solid var(--accent);
-  }
-  .timeline .when{ font-size:0.76rem; font-weight:700; color:var(--accent); letter-spacing:0.02em; }
-  .timeline .what{ margin-top:0.2rem; font-size:0.92rem; }
-
-  /* gate cards */
-  .gate-grid{ display:grid; grid-template-columns:1fr; gap:1rem; margin:1.2rem 0; }
-  .gate-card{ background:var(--paper-raised); border:1px solid var(--line); border-radius:12px; padding:1.1rem 1.3rem; box-shadow:var(--shadow); }
-  .gate-card h4{ margin:0 0 0.7rem; font-size:0.94rem; font-family:"Noto Serif JP",serif; }
-  .gate-card ol{ margin:0 0 0.8rem; padding-left:1.2rem; }
-  .gate-card ol li{ margin-bottom:0.4rem; font-size:0.9rem; }
-  .gate-card .verdict{
-    font-size:0.84rem; font-weight:700; color:var(--accent-2);
-    border-top:1px dashed var(--line); padding-top:0.6rem; margin-top:0.6rem;
+  .doc-card .go{
+    display:inline-flex; align-items:center; gap:0.3rem;
+    margin-top:0.9rem; font-size:0.82rem; font-weight:700; color:var(--accent);
   }
 
-  /* priority ordered list (受け皿) */
-  ol.priority{ list-style:none; margin:1.2rem 0; padding:0; counter-reset:pr; }
-  ol.priority li{
-    counter-increment:pr; position:relative; padding:0.7rem 1rem 0.7rem 3rem;
-    background:var(--paper-raised); border:1px solid var(--line); border-radius:10px;
-    margin-bottom:0.6rem; font-size:0.92rem; box-shadow:var(--shadow);
-  }
-  ol.priority li::before{
-    content:counter(pr); position:absolute; left:0.9rem; top:50%; transform:translateY(-50%);
-    width:1.6rem; height:1.6rem; border-radius:50%; background:var(--accent); color:var(--paper-raised);
-    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem;
-    font-variant-numeric:tabular-nums;
-  }
-
-  footer.doc-footer{
-    max-width:740px; padding-top:1.6rem; border-top:1px solid var(--line);
-    font-size:0.8rem; color:var(--ink-soft);
-  }
-
-  @media (max-width:860px){
-    .layout{ grid-template-columns:1fr; }
-    .rail{
-      position:sticky; height:auto; padding:1rem 1.2rem; border-right:none; border-bottom:1px solid var(--line);
-      flex-direction:row; align-items:center; justify-content:space-between; gap:0.8rem;
-    }
-    .rail-title{ font-size:1.1rem; }
-    .rail-meta, .rail-note, .toc{ display:none; }
-    details.mobile-toc{ display:block; }
-    details.mobile-toc summary{
-      cursor:pointer; list-style:none; font-size:0.8rem; font-weight:700;
-      color:var(--accent); border:1px solid var(--accent); border-radius:999px;
-      padding:0.4rem 0.9rem;
-    }
-    details.mobile-toc summary::-webkit-details-marker{ display:none; }
-    details.mobile-toc[open] summary{ margin-bottom:0.6rem; }
-    details.mobile-toc .toc{ display:flex; position:absolute; right:1.2rem; top:3.4rem; z-index:5;
-      background:var(--paper-raised); border:1px solid var(--line); border-radius:10px; padding:0.5rem; box-shadow:var(--shadow); }
-    .content{ padding:2rem 1.1rem 4rem; }
-  }
-
-  @media (prefers-reduced-motion:no-preference){
-    .toc a{ transition:background 0.15s ease,color 0.15s ease; }
+  footer.hub-footer{
+    margin-top:3rem; padding-top:1.6rem; border-top:1px solid var(--line);
+    font-size:0.78rem; color:var(--ink-soft);
   }
 </style>
 </head>
 <body>
 
-<div class="layout">
-  <aside class="rail">
-    <div>
-      <p class="eyebrow">skimama marketing</p>
-      <h1 class="rail-title">マーケティング戦略<br><span>実行版</span></h1>
-      <p class="rail-meta">最終更新 2026-07-07</p>
-      <details class="mobile-toc">
-        <summary>目次を開く</summary>
-        <nav class="toc">
-          <a href="#s0"><b>00</b>要約</a>
-          <a href="#s1"><b>01</b>ポジショニング</a>
-          <a href="#s2"><b>02</b>競合分解</a>
-          <a href="#s3"><b>03</b>ペルソナ優先度</a>
-          <a href="#s4"><b>04</b>チャネル役割</a>
-          <a href="#s5"><b>05</b>9セルマトリクス</a>
-          <a href="#s6"><b>06</b>フェーズゲート</a>
-          <a href="#s7"><b>07</b>CRM設計</a>
-          <a href="#s8"><b>08</b>KPIロードマップ</a>
-          <a href="#s9"><b>09</b>リスク対応</a>
-          <a href="#s10"><b>10</b>次のアクション</a>
-        </nav>
-      </details>
-    </div>
-    <nav class="toc">
-      <a href="#s0"><b>00</b>要約</a>
-      <a href="#s1"><b>01</b>ポジショニング</a>
-      <a href="#s2"><b>02</b>競合分解</a>
-      <a href="#s3"><b>03</b>ペルソナ優先度</a>
-      <a href="#s4"><b>04</b>チャネル役割</a>
-      <a href="#s5"><b>05</b>9セルマトリクス</a>
-      <a href="#s6"><b>06</b>フェーズゲート</a>
-      <a href="#s7"><b>07</b>CRM設計</a>
-      <a href="#s8"><b>08</b>KPIロードマップ</a>
-      <a href="#s9"><b>09</b>リスク対応</a>
-      <a href="#s10"><b>10</b>次のアクション</a>
-    </nav>
-    <p class="rail-note">社内ナレッジベースからの公開抜粋。<span class="tag hypo">仮説</span>の付いた内容は一次データでの検証待ちです。</p>
-  </aside>
+<div class="page">
+  <p class="eyebrow">skimama marketing</p>
+  <h1 class="hub-title">skimama マーケティング資料<br><span>公開ドキュメント一覧</span></h1>
+  <p class="hub-lede">3C/STP/USPから顧客理解、チャネル戦略・実行フレームまでを整理した、skimamaのマーケティング関連ドキュメント群です。</p>
 
-  <main class="content">
+  <div class="disclaimer">
+    本リポジトリは社内ナレッジベースの一部を公開用に抜粋したものです。参照している社内ドキュメント（CLAUDE.md・競合リサーチ・思考フレームワーク集等）はここには含まれていません。内容の多くは参画前の初版仮説であり、一次データ取得後に随時更新されます。
+  </div>
 
-    <section id="s0">
-      <div class="kicker"><span class="num">00</span><span class="rule"></span></div>
-      <h2 class="h">要約（エグゼクティブサマリー）</h2>
-      <p class="lede">最大の敵は他スクールではなく「現状維持」。ポジションはFammとSHElikesの間の空白地帯。チャネルは役割で切り分け、受け皿を整えてから拡張する。</p>
-      <div class="summary-grid">
-        <div class="card">
-          <h4>最大の競合は「行動しないこと」</h4>
-          <p>マーケティングの一次目的は比較検討の促進ではなく、行動コスト層1（放置）・層2（独学・口コミ副業）の層を層3（新しい行動＝skimama入会）へ動かす教育である。</p>
-        </div>
-        <div class="card">
-          <h4>ポジション</h4>
-          <p>Famm（1ヶ月・単一スキル・シッター付き）とSHElikes（広く浅く・自走前提・学び放題）の間にある「複数職種から選べる・2ヶ月・伴走型コミュニティ・仕事獲得率93%」という空白地帯を占有する。</p>
-        </div>
-        <div class="card">
-          <h4>チャネル役割</h4>
-          <p>広告＝刈り取り、LP／比較コンテンツ＝育成、Organic（IG／TikTok／YouTube）＝需要創出、LINE＝継続。現状は広告依存が強くCACが上がり続ける構造にあり、Organicへの投資シフトが急務。</p>
-        </div>
-        <div class="card">
-          <h4>意思決定の順番</h4>
-          <p>新規獲得（広告拡大）より先に「受け皿」（LP・LINE後の体験・継続の仕組み）を整える。フェーズ移行は感覚ではなく定量ゲート条件で判断する。</p>
-        </div>
-      </div>
-      <p style="margin-top:1.4rem; font-size:0.86rem;" class="muted">本書で新たに具体化した点：①ポジショニング一文の型、②権威・担保軸を含む競合分解表、③ペルソナ優先度の星取り表、④Tier×ステージの9セルマトリクスと投稿配分ルール、⑤フェーズ移行の定量ゲート条件、⑥現状値→短期→中期の3点セットKPIロードマップ、⑦LINE CRMステップ配信の型、⑧リスク対応表。</p>
-    </section>
+  <div class="doc-list">
+    <a class="doc-card" href="skimama_マーケティング戦略_実行版.html">
+      <div class="kicker-row"><span class="num">01</span></div>
+      <h2>マーケティング戦略（実行版）</h2>
+      <p>3C/STP/USPから顧客理解、ポジショニング・競合分解・9セルマトリクス・KPIロードマップまでの全体戦略。</p>
+      <span class="go">ドキュメントを見る →</span>
+    </a>
+    <a class="doc-card" href="skimama_SNS戦略_実行版.html">
+      <div class="kicker-row"><span class="num">02</span></div>
+      <h2>SNS戦略（Organic・実行版）</h2>
+      <p>Instagram／Threads／TikTok／YouTubeの企画・運用設計。KPIツリー、プラットフォーム別役割分担、9セルマトリクス、台本設計まで。</p>
+      <span class="go">ドキュメントを見る →</span>
+    </a>
+    <a class="doc-card" href="skimama_LP戦略_実行版.html">
+      <div class="kicker-row"><span class="num">03</span></div>
+      <h2>LP戦略・LPO（実行版）</h2>
+      <p>LINE登録LPの構成案・コピー草案。核メッセージのコントラスト法、セクション別ワイヤーフレーム、A/Bテスト観点、景表法対応。</p>
+      <span class="go">ドキュメントを見る →</span>
+    </a>
+  </div>
 
-    <section id="s1">
-      <div class="kicker"><span class="num">01</span><span class="rule"></span></div>
-      <h2 class="h">ポジショニング一文</h2>
-      <p>「誰に・何を・何で・どう差別化するか」の4点を1つのタグラインに圧縮する。</p>
-      <dl class="define-grid">
-        <dt>誰に</dt>
-        <dd>育児中で「パートに戻る／独学で迷子になる／何もせず自己肯定感を削り続ける」のいずれかに留まっている女性。特に育休復帰前後・パート収入の天井を感じている層。</dd>
-        <dt>何を</dt>
-        <dd>「収入が増えない」→「自己効力感が下がる」→「行動できずさらに収入が増えない」という悪循環を、"最初の案件獲得"という具体的な成功体験で断ち切る。</dd>
-        <dt>何で</dt>
-        <dd>ママ限定コミュニティ × メンター伴走 × 複数職種から選べる柔軟さ × 2ヶ月という現実的な期間設計の掛け合わせ。</dd>
-        <dt>どう差別化</dt>
-        <dd>Fammのように単一スキルに賭けさせず、SHElikesのように自走を前提にしない。「同じ境遇の仲間と伴走してもらいながら、自分に合った職種で、仕事を獲得するところまで並走してもらえる」という、競合が同時には満たせない二軸（伴走の深さ×職種選択の自由）を両取りする。</dd>
-      </dl>
-      <p class="tagline">「意識が高い系」でも「怪しい副業」でもない、同じ“普通のママ”が伴走してくれる在宅ワークの実家。</p>
-    </section>
-
-    <section id="s2">
-      <div class="kicker"><span class="num">02</span><span class="rule"></span></div>
-      <h2 class="h">競合分解表</h2>
-      <p>価格・機能だけでなく「権威・担保」と「クリエイティブ軸」を列に加えたもの。クリエイティブ軸は未確認のため<span class="tag hypo">推定</span>。</p>
-      <div class="twrap">
-        <table>
-          <thead>
-            <tr><th>競合</th><th>コア訴求</th><th class="num">価格帯</th><th>権威／担保</th><th>職種の幅</th><th>クリエイティブ軸</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">skimama</th>
-              <td>未経験ママが2ヶ月で在宅ワークデビュー、仕事獲得まで伴走</td>
-              <td class="num">259,800円<br><small class="muted">分割12,000円〜</small></td>
-              <td>獲得率93.0%・メンター満足度99.3%・ベビーテックアワード2024優秀賞・都営地下鉄広告</td>
-              <td>秘書／ライティング／デザイン／SNS運用等・複数</td>
-              <td>実績数値＋卒業生ビフォーアフター<span class="tag hypo">推定</span></td>
-            </tr>
-            <tr>
-              <th scope="row">Famm</th>
-              <td>ママ専用・1ヶ月でWebデザイナーに</td>
-              <td class="num">184,800円</td>
-              <td>家族アルバムアプリ運営元のブランド力、卒業後に実案件を最大5件発注</td>
-              <td>デザイン一点</td>
-              <td>「1ヶ月で・シッター付きで」の手軽さ<span class="tag hypo">推定</span></td>
-            </tr>
-            <tr>
-              <th scope="row">SHElikes</th>
-              <td>女性向け・45コース学び放題</td>
-              <td class="num">入会金88,800円＋<br>月額16,280円</td>
-              <td>転職支援実績、補助金最大70%還元</td>
-              <td>45コース・広い</td>
-              <td>「なりたい私になる」キラキラ系<span class="tag hypo">推定</span></td>
-            </tr>
-            <tr>
-              <th scope="row">低価格スクール群</th>
-              <td>副業・フリーランススキル習得</td>
-              <td class="num">148,000〜<br>798,000円</td>
-              <td>スキル特化の専門性、無期限サポート等（個別）</td>
-              <td>単一〜少数スキル</td>
-              <td>収入試算訴求<span class="tag hypo">推定</span></td>
-            </tr>
-            <tr>
-              <th scope="row">代替行動（層D）</th>
-              <td>「今のままで様子を見る」</td>
-              <td class="num">0円</td>
-              <td>なし（コストゼロが最大の担保）</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout">
-        <span class="label">示唆</span>
-        skimamaの担保（獲得率93%・メンター満足度99.3%）は他社に比べ明確に強い。ただし算出根拠の開示が未確認。エビデンス戦略として最優先で根拠を固め、すべてのクリエイティブの核に据える。
-      </div>
-    </section>
-
-    <section id="s3">
-      <div class="kicker"><span class="num">03</span><span class="rule"></span></div>
-      <h2 class="h">ペルソナ優先度・星取り表</h2>
-      <p>Tier仮説を、入口の悩みと刺さる訴求順序まで具体化したもの。</p>
-      <div class="twrap">
-        <table>
-          <thead>
-            <tr><th>優先度</th><th>ペルソナ</th><th>痛みの強度</th><th>入口 → 中間 → 出口</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1st</th>
-              <td>育休復帰前後で「パートに戻るしかないのか」と悩む層／パート収入の天井に限界を感じている層</td>
-              <td class="stars">★★★★★</td>
-              <td>「このままパートに戻ったら何を失うか」の可視化 → 獲得率93%・職種を選べる自由 → 分割12,000円〜・無料勉強会でのゼロリスク体験</td>
-            </tr>
-            <tr>
-              <th scope="row">2nd</th>
-              <td>専業主婦で「そろそろ何か始めたい」と漠然と思っている層</td>
-              <td class="stars">★★★★<span class="off">☆</span></td>
-              <td>「自己肯定感を取り戻す」共感コンテンツ → 同じ境遇のママ仲間・メンター伴走の安心 → 無料勉強会（特典：在宅ワークママBOOK）</td>
-            </tr>
-            <tr>
-              <th scope="row">3rd</th>
-              <td>小学生以上の子を持ち「小1の壁」に直面／地方在住で働き口が限られる層</td>
-              <td class="stars">★★★★<span class="off">☆</span></td>
-              <td>「小1の壁」あるあるの共感 → フルオンライン・時間拘束のなさ → 職種診断・卒業生実例</td>
-            </tr>
-            <tr>
-              <th scope="row">4th</th>
-              <td>育休中で復職に迷いがある層（将来層としてのフォロー）</td>
-              <td class="stars">★★★<span class="off">☆☆</span></td>
-              <td>産後キャリア不安の社会課題化コンテンツ → 将来の選択肢としての在宅ワーク認知 → LINE登録によるナーチャリング開始</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="muted" style="font-size:0.86rem;">同じ職種訴求でも、1st層には収入天井・時間拘束という機能的ペインで即効性を、2nd・4th層には自己肯定感の回復という情緒的ペインで安全性・仲間感を先に見せる。</p>
-    </section>
-
-    <section id="s4">
-      <div class="kicker"><span class="num">04</span><span class="rule"></span></div>
-      <h2 class="h">チャネル役割分担と受け皿優先順位</h2>
-      <h3 class="h3">役割の唯一化</h3>
-      <div class="twrap">
-        <table>
-          <thead><tr><th>チャネル</th><th>型</th><th>役割</th><th>KPI</th></tr></thead>
-          <tbody>
-            <tr><td>Web広告（Meta／TikTok／Google）</td><td>刈り取り</td><td>顕在化した需要（準備期〜行動期）を確実に取る</td><td>CPA（LINE登録）、CVR</td></tr>
-            <tr><td>LP・比較コンテンツ</td><td>育成</td><td>準顕在層（関心期〜準備期）へ判断材料を渡す</td><td>滞在時間、回遊率、勉強会予約率</td></tr>
-            <tr><td>Organic（IG／Threads／TikTok／YouTube）</td><td>需要創出</td><td>潜在層（無関心期〜関心期）の認知形成、行動前段階を作る</td><td>リーチ、保存、フォロー転換、LINE登録転換数</td></tr>
-            <tr><td>LINE公式</td><td>継続</td><td>離脱防止、勉強会予約〜入会、卒業後の紹介・アップセル</td><td>開封率、タップ率、勉強会予約率、成約率</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h3 class="h3">「受け皿を整えてから拡張する」の適用順序</h3>
-      <ol class="priority">
-        <li>既存LINE登録者・勉強会参加者の再活性化（未成約者の離脱理由特定）</li>
-        <li>LP・勉強会後の体験改善（比較材料・卒業生実例・不安払拭FAQの充実）</li>
-        <li>LINE CRMステップ配信の仕組み化</li>
-        <li>Organicでの新規需要創出への本格投資拡大</li>
-      </ol>
-      <div class="callout">
-        <span class="label">示唆</span>
-        現状は広告依存＝優先順位4に資源が偏った状態にある可能性が高い。Organic責任者の最初の仕事は、優先順位1〜3が定量基準を満たしているかの現状診断。
-      </div>
-    </section>
-
-    <section id="s5">
-      <div class="kicker"><span class="num">05</span><span class="rule"></span></div>
-      <h2 class="h">Tier × 行動変容ステージ：9セルマトリクス</h2>
-      <p>Tier仮説を行に、行動変容ステージを列に対応させたコンテンツ設計マトリクス。</p>
-      <div class="twrap">
-        <table>
-          <thead><tr><th>Tier</th><th>無関心期〜関心期（認知）</th><th>準備期（比較検討）</th><th>行動期（後押し）</th></tr></thead>
-          <tbody>
-            <tr>
-              <th scope="row">Tier1<br><small class="muted">育休復帰／パート天井</small></th>
-              <td>「パート収入の天井」「保育園帰りの時給換算」など層2ペインの共感リール（商品を出さない）</td>
-              <td>獲得率93%・職種診断・Fammとの違いの比較コンテンツ</td>
-              <td>卒業生実名インタビュー、メンター個別相談の様子</td>
-            </tr>
-            <tr>
-              <th scope="row">Tier2<br><small class="muted">専業・漠然層</small></th>
-              <td>「何者でもない気がする」自己肯定感系の共感ストーリー</td>
-              <td>同じ境遇のママ仲間・メンター伴走の安心材料、SHElikesとの違い</td>
-              <td>無料勉強会当日の様子、在宅ワークママBOOKの中身紹介</td>
-            </tr>
-            <tr>
-              <th scope="row">Tier3<br><small class="muted">小1の壁／地方・季節性強</small></th>
-              <td>「小1の壁」認知形成コンテンツ（入園・入学シーズンに集中投下）</td>
-              <td>職種診断、フルオンラインゆえの柔軟性の教育コンテンツ</td>
-              <td>入園・入学時期の限定訴求、季節に合わせた行動喚起</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout">
-        <span class="label">投稿配分ルール（仮説）</span>
-        通常時：共感・気づき系45% ／ 比較・教育系35% ／ 卒業生ストーリー・人間味10% ／ 行動喚起10%。季節（4月入園・小1の壁シーズン）前はTier3向け季節訴求の比率を平時の2〜3倍に引き上げる。
-      </div>
-      <p class="muted" style="font-size:0.86rem;">台本テンプレートに落とし込む際、現実の言語化＝ペイン層2、教育＝層3、ビフォーアフター＝情緒的変化（自己肯定感の回復）を必ず割り当てる。</p>
-    </section>
-
-    <section id="s6">
-      <div class="kicker"><span class="num">06</span><span class="rule"></span></div>
-      <h2 class="h">フェーズ移行の定量ゲート条件</h2>
-      <p>「Organic強化 → 広告投資配分の見直し」という後戻りしにくい意思決定を、感覚でなく基準で判断するための仮ゲート<span class="tag hypo">仮説</span>。社内データ取得後に閾値を確定させる。</p>
-      <div class="gate-grid">
-        <div class="gate-card">
-          <h4>Phase 1 → Phase 2（土台構築 → スケール）</h4>
-          <ol>
-            <li>アカウントコンセプト・プロフィール設計が確定済みか（Yes/No）</li>
-            <li>初期50〜100本の投稿分析が完了しているか（Yes/No）</li>
-            <li>リール平均視聴維持率が一定水準（要ベースライン取得）を超えているか（数値基準）</li>
-            <li>LINE登録への導線が実装済みか（Yes/No）</li>
-          </ol>
-          <p class="verdict">4項目中3項目以上でPhase 2へ。未達なら土台構築を延長。</p>
-        </div>
-        <div class="gate-card">
-          <h4>Phase 2 → Phase 3（スケール → 転換最大化）</h4>
-          <ol>
-            <li>Organic経由のLINE登録数が広告経由CPAを下回るCPAで安定しているか（数値基準）</li>
-            <li>卒業生発信（UGC）が月次で一定件数発生しているか（数値基準）</li>
-            <li>LINE登録者数が母数として転換施策に耐える規模に達しているか（数値基準）</li>
-          </ol>
-          <p class="verdict">3項目中2項目以上でPhase 3へ。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="s7">
-      <div class="kicker"><span class="num">07</span><span class="rule"></span></div>
-      <h2 class="h">LINE CRMステップ配信の型</h2>
-      <ul class="timeline">
-        <li><div class="when">Day 0</div><div class="what">ウェルカムメッセージ＋在宅ワークママBOOKの受け渡し（緊張・不安の解消）</div></li>
-        <li><div class="when">Day 3〜5</div><div class="what">無料勉強会の日程案内・参加ハードルを下げるFAQ（子供がいても大丈夫、等）</div></li>
-        <li><div class="when">Day 7前後</div><div class="what">勉強会参加者へ卒業生実例・獲得率93%の根拠提示（比較検討の後押し）</div></li>
-        <li><div class="when">Day 14前後</div><div class="what">未参加・未申込者への再アプローチ（限定特典 or 個別相談案内）</div></li>
-      </ul>
-      <p class="muted" style="font-size:0.86rem;">リッチメニュー4象限案：①無料勉強会に申し込む／②卒業生の声を見る／③よくある質問／④公式Instagramを見る（Organicとの回遊導線）。</p>
-    </section>
-
-    <section id="s8">
-      <div class="kicker"><span class="num">08</span><span class="rule"></span></div>
-      <h2 class="h">KPIロードマップ：現状値 → 短期 → 中期</h2>
-      <div class="twrap">
-        <table>
-          <thead><tr><th>フェーズ</th><th>期間</th><th>目的</th><th>KPI（現状 → 短期 → 中期）</th></tr></thead>
-          <tbody>
-            <tr>
-              <th scope="row">Phase 1<br>土台構築</th>
-              <td>〜3ヶ月</td>
-              <td>アカウントのジャンル認識を確立し、初速データを取る</td>
-              <td>フォロワー増数・視聴維持率：<b>現状値未取得（最初のタスク）</b> → 社内合意の初期目標 → 業界水準比での中期目標</td>
-            </tr>
-            <tr>
-              <th scope="row">Phase 2<br>スケール</th>
-              <td>3〜9ヶ月</td>
-              <td>Organic経由のLINE登録を主要KPIに切り替える</td>
-              <td>LINE登録数・登録CPA：現状の広告CPAを基準値とし、Organic経由CPAがそれを下回ることを短期目標に設定</td>
-            </tr>
-            <tr>
-              <th scope="row">Phase 3<br>転換最大化</th>
-              <td>9〜18ヶ月</td>
-              <td>LINE登録→勉強会予約→成約の転換率を上げる</td>
-              <td>勉強会予約率・成約率：現状値（社内データ要取得）→ 短期は現状比+α → 中期はCAC全体の低下で評価</td>
-            </tr>
-            <tr>
-              <th scope="row">Phase 4<br>資産化</th>
-              <td>18ヶ月〜</td>
-              <td>指名検索・紹介が拡大し広告依存から脱却する</td>
-              <td>自然流入比率・紹介経由成約率：現状値取得 → 短期目標 → 「売上10億円」逆算からの中期目標</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout"><span class="label">最初のタスク</span>現状値の取得そのもの。現状値なしに立てた目標値は仮の仮説にすぎない。</div>
-    </section>
-
-    <section id="s9">
-      <div class="kicker"><span class="num">09</span><span class="rule"></span></div>
-      <h2 class="h">リスクと対応方針</h2>
-      <div class="twrap">
-        <table>
-          <thead><tr><th>リスク</th><th>影響</th><th>対応方針</th></tr></thead>
-          <tbody>
-            <tr><td>現状値（フォロワー・LINE登録・CPA等）が未取得のままKPI目標を確定してしまう</td><td>目標が非現実的になり、投資判断を誤る</td><td>着手初週で社内データ・既存アカウント現状の棚卸しを最優先タスク化</td></tr>
-            <tr><td>「獲得率93%」等の実績数値の算出根拠が未確認</td><td>外部発信時に景表法リスク、社内外の信頼低下</td><td>発信前に算出定義・母数を確認し、根拠を開示できる形に整理</td></tr>
-            <tr><td>Famm・SHElikesの実クリエイティブ未確認のまま訴求を推定で作る</td><td>差別化訴求が的外れになるリスク</td><td>Meta広告ライブラリでの実物収集を早期に実施</td></tr>
-            <tr><td>メンター品質がスケール時に毀損する</td><td>獲得率93%・満足度99.3%というブランド最大の資産が崩れる</td><td>メンター1名あたり受講生数・品質指標をKPIロードマップに組み込み、拡大速度をゲート条件で制御</td></tr>
-            <tr><td>提携先「フジ子さん」がスクール経由をバイパスし直接競合化する</td><td>卒業後の案件獲得導線が弱まる</td><td>提携関係の位置づけ（送客 vs 競合）を早期に整理</td></tr>
-            <tr><td>Organic投稿がフォロワー数の最大化だけを目的化する</td><td>LINE登録・勉強会予約という本来のKPIから逸れる</td><td>フォロワー数を非目的化し、LINE登録転換数を常に主指標として運用会議で確認</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="s10">
-      <div class="kicker"><span class="num">10</span><span class="rule"></span></div>
-      <h2 class="h">次のアクション</h2>
-      <p>要検証事項の中でも着手優先度が高いもの。</p>
-      <ul class="plain">
-        <li>Organicアカウント現状値（フォロワー数・エンゲージメント・LINE登録経由内訳）のベースライン取得</li>
-        <li>実績数値（96.0%／99.3%／93.0%）の算出定義・母数の社内確認</li>
-        <li>Famm・SHElikesの実広告クリエイティブ（Meta広告ライブラリ）の収集</li>
-        <li>卒業生インタビューによるペイン層4インサイト・JTBDの一次検証</li>
-        <li>「フジ子さん」提携の位置づけ整理（送客 vs 将来的競合）</li>
-      </ul>
-    </section>
-
-    <footer class="doc-footer">
-      skimama マーケティング戦略（実行版）— 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。一次データ取得後、随時更新。
-    </footer>
-
-  </main>
+  <footer class="hub-footer">
+    skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。
+  </footer>
 </div>
+
 </body>
 </html>

@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>skimama SNS戦略（Organic）｜実行版</title>
+<meta name="description" content="skimamaのSNS戦略（Organic・実行版）。Instagram/Threads/TikTok/YouTubeの企画・運用設計をまとめた公開資料。">
+<style>
+  :root{
+    --paper:#F4EFF0;
+    --paper-raised:#FFFFFF;
+    --ink:#241E22;
+    --ink-soft:#5B4F54;
+    --line:rgba(36,30,34,0.14);
+    --line-soft:rgba(36,30,34,0.08);
+    --accent:#9C3B52;
+    --accent-soft:rgba(156,59,82,0.09);
+    --accent-2:#4F6B58;
+    --accent-2-soft:rgba(79,107,88,0.10);
+    --hypo:#8A6D1E;
+    --hypo-soft:rgba(138,109,30,0.10);
+    --shadow: 0 1px 2px rgba(36,30,34,0.06), 0 8px 24px rgba(36,30,34,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#201A1D;
+      --paper-raised:#282124;
+      --ink:#EDE6E8;
+      --ink-soft:#B9ACB1;
+      --line:rgba(237,230,232,0.16);
+      --line-soft:rgba(237,230,232,0.09);
+      --accent:#E38DA0;
+      --accent-soft:rgba(227,141,160,0.12);
+      --accent-2:#8FB69D;
+      --accent-2-soft:rgba(143,182,157,0.12);
+      --hypo:#D8B24A;
+      --hypo-soft:rgba(216,178,74,0.12);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#201A1D; --paper-raised:#282124; --ink:#EDE6E8; --ink-soft:#B9ACB1;
+    --line:rgba(237,230,232,0.16); --line-soft:rgba(237,230,232,0.09);
+    --accent:#E38DA0; --accent-soft:rgba(227,141,160,0.12);
+    --accent-2:#8FB69D; --accent-2-soft:rgba(143,182,157,0.12);
+    --hypo:#D8B24A; --hypo-soft:rgba(216,178,74,0.12);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"]{
+    --paper:#F4EFF0; --paper-raised:#FFFFFF; --ink:#241E22; --ink-soft:#5B4F54;
+    --line:rgba(36,30,34,0.14); --line-soft:rgba(36,30,34,0.08);
+    --accent:#9C3B52; --accent-soft:rgba(156,59,82,0.09);
+    --accent-2:#4F6B58; --accent-2-soft:rgba(79,107,88,0.10);
+    --hypo:#8A6D1E; --hypo-soft:rgba(138,109,30,0.10);
+    --shadow: 0 1px 2px rgba(36,30,34,0.06), 0 8px 24px rgba(36,30,34,0.05);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+    line-height:1.8;
+    font-feature-settings:"palt" 1;
+  }
+  h1,h2,h3{
+    font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+    font-weight:600;
+    text-wrap:balance;
+    color:var(--ink);
+  }
+  a{ color:var(--accent); }
+  ::selection{ background:var(--accent-soft); }
+
+  .layout{
+    display:grid;
+    grid-template-columns:272px minmax(0,1fr);
+    max-width:1180px;
+    margin:0 auto;
+  }
+
+  /* ---- rail / nav ---- */
+  .rail{
+    position:sticky; top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    padding:2.6rem 1.6rem 2rem 2rem;
+    border-right:1px solid var(--line);
+    display:flex; flex-direction:column; gap:1.6rem;
+  }
+  .rail-back{
+    display:inline-flex; align-items:center; gap:0.35rem;
+    font-size:0.78rem; font-weight:700; color:var(--accent);
+    text-decoration:none; margin-bottom:0.9rem;
+  }
+  .rail-back:hover{ text-decoration:underline; }
+  .eyebrow{
+    margin:0; font-size:0.72rem; letter-spacing:0.14em;
+    color:var(--accent); text-transform:uppercase; font-weight:700;
+  }
+  .rail-title{
+    margin:0.5rem 0 0; font-size:1.5rem; line-height:1.4;
+  }
+  .rail-title span{ color:var(--accent); }
+  .rail-meta{ margin:0.6rem 0 0; font-size:0.8rem; color:var(--ink-soft); }
+  .toc{ display:flex; flex-direction:column; gap:0.15rem; }
+  .toc a{
+    display:flex; gap:0.6rem; align-items:baseline;
+    padding:0.42rem 0.5rem; margin:0 -0.5rem;
+    border-radius:8px;
+    font-size:0.86rem; text-decoration:none; color:var(--ink-soft);
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .toc a:hover{ background:var(--accent-soft); color:var(--ink); }
+  .toc a b{
+    font-variant-numeric:tabular-nums;
+    color:var(--accent); font-weight:700; font-size:0.78rem;
+    min-width:1.4em;
+  }
+  .rail-note{
+    margin-top:auto; padding-top:1rem; border-top:1px solid var(--line-soft);
+    font-size:0.76rem; color:var(--ink-soft); line-height:1.7;
+  }
+  .rail-note a{ color:var(--accent); }
+  details.mobile-toc{ display:none; }
+
+  /* ---- content ---- */
+  .content{ padding:3.2rem clamp(1.2rem,4vw,3.4rem) 6rem; min-width:0; }
+  .content > section, .content > .doc-intro{ max-width:740px; margin:0 0 4.6rem; scroll-margin-top:1.5rem; }
+  .content > section:last-of-type{ margin-bottom:2rem; }
+
+  .kicker{
+    display:flex; align-items:center; gap:0.7rem; margin-bottom:0.7rem;
+  }
+  .kicker .num{
+    font-family:"Noto Serif JP",serif; font-weight:600; color:var(--accent);
+    font-size:0.95rem; font-variant-numeric:tabular-nums;
+  }
+  .kicker .rule{ flex:1; height:1px; background:var(--line); }
+  h2.h{ font-size:1.5rem; margin:0 0 1rem; }
+  h3.h3{ font-size:1.08rem; margin:1.8rem 0 0.7rem; }
+  p{ margin:0 0 1rem; }
+  .lede{ font-size:1.05rem; color:var(--ink-soft); }
+
+  .tag{
+    display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.03em;
+    padding:0.16rem 0.5rem; border-radius:999px; vertical-align:middle;
+  }
+  .tag.hypo{ background:var(--hypo-soft); color:var(--hypo); }
+  .tag.core{ background:var(--accent-soft); color:var(--accent); }
+
+  ul.plain, ol.plain{ margin:0 0 1rem; padding-left:1.2rem; }
+  ul.plain li, ol.plain li{ margin-bottom:0.45rem; }
+  ul.plain li::marker, ol.plain li::marker{ color:var(--accent); font-weight:700; }
+
+  code{
+    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    font-size:0.85em; background:var(--line-soft); padding:0.1em 0.4em; border-radius:4px;
+  }
+
+  .callout{
+    border-left:3px solid var(--accent-2);
+    background:var(--accent-2-soft);
+    padding:0.9rem 1.1rem;
+    border-radius:0 10px 10px 0;
+    font-size:0.92rem;
+    margin:1.2rem 0;
+  }
+  .callout .label{
+    display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.05em;
+    color:var(--accent-2); margin-bottom:0.3rem;
+  }
+  .callout.warn{ border-left-color:var(--accent); background:var(--accent-soft); }
+  .callout.warn .label{ color:var(--accent); }
+  .callout p:last-child{ margin-bottom:0; }
+
+  /* copy draft (実際のコピー文言) */
+  .copy-draft{
+    border-left:3px solid var(--accent);
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-left-width:3px;
+    padding:1rem 1.2rem;
+    border-radius:0 10px 10px 0;
+    margin:1.2rem 0;
+    box-shadow:var(--shadow);
+    font-style:italic;
+  }
+  .copy-draft .label{
+    display:block; font-style:normal; font-size:0.72rem; font-weight:700; letter-spacing:0.05em;
+    color:var(--accent); margin-bottom:0.5rem;
+  }
+  .copy-draft p{ margin:0 0 0.7rem; }
+  .copy-draft p:last-child{ margin-bottom:0; }
+  .copy-draft strong{ font-style:normal; }
+  .copy-draft ul, .copy-draft ol{ margin:0 0 0.7rem; padding-left:1.2rem; font-style:normal; }
+  .copy-draft ul:last-child, .copy-draft ol:last-child{ margin-bottom:0; }
+
+  /* code-fence tree diagrams */
+  pre.tree{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:12px;
+    padding:1.1rem 1.3rem; overflow-x:auto; margin:1rem 0 1.4rem; box-shadow:var(--shadow);
+    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    font-size:0.8rem; line-height:1.65; color:var(--ink-soft); white-space:pre;
+  }
+
+  /* checklist (未検証事項) */
+  ul.checklist{ list-style:none; margin:1.2rem 0; padding:0; }
+  ul.checklist li{
+    position:relative; padding:0.55rem 0 0.55rem 2.1rem; font-size:0.92rem;
+    border-bottom:1px dashed var(--line-soft);
+  }
+  ul.checklist li:last-child{ border-bottom:none; }
+  ul.checklist li::before{
+    content:""; position:absolute; left:0; top:0.75rem; width:1.05rem; height:1.05rem;
+    border:1.5px solid var(--ink-soft); border-radius:4px; background:var(--paper-raised);
+  }
+
+  /* summary cards on s0 */
+  .summary-grid{
+    display:grid; grid-template-columns:1fr; gap:0.9rem; margin-top:1.4rem;
+  }
+  .summary-grid .card{
+    background:var(--paper-raised); border:1px solid var(--line);
+    border-radius:12px; padding:1rem 1.15rem; box-shadow:var(--shadow);
+  }
+  .summary-grid .card h4{
+    margin:0 0 0.4rem; font-size:0.86rem; color:var(--accent);
+    font-family:inherit; letter-spacing:0.02em;
+  }
+  .summary-grid .card p{ margin:0; font-size:0.92rem; color:var(--ink-soft); }
+
+  /* positioning definition grid */
+  .define-grid{
+    display:grid; grid-template-columns:auto 1fr; gap:0.5rem 1.1rem;
+    background:var(--paper-raised); border:1px solid var(--line);
+    border-radius:12px; padding:1.3rem 1.4rem; box-shadow:var(--shadow);
+    margin:1rem 0 1.4rem;
+  }
+  .define-grid dt{
+    font-size:0.78rem; font-weight:700; color:var(--accent);
+    white-space:nowrap; padding-top:0.15rem;
+  }
+  .define-grid dd{ margin:0; padding-bottom:0.9rem; border-bottom:1px dashed var(--line-soft); }
+  .define-grid dt:last-of-type + dd, .define-grid dd:last-child{ border-bottom:none; padding-bottom:0; }
+  .tagline{
+    margin:1rem 0 0; padding:0.9rem 1.1rem; text-align:center;
+    background:var(--accent-soft); border-radius:10px;
+    font-family:"Noto Serif JP",serif; color:var(--ink); font-size:1.02rem;
+  }
+
+  /* tables */
+  .twrap{ overflow-x:auto; margin:1rem 0 1.4rem; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); }
+  table{ border-collapse:collapse; width:100%; min-width:560px; font-size:0.87rem; background:var(--paper-raised); }
+  table caption{ text-align:left; padding:0.7rem 1rem 0; font-size:0.78rem; color:var(--ink-soft); }
+  th, td{ padding:0.65rem 0.85rem; text-align:left; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+  thead th{
+    background:var(--accent-soft); color:var(--accent);
+    font-size:0.72rem; letter-spacing:0.03em; font-weight:700;
+    position:sticky; top:0;
+  }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody th[scope="row"]{ font-weight:700; color:var(--ink); background:var(--line-soft); }
+  td.num, th.num{ font-variant-numeric:tabular-nums; }
+  td small, .muted{ color:var(--ink-soft); }
+
+  /* stars */
+  .stars{ color:var(--accent); letter-spacing:0.05em; font-variant-numeric:tabular-nums; }
+  .stars .off{ color:var(--line); }
+
+  /* timeline (CRM / sequential) */
+  .timeline{ list-style:none; margin:1.2rem 0; padding:0; border-left:2px solid var(--line); }
+  .timeline li{ position:relative; padding:0 0 1.4rem 1.5rem; }
+  .timeline li:last-child{ padding-bottom:0; }
+  .timeline li::before{
+    content:""; position:absolute; left:-6.5px; top:0.3rem;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--paper-raised); border:2px solid var(--accent);
+  }
+  .timeline .when{ font-size:0.76rem; font-weight:700; color:var(--accent); letter-spacing:0.02em; }
+  .timeline .what{ margin-top:0.2rem; font-size:0.92rem; }
+
+  /* gate cards */
+  .gate-grid{ display:grid; grid-template-columns:1fr; gap:1rem; margin:1.2rem 0; }
+  .gate-card{ background:var(--paper-raised); border:1px solid var(--line); border-radius:12px; padding:1.1rem 1.3rem; box-shadow:var(--shadow); }
+  .gate-card h4{ margin:0 0 0.7rem; font-size:0.94rem; font-family:"Noto Serif JP",serif; }
+  .gate-card ol{ margin:0 0 0.8rem; padding-left:1.2rem; }
+  .gate-card ol li{ margin-bottom:0.4rem; font-size:0.9rem; }
+  .gate-card .verdict{
+    font-size:0.84rem; font-weight:700; color:var(--accent-2);
+    border-top:1px dashed var(--line); padding-top:0.6rem; margin-top:0.6rem;
+  }
+
+  /* priority ordered list */
+  ol.priority{ list-style:none; margin:1.2rem 0; padding:0; counter-reset:pr; }
+  ol.priority li{
+    counter-increment:pr; position:relative; padding:0.7rem 1rem 0.7rem 3rem;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:10px;
+    margin-bottom:0.6rem; font-size:0.92rem; box-shadow:var(--shadow);
+  }
+  ol.priority li::before{
+    content:counter(pr); position:absolute; left:0.9rem; top:50%; transform:translateY(-50%);
+    width:1.6rem; height:1.6rem; border-radius:50%; background:var(--accent); color:var(--paper-raised);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem;
+    font-variant-numeric:tabular-nums;
+  }
+
+  footer.doc-footer{
+    max-width:740px; padding-top:1.6rem; border-top:1px solid var(--line);
+    font-size:0.8rem; color:var(--ink-soft);
+  }
+  footer.doc-footer a{ color:var(--accent); }
+  footer.doc-footer .related{ margin-top:0.5rem; }
+
+  @media (max-width:860px){
+    .layout{ grid-template-columns:1fr; }
+    .rail{
+      position:sticky; height:auto; padding:1rem 1.2rem; border-right:none; border-bottom:1px solid var(--line);
+      flex-direction:row; align-items:center; justify-content:space-between; gap:0.8rem;
+    }
+    .rail-title{ font-size:1.1rem; }
+    .rail-meta, .rail-note, .toc{ display:none; }
+    details.mobile-toc{ display:block; }
+    details.mobile-toc summary{
+      cursor:pointer; list-style:none; font-size:0.8rem; font-weight:700;
+      color:var(--accent); border:1px solid var(--accent); border-radius:999px;
+      padding:0.4rem 0.9rem;
+    }
+    details.mobile-toc summary::-webkit-details-marker{ display:none; }
+    details.mobile-toc[open] summary{ margin-bottom:0.6rem; }
+    details.mobile-toc .toc{ display:flex; position:absolute; right:1.2rem; top:3.4rem; z-index:5;
+      background:var(--paper-raised); border:1px solid var(--line); border-radius:10px; padding:0.5rem; box-shadow:var(--shadow); }
+    .content{ padding:2rem 1.1rem 4rem; }
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .toc a{ transition:background 0.15s ease,color 0.15s ease; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="rail">
+    <div>
+      <a class="rail-back" href="index.html">← 全ドキュメント一覧</a>
+      <p class="eyebrow">skimama marketing</p>
+      <h1 class="rail-title">SNS戦略<br><span>Organic・実行版</span></h1>
+      <p class="rail-meta">最終更新 2026-07-07</p>
+      <details class="mobile-toc">
+        <summary>目次を開く</summary>
+        <nav class="toc">
+          <a href="#s0"><b>00</b>前提</a>
+          <a href="#s1"><b>01</b>KPIツリー</a>
+          <a href="#s2"><b>02</b>PF別役割分担</a>
+          <a href="#s3"><b>03</b>アカウント設計</a>
+          <a href="#s4"><b>04</b>訴求軸と企画</a>
+          <a href="#s5"><b>05</b>9セルマトリクス</a>
+          <a href="#s6"><b>06</b>月次カレンダー</a>
+          <a href="#s7"><b>07</b>台本設計</a>
+          <a href="#s8"><b>08</b>卒業生UGC</a>
+          <a href="#s9"><b>09</b>PDCA設計</a>
+          <a href="#s10"><b>10</b>表現コンプライアンス</a>
+          <a href="#s11"><b>11</b>未検証事項</a>
+        </nav>
+      </details>
+    </div>
+    <nav class="toc">
+      <a href="#s0"><b>00</b>前提</a>
+      <a href="#s1"><b>01</b>KPIツリー</a>
+      <a href="#s2"><b>02</b>PF別役割分担</a>
+      <a href="#s3"><b>03</b>アカウント設計</a>
+      <a href="#s4"><b>04</b>訴求軸と企画</a>
+      <a href="#s5"><b>05</b>9セルマトリクス</a>
+      <a href="#s6"><b>06</b>月次カレンダー</a>
+      <a href="#s7"><b>07</b>台本設計</a>
+      <a href="#s8"><b>08</b>卒業生UGC</a>
+      <a href="#s9"><b>09</b>PDCA設計</a>
+      <a href="#s10"><b>10</b>表現コンプライアンス</a>
+      <a href="#s11"><b>11</b>未検証事項</a>
+    </nav>
+    <p class="rail-note">社内ナレッジベースからの公開抜粋。<span class="tag hypo">仮説</span>の付いた内容は一次データでの検証待ちです。</p>
+  </aside>
+
+  <main class="content">
+
+    <div class="doc-intro">
+      <p class="lede">Instagram／Threads／TikTok／YouTubeの企画・運用設計。<span class="tag hypo">参画前の初版仮説</span>——現状のアカウント実績・社内データは未取得で、ベースライン取得後に数値目標を確定する前提の文書。</p>
+    </div>
+
+    <section id="s0">
+      <div class="kicker"><span class="num">00</span><span class="rule"></span></div>
+      <h2 class="h">前提：この企画書が土台にしている結論</h2>
+      <p>この企画書はゼロから発想したものではなく、以下の既存結論の<strong>実行翻訳</strong>である。個別企画を追加・修正する際も必ずこの前提に立ち返る。</p>
+      <div class="twrap">
+        <table style="min-width:760px;">
+          <thead><tr><th>土台</th><th>参照元</th><th>この企画書での使い方</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>JTBD</strong>：機能（在宅で収入源を作る）・情緒（"何かができる自分"を取り戻す）・社会（"ちゃんと前に進んでいる母親"を示す）の3つの仕事</td>
+              <td><code>CLAUDE.md</code>「顧客理解の核」／マーケティング戦略書 §3-1</td>
+              <td>全企画に「どのJTBDを動かすか」をタグ付けする。機能的仕事だけの企画はスクール比較の土俵に乗るため、情緒・社会を必ず混ぜる</td>
+            </tr>
+            <tr>
+              <td><strong>ペイン4層</strong>：表層（在宅で稼ぎたい）→顕在（パート代が保育料で消える）→潜在（社会から切り離された感覚・扶養への引け目）→インサイト（「自分の人生をまだ諦めていないと証明したい」）</td>
+              <td><code>CLAUDE.md</code>／戦略書 §3-2</td>
+              <td>フックは層2で「これ自分だ」を作り、本文で層3を言語化して「分かってくれてる」を作る。層4は直接言わず、視聴者に言わせる</td>
+            </tr>
+            <tr>
+              <td><strong>行動コスト3層</strong>：最大の競合は他スクールではなく「何もしない（層1）」「独学・ママ友副業（層2）」</td>
+              <td><code>CLAUDE.md</code>／戦略書 §3-3</td>
+              <td>Organicコンテンツの大半は層1・層2向け（市場を耕す）。競合スクール比較（層3向け）は少数精鋭にする</td>
+            </tr>
+            <tr>
+              <td><strong>行動変容ステージ×ライフイベント</strong>：無関心期〜維持期。入園・育休復帰・小1の壁が検討の山を作る（季節性は仮説）</td>
+              <td>戦略書 §5</td>
+              <td>プラットフォーム役割分担と月次カレンダーの背骨</td>
+            </tr>
+            <tr>
+              <td><strong>チャネル役割分担</strong>：Organic＝需要創出・信頼の土台、広告＝刈り取り、LINE＝継続</td>
+              <td>戦略書 §6／<code>brain/09</code> §4</td>
+              <td>Organicに刈り取りKPIを直接負わせない。ただしLINE登録への導線は常設する</td>
+            </tr>
+            <tr>
+              <td><strong>ポジショニング一文</strong>：「意識が高い系」でも「怪しい副業」でもない、同じ"普通のママ"が伴走してくれる在宅ワークの実家</td>
+              <td>戦略書 §4</td>
+              <td>全アカウント・全投稿のトーンの判定基準。「キラキラ」「煽り」に寄ったら差し戻す</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="label">この企画書のゴール</span>
+        フォロワーを増やすことではなく、無関心期〜準備期のママを一段ずつ動かし、LINE登録・無料勉強会予約という「ゼロリスクの一歩」まで運ぶ持続的な導線を作ること。
+      </div>
+    </section>
+
+    <section id="s1">
+      <div class="kicker"><span class="num">01</span><span class="rule"></span></div>
+      <h2 class="h">KPIツリー（最終KPIからの逆算）</h2>
+      <div class="callout">
+        <span class="label">原則：フォロワー数を目的化しない</span>
+        <code>brain/03</code>：フォロワーが伸びるかは9割投稿の質で決まる。フォロワーは結果指標。操作できるのは投稿の質＝滞在時間・保存・コメントであり、事業に効くのはLINE登録・勉強会予約である。
+      </div>
+      <pre class="tree">最終KPI：LINE登録数・無料勉強会予約数（Organic経由）
+│
+├─ 中間KPI（チャネル共通）
+│   ├─ プロフィールアクセス数 × プロフィール→LINEリンクタップ率
+│   ├─ ストーリーズ/固定投稿からのLINE遷移数
+│   └─ （YouTube）概要欄・コメント固定からのLINE遷移数
+│
+├─ 先行KPI（アルゴリズム上の操作変数。brain/03準拠）
+│   ├─ 平均視聴維持率・滞在時間（最重要）
+│   ├─ 保存率（「あとで見返したい」＝教育コンテンツの質）
+│   ├─ コメント数（誘発設計の質）
+│   └─ リーチ→プロフィールアクセス率（フックとプロフィール導線の質）
+│
+└─ 資産KPI（長期）
+    ├─ フォロワー数・フォロワーのターゲット純度（結果指標として観測のみ）
+    ├─ UGC数（卒業生発信・メンション数）
+    └─ 指名検索数・「skimama」タグ付き投稿数</pre>
+      <h3 class="h3">運用ルール</h3>
+      <ul class="plain">
+        <li>週次で見るのは先行KPI（維持率・保存・コメント）。月次で中間KPI（LINE遷移）。四半期で最終KPI・資産KPI</li>
+        <li>「伸びない」の原因診断は<code>brain/03</code>・<code>brain/06</code>の順で行う（初動10〜20本はジャンル認識前で伸びないのが正常。それ以降はクオリティ問題として企画・フック・テンポを疑う）</li>
+        <li><strong>現状のベースライン（各アカウントのフォロワー・維持率・LINE登録数）が未取得</strong>。参画後最初のタスクとして取得し、本ツリーに現状値→3ヶ月目標→12ヶ月目標を書き込む（<code>brain/09</code> §12：現状値未取得ならそれ自体を最初のタスクにする）</li>
+      </ul>
+    </section>
+
+    <section id="s2">
+      <div class="kicker"><span class="num">02</span><span class="rule"></span></div>
+      <h2 class="h">プラットフォーム別の役割分担</h2>
+      <div class="callout">
+        <span class="label">原則：同一コンテンツの全プラットフォーム一括横展開はしない</span>
+        素材（卒業生ストーリー・企画の核）は共通化して制作コストを下げつつ、プラットフォームごとに「狙うステージ×JTBD×フォーマット」を変えて出し分ける。
+      </div>
+      <div class="twrap">
+        <table style="min-width:920px;">
+          <thead><tr><th>PF</th><th>機能的役割</th><th>主な狙いステージ</th><th>主なJTBD</th><th>理由（アルゴリズム・ユーザー層特性）</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row">TikTok</th>
+              <td><strong>新規リーチの最大化装置</strong>。フォロワー外配信が前提のため「まだskimamaを知らないママ」への初回接触に最適</td>
+              <td>無関心期→関心期</td>
+              <td>情緒（共感・あるある）</td>
+              <td>レコメンド型でフォロワーゼロでも拡散する。ママ層の利用も拡大中（仮説・要確認）。ここで深い教育はせず「これ自分だ」の3秒を量産する</td>
+            </tr>
+            <tr>
+              <th scope="row">Instagram<br><small class="muted">リール＋フィード＋ストーリーズ</small></th>
+              <td><strong>総合ハブ＋LINE導線の本丸</strong>。リールで新規、フィード（カルーセル）で保存型教育、ストーリーズで日常・双方向、プロフィールがLINE登録への関所</td>
+              <td>関心期→準備期（全ステージの結節点）</td>
+              <td>機能＋情緒＋社会すべて</td>
+              <td>滞在時間・保存・コメントの複合評価（<code>brain/03</code>）。プロフィール→ハイライト→LINEという導線設計ができる唯一のPF。ママ層の情報収集の主戦場（仮説）</td>
+            </tr>
+            <tr>
+              <th scope="row">Threads</th>
+              <td><strong>テキストでの共感・双方向性・「中の人」の体温</strong>。リールでは載せきれない本音・葛藤・失敗談をテキストで置き、コメント欄で対話する</td>
+              <td>無関心期〜関心期（＋行動期の不安払拭）</td>
+              <td>情緒・社会</td>
+              <td>テキスト主体で「盛らない本音」が伸びやすい。IGアカウントと連携しプロフィール回遊を生む。広告色が最も嫌われる場所なので売り込みは原則しない</td>
+            </tr>
+            <tr>
+              <th scope="row">YouTube<br><small class="muted">長尺＋Shorts</small></th>
+              <td><strong>検討層への深い解説と検索受け皿</strong>。「在宅ワーク 未経験 ママ」等の検索意図に答える10〜20分動画、勉強会の疑似体験、卒業生ロングインタビュー</td>
+              <td>準備期→行動期</td>
+              <td>機能（判断材料）＋信頼</td>
+              <td>検索起点＋長尺で信頼構築に最適。259,800円の意思決定には「顔が見える長い説明」が必要（無形商材＝経験財の試食）。Shortsはリール素材の転用で認知も補完</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="h3">プラットフォーム間の導線設計</h3>
+      <pre class="tree">TikTok / YT Shorts（初回接触）→ Instagramプロフィール（関所）→ ハイライト・固定投稿（教育）
+→ LINE登録（特典：在宅ワークママBOOK）→ 無料勉強会
+Threads（共感・対話）⇄ Instagram（相互回遊）
+YouTube長尺（検討の最終確認）→ 概要欄LINEリンク → 無料勉強会</pre>
+      <h3 class="h3">投資順序の仮説（<code>brain/09</code> §5「受け皿を整えてから拡張する」準拠）</h3>
+      <ol class="priority">
+        <li>まずInstagram（プロフィール・ハイライト・LINE導線という「受け皿」）を整える</li>
+        <li>次にリール×TikTok同時運用で新規リーチを拡大</li>
+        <li>YouTubeは制作コストが高いため、卒業生インタビュー素材が一定数たまってから本格化（Shorts転用は初期から）</li>
+        <li>Threadsは低コストなので初期から並走（1日1〜3ポスト、リール企画の副産物として運用）</li>
+      </ol>
+    </section>
+
+    <section id="s3">
+      <div class="kicker"><span class="num">03</span><span class="rule"></span></div>
+      <h2 class="h">アカウントコンセプトの方向性（<code>brain/04</code>・<code>05</code>準拠）</h2>
+      <h3 class="h3">3-1 ジャンル選定：レッドオーシャン×掛け合わせ</h3>
+      <ul class="plain">
+        <li>「ママ×在宅ワーク×副業」はレッドオーシャン＝需要の証明（<code>brain/04</code>：ブルーオーシャンは初心者NG、競合が多い市場こそチャンス）</li>
+        <li><strong>HARMの法則での掛け合わせ</strong>：A（キャリア）×M（お金）を土台に、<strong>H（メンタル・自己肯定感）を差別化の掛け算</strong>として乗せる。「稼ぎ方」アカウントは無数にあるが、「稼げるようになる過程で自分を取り戻す」を正面に置くアカウントは少ない（仮説・競合30〜50アカウント分析で要検証）</li>
+        <li>R（家族・夫婦）は企画単位で使う（「夫に反対されたとき」「家族の反応が変わった」等はコメントが伸びやすいテーマと推定）</li>
+      </ul>
+      <h3 class="h3">3-2 コンセプト公式：ジャンル×ストーリーテリング（ビフォー→アフター）</h3>
+      <p><code>brain/05</code>の公式をskimamaに翻訳する。<strong>バイアス状態と理想状態のギャップが大きいほど強い</strong>。</p>
+      <div class="twrap">
+        <table>
+          <thead><tr><th>型</th><th>バイアス（ビフォー）</th><th>理想（アフター）</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">卒業生ストーリー型</th><td>「PCはメール程度・事務パート10年・自分に何もないと思っていた」</td><td>「在宅のオンライン秘書として自分の名前で仕事をしている」</td></tr>
+            <tr><th scope="row">運営・中の人型</th><td>「skimamaの中の人も元・普通のママ」（該当者がいれば）</td><td>「ママの働き方を変える側になった」</td></tr>
+            <tr><th scope="row">密着企画型</th><td>「未経験ママの在宅ワークデビューまで、リアル密着」</td><td>学習開始〜初案件獲得までの過程を隠さず見せる</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="label">注意</span>
+        アフターの表現は「月◯万円稼げるようになった」と断定的に一般化しない。個人の実例として、時期・職種・稼働時間の文脈つきで語る（→ §10 表現ルール）。
+      </div>
+      <h3 class="h3">3-3 アカウント設計の4問（<code>brain/04</code>）への回答案</h3>
+      <ol class="plain">
+        <li><strong>誰に</strong>：パート・専業・育休中で「このままでいいのかな」と思っている、意識高い系が苦手な普通のママ（Tier1中心）</li>
+        <li><strong>どんな発信</strong>：在宅ワークのリアル（きれいごと抜き）＋同じ境遇のママの一歩の記録</li>
+        <li><strong>どんな問題を解決</strong>：「何から始めればいいかわからない」「私にできる気がしない」</li>
+        <li><strong>どんな未来</strong>：家にいながら自分の名前で稼ぎ、「ちゃんとやっている自分」を取り戻した状態</li>
+      </ol>
+      <p><strong>プロフィール設計</strong>（<code>brain/04</code>準拠）：1行目に発信テーマ（例：「未経験ママの在宅ワークデビューを応援」）、箇条書きで実績（在宅ワーク獲得率93%※・卒業生◯名・ベビーテックアワード2024優秀賞）、最終行にLINE誘導（「▼無料の在宅ワークママBOOKはこちら」）。※実績数値の算出定義確認後に掲出（→§11）。</p>
+    </section>
+
+    <section id="s4">
+      <div class="kicker"><span class="num">04</span><span class="rule"></span></div>
+      <h2 class="h">コンテンツの3訴求軸と企画バリエーション</h2>
+      <p>戦略書 §7-2の3軸を実企画に展開する。<strong>配分ルールの初期仮説：認知・共感45%／信頼・証拠35%／行動・転換10%／人間味（Threads的な日常）10%</strong>（<code>brain/09</code> §11の配分ルールの型。実績を見て四半期ごとに見直す）。</p>
+
+      <h3 class="h3">軸A：認知・共感（無関心期〜関心期／層1・層2の耕し）</h3>
+      <div class="twrap">
+        <table style="min-width:820px;">
+          <thead><tr><th>#</th><th>企画名</th><th>フック案（冒頭1〜3秒）</th><th>構成の要点</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">A-1</th><td>パート時給の現実算</td><td>「パート代、時給に直したら◯円だった話」</td><td>保育料・ガソリン代・急な欠勤を引いた"実質時給"を試算して見せる。層2ペインの可視化。数字はテロップで大きく。※特定の職業を貶めるトーンにしない</td></tr>
+            <tr><th scope="row">A-2</th><td>子どもの発熱、また私が休む</td><td>「『また休むの?』って言われた日のこと」</td><td>ストーリー型。層2（欠勤の気まずさ）→層3（社会から取り残される感覚）へ降りる。解決は出さず共感で終える。コメント誘発：「同じ経験ある方いますか」</td></tr>
+            <tr><th scope="row">A-3</th><td>「ママは毎日何してるの?」に固まった話</td><td>「子どもに聞かれて、答えられなかった」</td><td>層3（何者でもなくなった感覚）の言語化。社会的JTBDに直撃。売り込みゼロで保存・シェアを狙う</td></tr>
+            <tr><th scope="row">A-4</th><td>現状維持の10年後シミュレーション</td><td>「今のまま10年経ったら、を計算してみた」</td><td>行動コスト3層の層1向け：放置コストの可視化。収入天井・子の成長・自分の年齢を淡々と並べる。煽らず事実の提示で終える</td></tr>
+            <tr><th scope="row">A-5</th><td>在宅ワークあるある（挫折編）</td><td>「在宅ワーク、正直これがしんどい」</td><td>あえてデメリットから入る誠実路線。「怪しい副業」との差別化＝信頼の種まき。ポジショニング一文（実家感）に忠実に</td></tr>
+            <tr><th scope="row">A-6</th><td>夜、子どもを寝かしつけた後の30分</td><td>「みんな、寝かしつけの後って何してる?」</td><td>TPO変更（ステージ変更3軸）：「勉強は寝かしつけ後の30分でいい」の前段。Threads向きの問いかけ型</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h3">軸B：信頼・証拠（準備期〜行動期／層3比較検討層の不安払拭）</h3>
+      <div class="twrap">
+        <table style="min-width:820px;">
+          <thead><tr><th>#</th><th>企画名</th><th>フック案</th><th>構成の要点</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">B-1</th><td>卒業生ビフォーアフター図鑑</td><td>「事務パート歴10年だった彼女の、今の働き方」</td><td>§8の型に沿った卒業生ストーリーの連載化。職種・稼働時間・期間を必ず添え、個人の実例として語る。skimama最大の武器</td></tr>
+            <tr><th scope="row">B-2</th><td>在宅ワーク職種図鑑</td><td>「在宅ワークって、実は4種類しかない」</td><td>オンライン秘書50%・ライター23%・SNS運用17%・デザイン9%という卒業生実データで職種別の向き不向きを解説。保存狙いのカルーセル向き。「デザイン一点賭けじゃない」の間接差別化</td></tr>
+            <tr><th scope="row">B-3</th><td>獲得率93%の中身、正直に話します</td><td>「93%って言われても、怪しくないですか?」</td><td>あえて疑いから入り、算出定義・母数を開示する透明性コンテンツ（※社内で定義確認後に制作）。エビデンス戦略（<code>brain/09</code> §9）の実装</td></tr>
+            <tr><th scope="row">B-4</th><td>メンターの1日密着</td><td>「受講生を支えるメンターって、何してるの?」</td><td>メンター満足度99.3%の「人」を見せる。無形商材＝人が品質。YouTube長尺向き</td></tr>
+            <tr><th scope="row">B-5</th><td>独学2年 vs スクール2ヶ月（実例比較）</td><td>「独学で2年迷子だった私が、2ヶ月で変わった理由」</td><td>行動コスト層2（独学）向け。独学を否定せず「迷子の構造」を解説し、伴走の価値に落とす。※「スクールなら必ず早い」と一般化しない</td></tr>
+            <tr><th scope="row">B-6</th><td>勉強会って何するの?（中身公開）</td><td>「無料勉強会、ぶっちゃけ売り込まれる?」</td><td>参加前の最大の不安（売り込まれ恐怖）を正面から扱う。当日の流れ・所要時間・顔出し不要等を開示。準備期→行動期の橋</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h3">軸C：行動・転換（準備期／LINE登録・勉強会予約への送客）</h3>
+      <div class="twrap">
+        <table style="min-width:820px;">
+          <thead><tr><th>#</th><th>企画名</th><th>フック案</th><th>構成の要点</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">C-1</th><td>在宅ワークママBOOK中身チラ見せ</td><td>「LINE登録でもらえる冊子、中身見せます」</td><td>特典の価値可視化。「まず読むだけ」というゼロリスクの一歩を強調</td></tr>
+            <tr><th scope="row">C-2</th><td>職種診断チャート</td><td>「あなたに向いてる在宅ワーク、30秒診断」</td><td>カルーセルでYES/NO分岐→「詳しい診断はLINEで」。保存とLINE遷移の両取り</td></tr>
+            <tr><th scope="row">C-3</th><td>検討中の人が勉強会で聞くべき質問5つ</td><td>「スクール検討中の人、これだけは聞いて」</td><td>他社比較検討層にも役立つ誠実コンテンツとして信頼を取りつつ、自社勉強会へ自然導線</td></tr>
+            <tr><th scope="row">C-4</th><td>4月入園ママの逆算スケジュール</td><td>「4月入園なら、動くのは今です」</td><td>季節性起点（§6）。入園までの逆算カレンダーを見せ、「今月やることはLINE登録と情報収集だけ」に落とす</td></tr>
+            <tr><th scope="row">C-5</th><td>説明会前夜の不安に答える生配信/Q&A</td><td>「『私なんかにできますか』に答えます」</td><td>ストーリーズ質問箱・Threadsで不安を収集→まとめて回答。行動期直前の背中押し。断定回答はせず実例で答える</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s5">
+      <div class="kicker"><span class="num">05</span><span class="rule"></span></div>
+      <h2 class="h">9セルマトリクス：ターゲットTier × ファネル段階（<code>brain/09</code> §11準拠）</h2>
+      <p>行＝ターゲットTier（戦略書 §4）、列＝ファネル（行動変容ステージを潜在/準顕在/顕在に圧縮）。各セルに「目的＋主フォーマット＋代表企画（§4の番号）」を割り当てる。</p>
+      <div class="twrap">
+        <table style="min-width:960px;">
+          <thead><tr><th></th><th>潜在層（無関心期〜関心期入口）<br><small class="muted">目的：認知・共感、商品を出さない</small></th><th>準顕在層（関心期〜準備期）<br><small class="muted">目的：教育・比較材料</small></th><th>顕在層（準備期〜行動期）<br><small class="muted">目的：不安払拭・後押し</small></th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row">Tier1<br><small class="muted">育休中〜復職直前／パート収入天井層（最優先）</small></th>
+              <td>復職・パートあるある共感リール（A-2, A-4）<br>主PF：TikTok・IGリール<br>型：ストーリー型</td>
+              <td>職種図鑑・独学との比較（B-2, B-5）<br>主PF：IGカルーセル・YouTube<br>型：啓蒙・比較検証型</td>
+              <td>勉強会の中身公開・卒業生の声（B-6, B-1, C-3）<br>主PF：IG・YouTube長尺<br>型：第三者の声型</td>
+            </tr>
+            <tr>
+              <th scope="row">Tier2<br><small class="muted">専業主婦「そろそろ何か」層</small></th>
+              <td>自己肯定・「私は何者?」系共感（A-3, A-6）<br>主PF：Threads・IGリール<br>型：ストーリー型・問いかけ型</td>
+              <td>「在宅ワークって実際どう?」の実像解説（A-5, B-2）<br>主PF：IG・YouTube<br>型：啓蒙型</td>
+              <td>ゼロリスクの一歩の提示（C-1, C-2）<br>主PF：IGストーリーズ・LINE<br>型：サービス紹介型（控えめ）</td>
+            </tr>
+            <tr>
+              <th scope="row">Tier3<br><small class="muted">将来層（妊娠前・独身）＋季節性の強い層（入園・小1の壁）</small></th>
+              <td>「ママになっても働き方は選べる」将来設計系（A-4の将来版）<br>主PF：TikTok・Threads<br>型：啓蒙型</td>
+              <td>ライフイベント逆算コンテンツ（C-4の教育版）<br>主PF：IG・YouTube検索<br>型：季節訴求型</td>
+              <td>イベント直前の行動喚起（C-4）<br>主PF：IG・LINE・広告連携<br>型：季節訴求型</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="h3">運用ルール</h3>
+      <ul class="plain">
+        <li>週次の企画会議でこの表に投稿予定を置き、セルの偏り（潜在層ばかり／顕在層ばかり）を可視化する</li>
+        <li>Tier3の顕在セルは広告（刈り取り）との連携枠。Organic単独で無理に刈り取らない</li>
+        <li>各セルの反応データ（維持率・保存・LINE遷移）をたまり次第セルごとに評価し、配分を調整する</li>
+      </ul>
+    </section>
+
+    <section id="s6">
+      <div class="kicker"><span class="num">06</span><span class="rule"></span></div>
+      <h2 class="h">月次投稿カレンダーの型（季節性反映）</h2>
+      <div class="callout">
+        <span class="label">前提</span>
+        検討の季節性（入園・育休復帰・小1の壁）は<strong>仮説</strong>であり、月次申込データでの検証が未了（<code>CLAUDE.md</code>要検証事項）。カレンダーは仮説ベースで組み、実データで補正する。
+      </div>
+      <h3 class="h3">年間の山（仮説）</h3>
+      <div class="twrap">
+        <table>
+          <thead><tr><th>時期</th><th>ライフイベント</th><th>狙うべき動き</th></tr></thead>
+          <tbody>
+            <tr><td>9〜12月</td><td>4月入園の保活・入園準備期</td><td>「入園後の働き方」検討が始まる。Tier1/3向け教育を厚く。C-4系の逆算コンテンツ投入</td></tr>
+            <tr><td>1〜3月</td><td>育休復帰期限・年度末・入園直前</td><td>準備期の山（仮説）。信頼・証拠軸を増量、勉強会導線を強化。「4月から変わる」訴求</td></tr>
+            <tr><td>4〜5月</td><td>入園・入学直後、小1の壁の顕在化</td><td>生活が変わり時間が生まれる/問題が噴出する時期。共感軸で受け止め→関心期へ</td></tr>
+            <tr><td>6〜8月</td><td>夏休み（可処分時間が減る）</td><td>学習訴求は弱まると推定。共感・人間味・保存型（あとで読む）コンテンツ中心に切り替え</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="h3">月次の型（通常月・週次リズム）</h3>
+      <div class="twrap">
+        <table style="min-width:700px;">
+          <thead><tr><th>頻度</th><th>内容</th><th>軸配分の目安</th></tr></thead>
+          <tbody>
+            <tr><td>リール/TikTok：週3〜4本</td><td>A軸2本＋B軸1〜2本（新規リーチの主力）</td><td rowspan="2">通常月：A45%／B35%／C10%／人間味10%<br>季節の山ではC（行動喚起）を最大25%まで引き上げ、A軸を圧縮</td></tr>
+            <tr><td>フィード（カルーセル）：週1〜2本</td><td>B軸の保存型教育（職種図鑑・比較・FAQ）</td></tr>
+            <tr><td>ストーリーズ：毎日1〜3枚</td><td>日常・質問箱・投稿の裏側・LINE導線の常設</td><td></td></tr>
+            <tr><td>Threads：毎日1〜3ポスト</td><td>リール企画の本音版・問いかけ・コメント対話</td><td></td></tr>
+            <tr><td>YouTube：月2〜4本（長尺）＋Shorts転用</td><td>卒業生インタビュー・職種解説・勉強会疑似体験</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="plain">
+        <li>月初に9セルマトリクス上へ当月の投稿を配置→月末にセル別実績レビュー、が月次PDCAの単位</li>
+        <li>初動期（Phase 1）は<code>brain/06</code>準拠で投稿練習10本（非公開）→初期50〜100本の企画分析を先に行う</li>
+      </ul>
+    </section>
+
+    <section id="s7">
+      <div class="kicker"><span class="num">07</span><span class="rule"></span></div>
+      <h2 class="h">台本設計の運用ルール（<code>brain/07</code>の8ブロック当てはめ）</h2>
+      <p><code>brain/07</code>はDtoC物販前提のため、以下の読み替えを標準ルールとする：④商品コンセプト→「なぜskimama/この職種があるのか」、⑤USP・機能→「伴走・職種選択・獲得実績」、⑥使用シーン→「ママの1日の中の学習シーン」。ペイン層との対応：<strong>②現実の言語化＝層2、③原因・教育＝層3、⑦ビフォーアフター＝情緒変化（自己効力感）</strong>。</p>
+
+      <h3 class="h3">台本例1：A-1「パート時給の現実算」（認知・共感軸／Tier1潜在層）</h3>
+      <div class="twrap">
+        <table>
+          <thead><tr><th>ブロック</th><th>内容（セリフ・テロップ案）</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">①フック</th><td>「私のパート代、"実質時給"にしたら◯◯円でした」（テロップ大）</td></tr>
+            <tr><th scope="row">②現実の言語化（層2）</th><td>「時給1,050円。でも保育料引いて、ガソリン代引いて、子どもの発熱で月2回休んで…」</td></tr>
+            <tr><th scope="row">③原因・教育（層3）</th><td>「実は問題は時給じゃなくて、時間を切り売りする働き方だと、何年働いても積み上がらないこと」</td></tr>
+            <tr><th scope="row">④コンセプト</th><td>「だから"時間を売る"から"スキルで働く"に変えたママたちがいます」</td></tr>
+            <tr><th scope="row">⑤USP</th><td>「未経験から2ヶ月、秘書・ライター・SNS運用・デザインから自分に合う職種を選べて、仕事獲得まで伴走」</td></tr>
+            <tr><th scope="row">⑥シーン</th><td>「学習は寝かしつけ後の30分から。動画学習だから途中で止められる」</td></tr>
+            <tr><th scope="row">⑦ビフォーアフター</th><td>卒業生実例：「パートを辞めたことより、『私にもできた』って思えたことが大きかった」（実例・本人の言葉として）</td></tr>
+            <tr><th scope="row">⑧クロージング</th><td>「まず知るだけなら無料。プロフィールのLINEから在宅ワークママBOOKを受け取ってください」</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h3">台本例2：B-5「独学2年 vs 伴走2ヶ月」（信頼・証拠軸／Tier1準顕在層）</h3>
+      <div class="twrap">
+        <table>
+          <thead><tr><th>ブロック</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">①フック</th><td>「独学2年、収入ゼロだった私の敗因を話します」（卒業生本人出演が理想）</td></tr>
+            <tr><th scope="row">②現実の言語化</th><td>「YouTubeで勉強→教材を買う→また別の教材→気づいたら2年。何者にもなれてない」</td></tr>
+            <tr><th scope="row">③教育</th><td>「独学の敗因はサボりじゃなくて、"何をやらないか"を決めてくれる人がいないこと」</td></tr>
+            <tr><th scope="row">④コンセプト</th><td>「skimamaは職種を先に決めて、そこに要るものだけを2ヶ月で」</td></tr>
+            <tr><th scope="row">⑤USP</th><td>「メンターが1名担当でつく。週の型（動画4日＋課題2日＋ワークショップ1日）が決まってるから迷わない」</td></tr>
+            <tr><th scope="row">⑥シーン</th><td>「子どもが熱を出した週は、メンターに言えばペースを組み直せた」（実例として）</td></tr>
+            <tr><th scope="row">⑦ビフォーアフター</th><td>「2年動けなかった私が、2ヶ月後に最初の案件に応募してた。金額より、迷子が終わったことが大きい」</td></tr>
+            <tr><th scope="row">⑧クロージング</th><td>「独学を続けるか迷ってる人は、無料勉強会で学習計画だけでも聞いてみてください」</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h3">台本例3：A-3「ママは毎日何してるの?」（認知・共感軸／Tier2潜在層・売り込みなし）</h3>
+      <div class="twrap">
+        <table>
+          <thead><tr><th>ブロック</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">①フック</th><td>「『ママは毎日何してるの?』子どもに聞かれて、固まった」</td></tr>
+            <tr><th scope="row">②現実の言語化</th><td>「家事して、送迎して、名もない仕事を100個やってる。のに、"何もしてない"気がする」</td></tr>
+            <tr><th scope="row">③教育</th><td>「実はこれ、暇なんじゃなくて"自分の名前でやってることがない"だけ」</td></tr>
+            <tr><th scope="row">④〜⑤</th><td>この企画では商品ブロックを意図的にスキップ（潜在層向けは売らない。④⑤を飛ばし②③を厚くするのも標準運用として許容する）</td></tr>
+            <tr><th scope="row">⑥〜⑦</th><td>「同じ気持ちだったママが、1年後『ママはお仕事してるんだよ』って言えるようになった話、またします」（次回予告型）</td></tr>
+            <tr><th scope="row">⑧クロージング</th><td>CTAはフォローのみ：「同じ気持ちの人は、また見にきてください」。コメント誘発：「名もない仕事、あなたは1日いくつやってますか」</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h3">共通運用ルール（<code>brain/06</code>・<code>brain/07</code>）</h3>
+      <ul class="plain">
+        <li>必須要素8点（タイトル・秒数構成・セリフ・テロップ・撮影指示・表情・BGM・CV導線）を台本フォーマットに常設</li>
+        <li>1〜3秒フック最優先／1カット1〜2秒／不要な間は0.1秒単位でカット／三脚・ライト必須</li>
+        <li>投稿直後に自分で1番目のコメントを書き、コメント誘発文（「他にもあれば教えてください」型）を入れる</li>
+        <li>収入実例を出すときは必ず「個人の実例」「時期・職種・稼働時間」を添える（→§10）</li>
+      </ul>
+    </section>
+
+    <section id="s8">
+      <div class="kicker"><span class="num">08</span><span class="rule"></span></div>
+      <h2 class="h">卒業生ストーリー（UGC）の型化と収集・活用</h2>
+      <p>skimama最大のコンテンツ資産は卒業生の実例。「良い声が来るのを待つ」のではなく、型を渡して質を揃えて収集する（<code>brain/09</code> §10）。</p>
+
+      <h3 class="h3">8-1 ストーリーの標準型（<code>brain/05</code>のバイアス→理想＋4点セット）</h3>
+      <pre class="tree">① ビフォー（バイアス状態）：入会前の状況・自己認識（「PCが苦手」「私に何もない」等、本人の言葉で）
+② きっかけ：何を見て・何が最後の一押しだったか（→マーケの学習データにもなる）
+③ 過程のリアル：挫折しかけた瞬間とメンター・仲間の関わり（きれいごとにしない）
+④ アフター：職種・働き方の変化＋【最重要】情緒変化（「私にもできた」「子どもに言えるようになった」）</pre>
+
+      <h3 class="h3">8-2 収集の仕組み（運用フロー案）</h3>
+      <ol class="priority">
+        <li><strong>収集タイミングの定点化</strong>：初案件獲得時・卒業時・卒業6ヶ月後の3点でCS/メンター経由のアンケート＋インタビュー打診（要：社内オペレーション設計）</li>
+        <li><strong>インセンティブ</strong>：インタビュー協力者への特典（コミュニティ内での紹介・発信サポート等。金銭対価にする場合はステマ規制・PR表記の整理が必要 →§10）</li>
+        <li><strong>同意と表記</strong>：顔出し可否・実名/仮名・収入数値の公開範囲を書面で確認。本人の投稿を引用する場合も都度許諾</li>
+        <li><strong>シグナリング装置</strong>：卒業生が「skimama卒」を名乗りたくなる仕掛け（修了証・プロフィール用テンプレート・卒業生タグ）を用意し、自発的UGCを構造化する（<code>CLAUDE.md</code>シグナリング理論）</li>
+      </ol>
+
+      <h3 class="h3">8-3 二次活用マップ（1素材→多面展開）</h3>
+      <div class="twrap">
+        <table>
+          <thead><tr><th>素材</th><th>展開先</th></tr></thead>
+          <tbody>
+            <tr><td>ロングインタビュー（60分収録）</td><td>YouTube長尺1本／リール・TikTok切り抜き3〜5本／カルーセル1本／Threads引用ポスト／LP・LINE配信の証拠枠／広告クリエイティブ素材</td></tr>
+            <tr><td>卒業生本人のSNS投稿</td><td>公式でのリポスト（許諾つき）／「卒業生の今」シリーズ化</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s9">
+      <div class="kicker"><span class="num">09</span><span class="rule"></span></div>
+      <h2 class="h">測定・改善のPDCA設計（<code>brain/03</code>準拠）</h2>
+      <p><strong>P（仮説）に最も時間を使う</strong>（<code>brain/04</code>：PDCAで最重要なのはP）。企画時点で「どのセル・どのJTBD・どの先行KPIを狙うか」を書いてから作る。</p>
+      <div class="twrap">
+        <table style="min-width:760px;">
+          <thead><tr><th>サイクル</th><th>見る指標</th><th>判断・アクション</th></tr></thead>
+          <tbody>
+            <tr><td>投稿ごと</td><td>維持率カーブ（どの秒で離脱したか）・保存率・コメント数・プロフィールアクセス率</td><td>離脱点＝フック/テンポ問題（<code>brain/06</code>12極意で診断）。保存低＝情報価値不足。コメント低＝誘発設計不備</td></tr>
+            <tr><td>週次</td><td>軸別・PF別の先行KPI平均、ベスト/ワースト投稿の要素分解</td><td><code>brain/06</code>の6ポイント（なぜ伸びたかの要素分析）で勝ちパターンを抽出し翌週に反映</td></tr>
+            <tr><td>月次</td><td>プロフィール→LINE遷移数、LINE登録数（Organic経由）、9セルの偏り</td><td>遷移率が低ければ受け皿（プロフィール・ハイライト・特典訴求）を先に直す（<code>brain/09</code> §5）</td></tr>
+            <tr><td>四半期</td><td>最終KPI・配分ルールの見直し・フェーズ移行判定</td><td><code>brain/09</code> §6のゲート条件方式：「維持率◯%以上の投稿が月◯本」「LINE登録月◯件」等の定量基準を満たしたら次Phase（広告連携拡大等）へ</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="h3">「伸びない」ときの診断順序（<code>brain/03</code>・<code>brain/06</code>）</h3>
+      <ol class="priority">
+        <li>初動10〜20本以内か？ → ジャンル認識前。正常。継続</li>
+        <li>ジャンルが混在していないか？ → 複数ジャンル投稿は評価分散で伸びない</li>
+        <li>フック・テンポ・画質は12極意を満たすか？ → クオリティ問題として個別改善</li>
+        <li>それでも変わらなければ企画の要素分析からやり直し（表面的な企画模倣ではなく「なぜ伸びるか」の要素へ）</li>
+      </ol>
+    </section>
+
+    <section id="s10">
+      <div class="kicker"><span class="num">10</span><span class="rule"></span></div>
+      <h2 class="h">表現コンプライアンス（景表法・特商法・ステマ規制）</h2>
+      <p>無形商材は成果に個人差があり、断定・保証表現は法令リスクかつブランド毀損（「怪しい副業」側に見られる）。全投稿・全台本の公開前チェックリストとする。</p>
+      <div class="twrap">
+        <table>
+          <thead><tr><th>使わない表現</th><th>言い換えの型</th></tr></thead>
+          <tbody>
+            <tr><td>「必ず稼げる」「誰でも月◯万円」</td><td>「卒業生の◯%が在宅ワークを獲得（※算出定義を確認の上、注記併載）」「◯さんは卒業◯ヶ月で△△の案件を獲得（個人の実例）」</td></tr>
+            <tr><td>「絶対」「確実に」「保証します」</td><td>「仕事獲得まで伴走します」「実例をもとにお話しします」</td></tr>
+            <tr><td>ビフォーアフターの収入を一般化（「主婦でもこれだけ稼げる」）</td><td>「◯◯さんの場合：職種・稼働時間・時期を明記した個別ストーリー」</td></tr>
+            <tr><td>他社の名指しネガティブ比較</td><td>「スクール選びで見るべき観点」として基準を提示し、判断は視聴者に委ねる</td></tr>
+            <tr><td>焦らせ系の虚偽限定（「残り◯名」が事実でない場合）</td><td>実際の定員・期限がある場合のみ、事実として記載</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="plain">
+        <li>実績数値（96.0%／99.3%／93.0%）は算出定義・母数・調査時期の社内確認が済むまで、注記なしの単独掲出をしない</li>
+        <li>卒業生に対価（金銭・特典）を渡して発信してもらう場合はステマ規制対象。「PR」等の関係性明示を徹底</li>
+        <li>社内の表現ガイドライン有無を確認し、存在すればそちらを優先（<code>CLAUDE.md</code>要検証事項）</li>
+      </ul>
+    </section>
+
+    <section id="s11">
+      <div class="kicker"><span class="num">11</span><span class="rule"></span></div>
+      <h2 class="h">未検証事項（この企画書の限界を正直に）</h2>
+      <p>以下はすべて参画後の一次データで検証・補正する。<strong>断定的に社外発信しない</strong>。</p>
+      <ul class="checklist">
+        <li><strong>現状ベースライン未取得</strong>：各PFのアカウント有無・フォロワー・維持率・LINE登録数の現状値。取得が最初のタスク（KPI数値目標はその後に設定）</li>
+        <li><strong>季節性仮説</strong>：入園・育休復帰・小1の壁が申込の山を作るか → 月次申込データで検証。カレンダー（§6）は要補正前提</li>
+        <li><strong>PF別ユーザー層仮説</strong>：TikTok・Threadsにおけるママ層のボリュームと反応性 → 初期3ヶ月の実投稿データで検証</li>
+        <li><strong>HARM掛け合わせ（×自己肯定感）の差別化有効性</strong> → 競合30〜50アカウント分析（<code>brain/04</code>の4ステップ）が未実施。参画後最初の2週間で実施</li>
+        <li><strong>配分ルール（45/35/10/10）</strong>の妥当性 → 実績データで四半期ごとに補正</li>
+        <li><strong>実績数値の算出定義</strong>（93%等）→ 社内確認まで単独掲出禁止（§10）</li>
+        <li><strong>卒業生インタビューの収集オペレーション</strong> → CS・メンターチームとの体制設計が必要</li>
+        <li><strong>ペイン層4インサイト</strong>（「自分の人生をまだ諦めていないと証明したい」）→ 企画の反応データ（どのフックが最も刺さるか）自体を検証手段として使う</li>
+        <li>社内の表現ガイドライン・広告審査フローの有無</li>
+      </ul>
+    </section>
+
+    <footer class="doc-footer">
+      skimama SNS戦略（Organic・実行版）— 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。一次データ取得後、随時更新。
+      <div class="related">関連：<a href="skimama_マーケティング戦略_実行版.html">マーケティング戦略（実行版）</a>／<a href="skimama_LP戦略_実行版.html">LP戦略・LPO（実行版）</a></div>
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
