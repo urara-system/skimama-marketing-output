@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 <title>skimama マーケティング戦略｜実行版</title>
 <meta name="description" content="skimamaのマーケティング戦略（実行版）。ポジショニング・競合分解・9セルマトリクス・KPIロードマップ等をまとめた公開資料。">
 <link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.add('js');</script>
+<script src="app.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">本文へスキップ</a>
@@ -48,7 +48,12 @@
 </header>
 
 <div class="doc-hero">
-  <div class="doc-hero-inner">
+  <div class="amb" aria-hidden="true">
+    <span class="v lg" style="top:12%;right:20%;">伴走の深さ × 職種選択の自由</span>
+    <span style="bottom:16%;left:2%;">最大の敵は、現状維持である</span>
+    <span class="num" style="top:18%;left:30%;">3C / STP / USP — EXECUTION</span>
+  </div>
+  <div class="doc-hero-inner hero-load">
     <span class="doc-vertical" aria-hidden="true">実行版・参画前初版仮説</span>
     <p class="kicker">Document 01 — Strategy</p>
     <h1>skimama マーケティング戦略<br>実行版</h1>
@@ -317,6 +322,50 @@
         </table>
       </div>
 
+      <figure class="fig">
+        <figcaption class="fig-cap">4チャネルの役割はすべて「ママの行動変容」に収束する（§4-1の視覚化）</figcaption>
+        <div class="chart-scroll">
+          <svg class="chart" viewBox="0 0 660 400" role="img" aria-label="中心収束型のノード図。Organic（需要創出・今回強化対象）、Web広告（刈り取り）、LP・比較コンテンツ（育成）、LINE公式（継続）の4チャネルが、中心の「ママの行動変容（LINE登録→無料勉強会→入会）」に曲線で接続されている。各チャネルは役割を一つだけ持ち、同じ中心目標に向かう。">
+            <title>チャネル役割分担：中心収束図（§4-1の視覚化）</title>
+            <!-- 接続曲線 -->
+            <path class="nd-link hot flow" d="M195,92 C260,120 275,140 295,164"/>
+            <path class="nd-link flow" d="M465,92 C400,120 385,140 365,164"/>
+            <path class="nd-link flow" d="M195,308 C260,280 275,260 295,236"/>
+            <path class="nd-link flow" d="M465,308 C400,280 385,260 365,236"/>
+            <circle class="nd-dot" cx="295" cy="164" r="3"/>
+            <circle class="nd-dot" cx="365" cy="164" r="3"/>
+            <circle class="nd-dot" cx="295" cy="236" r="3"/>
+            <circle class="nd-dot" cx="365" cy="236" r="3"/>
+            <!-- 中心ノード -->
+            <circle class="nd-center" cx="330" cy="200" r="66"/>
+            <text x="330" y="188" text-anchor="middle" class="ct" style="font-size:13.5px;">ママの行動変容</text>
+            <text x="330" y="207" text-anchor="middle" class="cs">LINE登録 → 無料勉強会</text>
+            <text x="330" y="222" text-anchor="middle" class="cs">→ 入会</text>
+            <!-- Organic（強化対象） -->
+            <rect class="nd-box hot" x="40" y="40" width="158" height="66" rx="9"/>
+            <text x="56" y="62" class="nd-tag">需要創出</text>
+            <text x="56" y="82" class="ct">Organic</text>
+            <text x="56" y="97" class="cf">IG / Threads / TikTok / YT</text>
+            <!-- 広告 -->
+            <rect class="nd-box" x="462" y="40" width="158" height="66" rx="9"/>
+            <text x="478" y="62" class="nd-tag">刈り取り</text>
+            <text x="478" y="82" class="ct">Web広告</text>
+            <text x="478" y="97" class="cf">Meta / TikTok / Google</text>
+            <!-- LP -->
+            <rect class="nd-box" x="40" y="294" width="158" height="66" rx="9"/>
+            <text x="56" y="316" class="nd-tag">育成</text>
+            <text x="56" y="336" class="ct">LP・比較コンテンツ</text>
+            <text x="56" y="351" class="cf">判断材料の提供</text>
+            <!-- LINE -->
+            <rect class="nd-box" x="462" y="294" width="158" height="66" rx="9"/>
+            <text x="478" y="316" class="nd-tag">継続</text>
+            <text x="478" y="336" class="ct">LINE公式</text>
+            <text x="478" y="351" class="cf">CRM・離脱防止・紹介</text>
+          </svg>
+        </div>
+        <p class="fig-note">各チャネルの役割は<strong>唯一化</strong>する（1チャネル1役割）。Organic（左上・強調枠）が今回の強化対象。ただし投資順序は「受け皿を整えてから拡張する」（4-2）に従う。</p>
+      </figure>
+
       <h3>4-2 「受け皿を整えてから拡張する」の適用順序</h3>
       <div class="steps">
         <div class="step">
@@ -502,6 +551,77 @@
         <p class="fig-note">フェーズは期間で自動的に進むのではなく、<b>§6の定量ゲート条件</b>を満たしたときにのみ移行する。各フェーズの目的・施策・KPIは下表。</p>
       </figure>
 
+      <figure class="fig">
+        <figcaption class="fig-cap">逆算の頂点：事業目標（一次情報）</figcaption>
+        <div class="bigrow">
+          <div class="stat">
+            <div class="num"><span class="cnt" data-count="10">10</span><span class="unit">億円</span></div>
+            <div class="label">売上目標（急成長期の中期目標）</div>
+          </div>
+          <div class="stat">
+            <div class="num"><span class="cnt" data-count="10000">10,000</span><span class="unit">人</span></div>
+            <div class="label">顧客数目標</div>
+          </div>
+        </div>
+        <p class="fig-note">Phase 4のKPI（自然流入比率・紹介経由成約率）の中期目標はこの事業目標からの逆算で設定する。<b>顧客1万人×単価の整合・年次マイルストーンへの分解は要検証</b>（社内データ、§9参照）。</p>
+      </figure>
+
+      <figure class="fig">
+        <figcaption class="fig-cap">Phase 1〜4で積み上がるOrganic資産（概念図・ゲート通過で次の傾きへ）</figcaption>
+        <div class="chart-scroll">
+          <svg class="chart" viewBox="0 0 680 320" role="img" aria-label="右肩上がりの成長曲線の概念図。横軸は開始からの月数で0から24ヶ月以降まで。Phase 1（0〜3ヶ月・土台構築）ではほぼ平坦、Phase 2（3〜9ヶ月・スケール）で緩やかに上昇、Phase 3（9〜18ヶ月・転換最大化）で傾きが増し、Phase 4（18ヶ月以降・資産化）で最も急な上昇となる。3・9・18ヶ月地点に定量ゲートの通過点が打たれている。曲線は実データではなく、フェーズ設計の概念を表す。">
+            <title>Organic資産の積み上がり（概念図）</title>
+            <defs>
+              <linearGradient id="gGrowth" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#E28FA2" stop-opacity="0.34"/>
+                <stop offset="1" stop-color="#E28FA2" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- フェーズ帯 -->
+            <rect class="phase-band b1" x="56"  y="36" width="69"  height="228"/>
+            <rect class="phase-band b2" x="125" y="36" width="139" height="228"/>
+            <rect class="phase-band b3" x="264" y="36" width="207" height="228"/>
+            <rect class="phase-band b4" x="471" y="36" width="185" height="228"/>
+            <text x="90"  y="54" text-anchor="middle" class="cf">Phase 1</text>
+            <text x="194" y="54" text-anchor="middle" class="cs">Phase 2</text>
+            <text x="367" y="54" text-anchor="middle" class="cs">Phase 3</text>
+            <text x="563" y="54" text-anchor="middle" class="ca" style="font-size:11px;">Phase 4 資産化</text>
+            <text x="90"  y="68" text-anchor="middle" class="cf">土台構築</text>
+            <text x="194" y="68" text-anchor="middle" class="cf">スケール</text>
+            <text x="367" y="68" text-anchor="middle" class="cf">転換最大化</text>
+            <text x="563" y="68" text-anchor="middle" class="cf">広告依存から脱却</text>
+            <!-- 軸 -->
+            <line class="ln" x1="56" y1="264" x2="656" y2="264"/>
+            <text x="56"  y="282" text-anchor="middle" class="cf">0</text>
+            <text x="125" y="282" text-anchor="middle" class="cf">3ヶ月</text>
+            <text x="264" y="282" text-anchor="middle" class="cf">9ヶ月</text>
+            <text x="471" y="282" text-anchor="middle" class="cf">18ヶ月</text>
+            <text x="610" y="282" text-anchor="middle" class="cf">24ヶ月〜</text>
+            <text x="56" y="24" class="cs">Organic資産（指名検索・UGC・自然流入）の積み上がり ↑</text>
+            <!-- ゲート線 -->
+            <g class="growth-gate">
+              <line class="gate-line" x1="125" y1="72" x2="125" y2="264"/>
+              <line class="gate-line" x1="264" y1="72" x2="264" y2="264"/>
+              <line class="gate-line" x1="471" y1="72" x2="471" y2="264"/>
+            </g>
+            <!-- 面（グラデーション塗り） -->
+            <path class="growth-fill" fill="url(#gGrowth)" stroke="none" d="M56,252 C90,250 105,248 125,244 C170,236 220,226 264,210 C330,186 400,170 471,140 C540,112 610,86 656,58 L656,264 L56,264 Z"/>
+            <!-- 曲線（出現時に描画） -->
+            <path class="growth-line" pathLength="1" d="M56,252 C90,250 105,248 125,244 C170,236 220,226 264,210 C330,186 400,170 471,140 C540,112 610,86 656,58"/>
+            <!-- ゲート通過点 -->
+            <g class="growth-gate">
+              <circle class="dot" cx="125" cy="244" r="5"/>
+              <circle class="dot" cx="264" cy="210" r="5"/>
+              <circle class="dot" cx="471" cy="140" r="5"/>
+              <text x="125" y="232" text-anchor="middle" class="ca" style="font-size:10px;">Gate 1→2</text>
+              <text x="264" y="198" text-anchor="middle" class="ca" style="font-size:10px;">Gate 2→3</text>
+              <text x="471" y="128" text-anchor="middle" class="ca" style="font-size:10px;">Gate 3→4</text>
+            </g>
+          </svg>
+        </div>
+        <p class="fig-note"><b>概念図であり、曲線は実データ・予測値ではない。</b>傾きが変わる3点は§6の定量ゲート（未達なら移行しない＝曲線はそこで寝る）。現状値の取得（下表）がこの図を実測に置き換える最初の一歩。</p>
+      </figure>
+
       <div class="twrap wide">
         <table>
           <thead>
@@ -636,19 +756,5 @@
 </footer>
 <div class="doc-foot">skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。</div>
 
-<script>
-addEventListener('DOMContentLoaded',function(){
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.fx').forEach(function(el){ io.observe(el); });
-  }else{
-    document.querySelectorAll('.fx').forEach(function(el){ el.classList.add('in'); });
-  }
-  var toc=document.querySelector('.toc-box');
-  if(toc && matchMedia('(min-width:1024px)').matches){ toc.open=true; }
-});
-</script>
 </body>
 </html>

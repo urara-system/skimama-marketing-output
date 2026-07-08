@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 <title>skimama LP戦略・LPO｜実行版</title>
 <meta name="description" content="skimamaのLP戦略・LPO（実行版）。LINE登録LPの構成案・コピー草案・A/Bテスト観点・景表法対応をまとめた公開資料。">
 <link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.add('js');</script>
+<script src="app.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">本文へスキップ</a>
@@ -40,7 +40,12 @@
 </header>
 
 <div class="doc-hero">
-  <div class="doc-hero-inner">
+  <div class="amb" aria-hidden="true">
+    <span class="v lg" style="top:12%;right:20%;">今日の一歩は、これだけ</span>
+    <span style="bottom:16%;left:2%;">あなたのせいじゃない、構造の問題だ</span>
+    <span class="num" style="top:18%;left:30%;">S1 — S7 / ZERO-RISK STEP</span>
+  </div>
+  <div class="doc-hero-inner hero-load">
     <span class="doc-vertical" aria-hidden="true">実行版・参画前初版仮説</span>
     <p class="kicker">Document 03 — Landing Page</p>
     <h1>skimama LP戦略・LPO<br>実行版</h1>
@@ -409,19 +414,5 @@
 </footer>
 <div class="doc-foot">skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。</div>
 
-<script>
-addEventListener('DOMContentLoaded',function(){
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.fx').forEach(function(el){ io.observe(el); });
-  }else{
-    document.querySelectorAll('.fx').forEach(function(el){ el.classList.add('in'); });
-  }
-  var toc=document.querySelector('.toc-box');
-  if(toc && matchMedia('(min-width:1024px)').matches){ toc.open=true; }
-});
-</script>
 </body>
 </html>
