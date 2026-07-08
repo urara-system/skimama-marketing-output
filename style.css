@@ -672,3 +672,195 @@ html.js .fx.in{ opacity:1; transform:none; }
   font-size:0.78rem; color:var(--sumi-soft); line-height:2;
 }
 hr.thin{ border:none; border-top:1px solid var(--line); margin:2.4rem 0; }
+
+/* =============================================================
+   graphics layer（図解・チャート・アイコン共通コンポーネント）
+   原則：
+   - 色はすべてトークン経由（currentColor / var()）でライト・ダーク追従
+   - azuki/matsuba/karashi はCVD（色覚特性）では近接ペアになり得るため、
+     系列の識別は必ず「直接ラベル＋凡例＋2pxギャップ」で担保し、色単独に頼らない
+   - チャートの寸法（width%・flex値・stroke-dasharray）は実データから計算する
+   ============================================================= */
+
+/* ---------- inline icon set（線画・currentColor） ---------- */
+.icon-defs{ position:absolute; width:0; height:0; overflow:hidden; }
+.ico{
+  width:1.15em; height:1.15em; flex-shrink:0;
+  fill:none; stroke:currentColor; stroke-width:1.6;
+  stroke-linecap:round; stroke-linejoin:round;
+  vertical-align:-0.22em;
+}
+.ti{ color:var(--azuki); width:1.25em; height:1.25em; margin-right:0.4em; vertical-align:-0.28em; }
+th .ti{ color:var(--azuki); }
+
+/* ---------- figure（図の共通枠：.twrapと同じ面・影） ---------- */
+.fig{
+  margin:1.5rem 0; border:1px solid var(--line); border-radius:4px;
+  background:var(--kinu); box-shadow:var(--shadow);
+  padding:1.2rem 1.3rem 1.1rem;
+}
+.fig .fig-cap{
+  margin:0 0 1rem; font-size:0.74rem; font-weight:700;
+  color:var(--azuki); letter-spacing:0.06em;
+}
+.fig .fig-note{
+  margin:0.95rem 0 0; font-size:0.75rem; color:var(--sumi-soft); line-height:1.9;
+}
+.fig .fig-note b{ color:var(--karashi); }
+.chart-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.chart-scroll .chart{ min-width:560px; }
+
+/* chart svg共通：テキスト・線はトークン追従のクラスで塗る */
+.chart{ width:100%; height:auto; display:block; font-family:var(--font-sans); }
+.chart .ct{ fill:var(--sumi); font-size:12.5px; font-weight:700; }
+.chart .cs{ fill:var(--sumi-soft); font-size:10.5px; }
+.chart .cf{ fill:var(--sumi-faint); font-size:10px; }
+.chart .ca{ fill:var(--azuki); font-size:12.5px; font-weight:700; }
+.chart .ln{ stroke:var(--line); fill:none; }
+.chart .lnf{ stroke:var(--line-soft); fill:none; }
+.chart .dot{ fill:var(--kinu); stroke:var(--sumi-soft); stroke-width:1.7; }
+.chart .dot.me{ fill:var(--azuki); stroke:var(--kinu); stroke-width:2; }
+.chart .zone{ fill:var(--azuki-soft); stroke:var(--azuki); stroke-width:1; stroke-dasharray:5 4; }
+.chart .vA{ fill:var(--azuki-soft);   stroke:var(--azuki);   stroke-width:1.3; }
+.chart .vB{ fill:var(--matsuba-soft); stroke:var(--matsuba); stroke-width:1.3; }
+.chart .vC{ fill:var(--karashi-soft); stroke:var(--karashi); stroke-width:1.3; }
+
+/* 凡例（系列識別は常にラベル併記） */
+.chart-legend{
+  display:flex; flex-wrap:wrap; gap:0.35rem 1.2rem; margin-top:0.9rem;
+  font-size:0.78rem; color:var(--sumi-soft); line-height:1.7;
+}
+.chart-legend .li{ display:inline-flex; align-items:baseline; gap:0.45rem; }
+.chart-legend .sw{
+  width:0.75em; height:0.75em; border-radius:2px; flex-shrink:0;
+  position:relative; top:0.08em;
+}
+.sw.c1{ background:var(--azuki); } .sw.c2{ background:var(--matsuba); }
+.sw.c3{ background:var(--karashi); } .sw.c4{ background:var(--sumi-faint); }
+
+/* ---------- mixbar（積み上げ横棒：比率データ。flex値＝実データ%） ---------- */
+.mixbar .track{ display:flex; gap:2px; }
+.mixbar .seg{
+  height:2.3rem; min-width:0; border-radius:2px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-num); font-weight:600; font-size:0.76rem;
+  color:var(--washi); white-space:nowrap; overflow:hidden;
+  font-variant-numeric:tabular-nums;
+}
+.mixbar .seg.c1{ background:var(--azuki); } .mixbar .seg.c2{ background:var(--matsuba); }
+.mixbar .seg.c3{ background:var(--karashi); } .mixbar .seg.c4{ background:var(--sumi-faint); }
+
+/* ---------- gauge（円弧チャート：実績数値。dasharray＝実データ%） ---------- */
+.gauge-row{ display:flex; flex-wrap:wrap; gap:1.4rem 2.6rem; align-items:center; }
+.gauge-item{ display:flex; align-items:center; gap:1rem; }
+.gaugewrap{ position:relative; width:96px; height:96px; flex-shrink:0; }
+.gauge{ width:100%; height:100%; display:block; transform:rotate(-90deg); }
+.gauge .g-track{ fill:none; stroke:var(--line); stroke-width:5; }
+.gauge .g-val{ fill:none; stroke:var(--azuki); stroke-width:5; stroke-linecap:round; }
+.gauge .g-val.green{ stroke:var(--matsuba); }
+.gauge-num{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-num); font-weight:600; font-size:1.22rem;
+  color:var(--sumi); font-variant-numeric:tabular-nums;
+}
+.gauge-num .unit{ font-size:0.6em; margin-left:0.05em; }
+.gauge-item .g-label{ font-size:0.8rem; color:var(--sumi-soft); line-height:1.8; }
+.gauge-item .g-label b{ color:var(--sumi); }
+/* hub hero（深梅帯）上のゲージ配色 */
+.stat-strip .g-track{ stroke:var(--fukaume-line); }
+.stat-strip .g-val{ stroke:#EFB3C0; }
+.stat-strip .gauge-num{ color:var(--fukaume-ink); }
+.stat-gauge .gaugewrap{ margin-bottom:0.4rem; }
+
+/* ---------- tl（タイムライン帯：flex値＝月数などの実データ） ---------- */
+.tl-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.tl{ display:flex; gap:2px; min-width:540px; margin:0.2rem 0; }
+.tl .tl-seg{
+  min-width:0; border:1px solid var(--line); border-radius:3px;
+  background:var(--washi); padding:0.55rem 0.7rem 0.5rem;
+  font-size:0.72rem; line-height:1.65;
+}
+.tl .tl-seg .t{
+  display:block; font-family:var(--font-num); font-weight:600;
+  font-size:0.72rem; letter-spacing:0.04em; color:var(--sumi);
+}
+.tl .tl-seg .d{ display:block; color:var(--sumi-soft); }
+.tl .tl-seg.hot{ background:var(--azuki-soft); border-color:var(--azuki); }
+.tl .tl-seg.warm{ background:var(--karashi-soft); }
+.tl .tl-seg.calm{ background:var(--matsuba-soft); }
+
+/* ---------- pain-depth（ペイン4層：下に狭まる深度図） ---------- */
+.pain-depth{ margin:0.4rem 0 0; }
+.pd-row{
+  display:grid; grid-template-columns:minmax(150px,46%) minmax(0,1fr);
+  gap:0 1.2rem; align-items:center; margin:0.35rem 0;
+}
+.pd-band{
+  position:relative; z-index:0; display:flex; align-items:center;
+  padding:0.72rem 1.7rem 0.72rem 0.95rem;
+  clip-path:polygon(0 0, 100% 0, calc(100% - 1.5rem) 100%, 0 100%);
+  background:var(--kinu); overflow:hidden;
+}
+.pd-band::before{ content:""; position:absolute; inset:0; background:var(--azuki); z-index:-1; }
+.pd-band.d1{ width:100%; } .pd-band.d1::before{ opacity:0.08; }
+.pd-band.d2{ width:84%; }  .pd-band.d2::before{ opacity:0.17; }
+.pd-band.d3{ width:68%; }  .pd-band.d3::before{ opacity:0.32; }
+.pd-band.d4{ width:52%; }  .pd-band.d4::before{ opacity:0.95; }
+.pd-band .pd-tag{ font-weight:700; font-size:0.8rem; line-height:1.55; color:var(--sumi); }
+.pd-band.d4 .pd-tag{ color:var(--washi); }
+.pd-txt{ font-size:0.79rem; line-height:1.8; color:var(--sumi-soft); }
+.pd-txt b{ color:var(--sumi); }
+.pd-water{
+  display:flex; align-items:center; gap:0.7rem; margin:0.55rem 0;
+  font-size:0.7rem; font-weight:700; color:var(--sumi-faint);
+  letter-spacing:0.06em; white-space:nowrap;
+}
+.pd-water::before, .pd-water::after{
+  content:""; flex:1 1 auto; border-top:1px dashed var(--line-strong); min-width:1rem;
+}
+@media (max-width:620px){
+  .pd-row{ grid-template-columns:1fr; gap:0.25rem; }
+  .pd-band.d2{ width:88%; } .pd-band.d3{ width:76%; } .pd-band.d4{ width:64%; }
+  .pd-txt{ padding-bottom:0.4rem; }
+}
+
+/* ---------- flow拡張：ノードにアイコン ---------- */
+.flow .f-node.has-ico{ display:flex; align-items:center; gap:0.85rem; }
+.f-ico{
+  width:2.3rem; height:2.3rem; border-radius:50%;
+  border:1px solid var(--line); background:var(--washi);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--azuki); flex-shrink:0;
+}
+.f-ico .ico{ width:1.15rem; height:1.15rem; vertical-align:0; }
+.flow .f-node.hot .f-ico{ border-color:var(--azuki); background:var(--kinu); }
+.flow .f-node .f-body{ min-width:0; }
+
+/* ---------- sb-grid（台本8ブロックのストーリーボード） ---------- */
+.sb-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(168px,1fr));
+  gap:0.6rem; margin:1.4rem 0;
+}
+.sb{
+  position:relative; border:1px solid var(--line); border-radius:4px;
+  background:var(--kinu); padding:0.8rem 0.9rem 0.75rem;
+}
+.sb .sb-no{
+  font-family:var(--font-num); font-weight:600; font-size:0.62rem;
+  letter-spacing:0.16em; color:var(--azuki); text-transform:uppercase;
+}
+.sb .sb-ico{ position:absolute; top:0.75rem; right:0.8rem; color:var(--azuki); }
+.sb .sb-ico .ico{ width:1.05rem; height:1.05rem; vertical-align:0; }
+.sb .sb-t{ margin:0.3rem 0 0; font-weight:700; font-size:0.85rem; line-height:1.6; }
+.sb .sb-d{ margin:0.35rem 0 0; font-size:0.71rem; color:var(--sumi-soft); line-height:1.7; }
+.sb .chip, .sb .hypo{ margin-top:0.45rem; }
+
+/* ---------- gate-meter（移行条件の充足数インジケータ） ---------- */
+.gate-meter{ display:flex; align-items:center; gap:0.6rem; margin:0.9rem 0 0.1rem; }
+.gate-meter .gm-dots{ display:flex; gap:0.32rem; }
+.gate-meter .gm-dot{
+  width:0.85rem; height:0.85rem; border-radius:50%;
+  border:1.5px solid var(--matsuba); background:transparent;
+}
+.gate-meter .gm-dot.on{ background:var(--matsuba); }
+.gate-meter .gm-label{ font-size:0.72rem; color:var(--sumi-soft); }

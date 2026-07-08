@@ -12,6 +12,22 @@
 <body>
 <a class="skip" href="#content">本文へスキップ</a>
 
+<svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M4 10v4l11 4.5v-13L4 10z"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/><path d="M7 15l1 4.5h2.4l-.8-3.6"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.3"/><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-6.5L6 20v-4.2A3 3 0 0 1 4 13V7z"/><path d="M8 8.5h8M8 11.5h5"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="9" r="2.8"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="16.5" cy="10" r="2.3"/><path d="M16 14.7a4.8 4.8 0 0 1 4.5 4.3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.5l2.8 2.8L16.5 9.2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5V6a2 2 0 0 1 2-2h13.5v15.5H6.5A2.5 2.5 0 0 0 4 22v-2.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17h13"/><path d="M9 8h7"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 3 6.5 13.5h4.5L10 21l7-11h-5l1-7z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M8.4 14.2a5.6 5.6 0 1 1 7.2 0c-.9.8-1.4 1.6-1.6 2.8h-4c-.2-1.2-.7-2-1.6-2.8z"/><path d="M10 20h4"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="5"/><path d="M9.2 13.7 7.5 20l4.5-2.4L16.5 20l-1.7-6.3"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 8.6a4.6 4.6 0 0 0-7.8-3.3L12 6.3l-1-1a4.6 4.6 0 1 0-6.5 6.5l1 1 6.5 6.5 6.5-6.5 1-1a4.6 4.6 0 0 0 1.3-3.2z"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5"/><path d="M19.5 4.5v3.2h-3.2"/></symbol>
+  <symbol id="i-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.7 2.2c-.8.4-1.3.9-1.3 1.8v.3"/><path d="M12 16.9h0"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16"/><rect x="8" y="13" width="8" height="3.5" rx="1"/></symbol>
+</svg>
+
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="index.html">skimama <span class="en">Marketing Docs</span></a>
@@ -69,17 +85,17 @@
     <section class="sec fx" id="s1">
       <div class="sec-head"><span class="no">§1</span><h2>対象LPの位置づけ（ファネル上のどこか）</h2></div>
       <div class="flow">
-        <div class="f-node">Organic投稿<span class="d">TikTok/リール/Threads/YouTube</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-megaphone"/></svg></span><div class="f-body">Organic投稿<span class="d">TikTok/リール/Threads/YouTube</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">プロフィール</div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-person"/></svg></span><div class="f-body">プロフィール</div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node hot">【本書の対象：LINE登録LP】</div>
+        <div class="f-node hot has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-layout"/></svg></span><div class="f-body">【本書の対象：LINE登録LP】</div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">LINE登録<span class="d">特典：在宅ワークママBOOK</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-chat"/></svg></span><div class="f-body">LINE登録<span class="d">特典：在宅ワークママBOOK</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">無料オンライン勉強会</div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-people"/></svg></span><div class="f-body">無料オンライン勉強会</div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">本講座申込<span class="d">259,800円</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></span><div class="f-body">本講座申込<span class="d">259,800円</span></div></div>
       </div>
       <ul>
         <li>このLPのCVは<strong>入会ではなくLINE登録</strong>。要求する行動は「無料・匿名性が高い・いつでもブロックできる」ゼロリスクの一歩であり、LPもその温度感で設計する（本講座のセールスをここでしない）</li>
@@ -109,6 +125,29 @@
         <li>主案を軸に、副案1・2をLP内の各セクション（§4のS3・S4）で回収する</li>
         <li>3案とも「あなたが悪いのではない、構造の問題だ」という<strong>自己否定の解除</strong>を含む。層3ペイン（自己効力感の低さ）に対して「できない理由の再定義」が最も効くという仮説に基づく（<span class="hypo">要検証</span>）</li>
       </ul>
+
+      <figure class="fig">
+        <figcaption class="fig-cap">コピーが降りていくペインの深度（LPのS2→S3が担当する範囲）</figcaption>
+        <div class="pain-depth" role="img" aria-label="ペインの4層構造。層1は表層の悩み、層2は顕在ペインで、ここまでが本人の言語化できる領域。S2のチェックリストは層2を扱う。水面下の層3は潜在ペインでS2の地の文からS3の再定義が担当。最深部の層4インサイトはLPでは直接言わない。">
+          <div class="pd-row">
+            <div class="pd-band d1"><span class="pd-tag">層1｜表層の悩み</span></div>
+            <p class="pd-txt">「在宅で稼ぎたい」——検索やフォローの入口。FV（S1）が受け止める</p>
+          </div>
+          <div class="pd-row">
+            <div class="pd-band d2"><span class="pd-tag">層2｜顕在ペイン</span></div>
+            <p class="pd-txt">パート代が消える・欠勤の気まずさ——<b>S2のチェックリスト</b>で「これ、私だ」を作る</p>
+          </div>
+          <div class="pd-water" aria-hidden="true">水面下：本人がまだ言語化できていない領域</div>
+          <div class="pd-row">
+            <div class="pd-band d3"><span class="pd-tag">層3｜潜在ペイン</span></div>
+            <p class="pd-txt">自分の名前で何かをしている感覚の喪失——<b>S2の地の文で言語化し、S3で「あなたのせいじゃない」と解除</b>する</p>
+          </div>
+          <div class="pd-row">
+            <div class="pd-band d4"><span class="pd-tag">層4｜インサイト</span></div>
+            <p class="pd-txt">「自分の人生をまだ諦めていないと証明したい」<span class="hypo" style="margin-left:0.4em;">要検証</span>——LPでは直接言わず、読者の内側に生まれるのを待つ</p>
+          </div>
+        </div>
+      </figure>
     </section>
 
     <section class="sec fx" id="s3">
@@ -195,6 +234,24 @@
                 <p style="margin-top:1rem;"><strong>価格表記</strong>：一括259,800円（税込285,780円）／24回分割で月12,000円〜。※LINE登録時点で費用は一切かかりません（このLPのCVは無料登録であることを明記）</p>
               </div>
             </div>
+            <figure class="fig">
+              <figcaption class="fig-cap">卒業生の職種内訳（一次情報・幅＝実比率）：「デザイン一択ではない」の視覚根拠</figcaption>
+              <div class="mixbar" role="img" aria-label="卒業生の職種内訳。オンライン秘書 約50パーセント、Webライター 約23パーセント、SNS運用（Instagram運用代行）約17パーセント、デザイン制作 約9パーセント。">
+                <div class="track" aria-hidden="true">
+                  <span class="seg c1" style="flex:50">50%</span>
+                  <span class="seg c2" style="flex:23">23%</span>
+                  <span class="seg c3" style="flex:17">17%</span>
+                  <span class="seg c4" style="flex:9">9%</span>
+                </div>
+              </div>
+              <div class="chart-legend" aria-hidden="true">
+                <span class="li"><span class="sw c1"></span>オンライン秘書 約50%</span>
+                <span class="li"><span class="sw c2"></span>Webライター 約23%</span>
+                <span class="li"><span class="sw c3"></span>SNS運用 約17%</span>
+                <span class="li"><span class="sw c4"></span>デザイン制作 約9%</span>
+              </div>
+              <p class="fig-note">卒業生の約67%は秘書・SNS運用で案件を獲得しており、「デザインに一点賭けさせない」職種選択の自由がS4の中核根拠になる。</p>
+            </figure>
           </div>
         </div>
 
@@ -258,19 +315,19 @@
     <section class="sec fx" id="s5">
       <div class="sec-head"><span class="no">§5</span><h2>セクション順序の設計意図（まとめ）</h2></div>
       <div class="flow">
-        <div class="f-node">S1 FV<span class="d">私のことだ＋怪しくない</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-zap"/></svg></span><div class="f-body">S1 FV<span class="d">私のことだ＋怪しくない</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">S2 共感<span class="d">層2→層3</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-heart"/></svg></span><div class="f-body">S2 共感<span class="d">層2→層3</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">S3 再定義<span class="d">あなたのせいじゃない</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-refresh"/></svg></span><div class="f-body">S3 再定義<span class="d">あなたのせいじゃない</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">S4 解決策<span class="d">だからこう作った</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-bulb"/></svg></span><div class="f-body">S4 解決策<span class="d">だからこう作った</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">S5 証明<span class="d">実例・数値・人</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-badge"/></svg></span><div class="f-body">S5 証明<span class="d">実例・数値・人</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node">S6 不安払拭<span class="d">FAQ</span></div>
+        <div class="f-node has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-question"/></svg></span><div class="f-body">S6 不安払拭<span class="d">FAQ</span></div></div>
         <span class="f-arrow" aria-hidden="true">↓</span>
-        <div class="f-node hot">S7 ゼロリスクの一歩<span class="d">LINE登録</span></div>
+        <div class="f-node hot has-ico"><span class="f-ico" aria-hidden="true"><svg class="ico"><use href="#i-chat"/></svg></span><div class="f-body">S7 ゼロリスクの一歩<span class="d">LINE登録</span></div></div>
       </div>
       <p>「共感→再定義→解決」の順序は、Organic側の台本構成（現実の言語化→教育→コンセプト）とLINE後のステップ配信・勉強会の話法とも揃えられる。<strong>接点をまたいで同じ物語構造</strong>にすることで、LP→LINE→勉強会の温度落差をなくす。</p>
     </section>
