@@ -5,399 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>skimama LP戦略・LPO｜実行版</title>
-<meta name="description" content="skimamaのLP戦略・LPO（実行版）。LINE登録LPの構成案・コピー草案をまとめた公開資料。">
-<style>
-  :root{
-    --paper:#F4EFF0;
-    --paper-raised:#FFFFFF;
-    --ink:#241E22;
-    --ink-soft:#5B4F54;
-    --line:rgba(36,30,34,0.14);
-    --line-soft:rgba(36,30,34,0.08);
-    --accent:#9C3B52;
-    --accent-soft:rgba(156,59,82,0.09);
-    --accent-2:#4F6B58;
-    --accent-2-soft:rgba(79,107,88,0.10);
-    --hypo:#8A6D1E;
-    --hypo-soft:rgba(138,109,30,0.10);
-    --shadow: 0 1px 2px rgba(36,30,34,0.06), 0 8px 24px rgba(36,30,34,0.05);
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --paper:#201A1D;
-      --paper-raised:#282124;
-      --ink:#EDE6E8;
-      --ink-soft:#B9ACB1;
-      --line:rgba(237,230,232,0.16);
-      --line-soft:rgba(237,230,232,0.09);
-      --accent:#E38DA0;
-      --accent-soft:rgba(227,141,160,0.12);
-      --accent-2:#8FB69D;
-      --accent-2-soft:rgba(143,182,157,0.12);
-      --hypo:#D8B24A;
-      --hypo-soft:rgba(216,178,74,0.12);
-      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#201A1D; --paper-raised:#282124; --ink:#EDE6E8; --ink-soft:#B9ACB1;
-    --line:rgba(237,230,232,0.16); --line-soft:rgba(237,230,232,0.09);
-    --accent:#E38DA0; --accent-soft:rgba(227,141,160,0.12);
-    --accent-2:#8FB69D; --accent-2-soft:rgba(143,182,157,0.12);
-    --hypo:#D8B24A; --hypo-soft:rgba(216,178,74,0.12);
-    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
-  }
-  :root[data-theme="light"]{
-    --paper:#F4EFF0; --paper-raised:#FFFFFF; --ink:#241E22; --ink-soft:#5B4F54;
-    --line:rgba(36,30,34,0.14); --line-soft:rgba(36,30,34,0.08);
-    --accent:#9C3B52; --accent-soft:rgba(156,59,82,0.09);
-    --accent-2:#4F6B58; --accent-2-soft:rgba(79,107,88,0.10);
-    --hypo:#8A6D1E; --hypo-soft:rgba(138,109,30,0.10);
-    --shadow: 0 1px 2px rgba(36,30,34,0.06), 0 8px 24px rgba(36,30,34,0.05);
-  }
-
-  *{ box-sizing:border-box; }
-  html{ -webkit-text-size-adjust:100%; }
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
-    line-height:1.8;
-    font-feature-settings:"palt" 1;
-  }
-  h1,h2,h3{
-    font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
-    font-weight:600;
-    text-wrap:balance;
-    color:var(--ink);
-  }
-  a{ color:var(--accent); }
-  ::selection{ background:var(--accent-soft); }
-
-  .layout{
-    display:grid;
-    grid-template-columns:272px minmax(0,1fr);
-    max-width:1180px;
-    margin:0 auto;
-  }
-
-  /* ---- rail / nav ---- */
-  .rail{
-    position:sticky; top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    padding:2.6rem 1.6rem 2rem 2rem;
-    border-right:1px solid var(--line);
-    display:flex; flex-direction:column; gap:1.6rem;
-  }
-  .rail-back{
-    display:inline-flex; align-items:center; gap:0.35rem;
-    font-size:0.78rem; font-weight:700; color:var(--accent);
-    text-decoration:none; margin-bottom:0.9rem;
-  }
-  .rail-back:hover{ text-decoration:underline; }
-  .eyebrow{
-    margin:0; font-size:0.72rem; letter-spacing:0.14em;
-    color:var(--accent); text-transform:uppercase; font-weight:700;
-  }
-  .rail-title{
-    margin:0.5rem 0 0; font-size:1.5rem; line-height:1.4;
-  }
-  .rail-title span{ color:var(--accent); }
-  .rail-meta{ margin:0.6rem 0 0; font-size:0.8rem; color:var(--ink-soft); }
-  .toc{ display:flex; flex-direction:column; gap:0.15rem; }
-  .toc a{
-    display:flex; gap:0.6rem; align-items:baseline;
-    padding:0.42rem 0.5rem; margin:0 -0.5rem;
-    border-radius:8px;
-    font-size:0.86rem; text-decoration:none; color:var(--ink-soft);
-    transition:background 0.15s ease, color 0.15s ease;
-  }
-  .toc a:hover{ background:var(--accent-soft); color:var(--ink); }
-  .toc a b{
-    font-variant-numeric:tabular-nums;
-    color:var(--accent); font-weight:700; font-size:0.78rem;
-    min-width:1.4em;
-  }
-  .rail-note{
-    margin-top:auto; padding-top:1rem; border-top:1px solid var(--line-soft);
-    font-size:0.76rem; color:var(--ink-soft); line-height:1.7;
-  }
-  .rail-note a{ color:var(--accent); }
-  details.mobile-toc{ display:none; }
-
-  /* ---- content ---- */
-  .content{ padding:3.2rem clamp(1.2rem,4vw,3.4rem) 6rem; min-width:0; }
-  .content > section, .content > .doc-intro{ max-width:740px; margin:0 0 4.6rem; scroll-margin-top:1.5rem; }
-  .content > section:last-of-type{ margin-bottom:2rem; }
-
-  .kicker{
-    display:flex; align-items:center; gap:0.7rem; margin-bottom:0.7rem;
-  }
-  .kicker .num{
-    font-family:"Noto Serif JP",serif; font-weight:600; color:var(--accent);
-    font-size:0.95rem; font-variant-numeric:tabular-nums;
-  }
-  .kicker .rule{ flex:1; height:1px; background:var(--line); }
-  h2.h{ font-size:1.5rem; margin:0 0 1rem; }
-  h3.h3{ font-size:1.08rem; margin:1.8rem 0 0.7rem; }
-  p{ margin:0 0 1rem; }
-  .lede{ font-size:1.05rem; color:var(--ink-soft); }
-
-  .tag{
-    display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.03em;
-    padding:0.16rem 0.5rem; border-radius:999px; vertical-align:middle;
-  }
-  .tag.hypo{ background:var(--hypo-soft); color:var(--hypo); }
-  .tag.core{ background:var(--accent-soft); color:var(--accent); }
-
-  ul.plain, ol.plain{ margin:0 0 1rem; padding-left:1.2rem; }
-  ul.plain li, ol.plain li{ margin-bottom:0.45rem; }
-  ul.plain li::marker, ol.plain li::marker{ color:var(--accent); font-weight:700; }
-
-  code{
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-    font-size:0.85em; background:var(--line-soft); padding:0.1em 0.4em; border-radius:4px;
-  }
-
-  .callout{
-    border-left:3px solid var(--accent-2);
-    background:var(--accent-2-soft);
-    padding:0.9rem 1.1rem;
-    border-radius:0 10px 10px 0;
-    font-size:0.92rem;
-    margin:1.2rem 0;
-  }
-  .callout .label{
-    display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.05em;
-    color:var(--accent-2); margin-bottom:0.3rem;
-  }
-  .callout.warn{ border-left-color:var(--accent); background:var(--accent-soft); }
-  .callout.warn .label{ color:var(--accent); }
-  .callout p:last-child{ margin-bottom:0; }
-
-  /* copy draft (実際のコピー文言) */
-  .copy-draft{
-    border-left:3px solid var(--accent);
-    background:var(--paper-raised);
-    border:1px solid var(--line);
-    border-left-width:3px;
-    padding:1rem 1.2rem;
-    border-radius:0 10px 10px 0;
-    margin:1.2rem 0;
-    box-shadow:var(--shadow);
-    font-style:italic;
-  }
-  .copy-draft .label{
-    display:block; font-style:normal; font-size:0.72rem; font-weight:700; letter-spacing:0.05em;
-    color:var(--accent); margin-bottom:0.5rem;
-  }
-  .copy-draft p{ margin:0 0 0.7rem; }
-  .copy-draft p:last-child{ margin-bottom:0; }
-  .copy-draft strong{ font-style:normal; }
-  .copy-draft ul, .copy-draft ol{ margin:0 0 0.7rem; padding-left:1.2rem; font-style:normal; }
-  .copy-draft ul:last-child, .copy-draft ol:last-child{ margin-bottom:0; }
-
-  /* code-fence tree diagrams */
-  pre.tree{
-    background:var(--paper-raised); border:1px solid var(--line); border-radius:12px;
-    padding:1.1rem 1.3rem; overflow-x:auto; margin:1rem 0 1.4rem; box-shadow:var(--shadow);
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-    font-size:0.8rem; line-height:1.65; color:var(--ink-soft); white-space:pre;
-  }
-
-  /* checklist (未検証事項) */
-  ul.checklist{ list-style:none; margin:1.2rem 0; padding:0; }
-  ul.checklist li{
-    position:relative; padding:0.55rem 0 0.55rem 2.1rem; font-size:0.92rem;
-    border-bottom:1px dashed var(--line-soft);
-  }
-  ul.checklist li:last-child{ border-bottom:none; }
-  ul.checklist li::before{
-    content:""; position:absolute; left:0; top:0.75rem; width:1.05rem; height:1.05rem;
-    border:1.5px solid var(--ink-soft); border-radius:4px; background:var(--paper-raised);
-  }
-
-  /* summary cards on s0 */
-  .summary-grid{
-    display:grid; grid-template-columns:1fr; gap:0.9rem; margin-top:1.4rem;
-  }
-  .summary-grid .card{
-    background:var(--paper-raised); border:1px solid var(--line);
-    border-radius:12px; padding:1rem 1.15rem; box-shadow:var(--shadow);
-  }
-  .summary-grid .card h4{
-    margin:0 0 0.4rem; font-size:0.86rem; color:var(--accent);
-    font-family:inherit; letter-spacing:0.02em;
-  }
-  .summary-grid .card p{ margin:0; font-size:0.92rem; color:var(--ink-soft); }
-
-  /* positioning definition grid */
-  .define-grid{
-    display:grid; grid-template-columns:auto 1fr; gap:0.5rem 1.1rem;
-    background:var(--paper-raised); border:1px solid var(--line);
-    border-radius:12px; padding:1.3rem 1.4rem; box-shadow:var(--shadow);
-    margin:1rem 0 1.4rem;
-  }
-  .define-grid dt{
-    font-size:0.78rem; font-weight:700; color:var(--accent);
-    white-space:nowrap; padding-top:0.15rem;
-  }
-  .define-grid dd{ margin:0; padding-bottom:0.9rem; border-bottom:1px dashed var(--line-soft); }
-  .define-grid dt:last-of-type + dd, .define-grid dd:last-child{ border-bottom:none; padding-bottom:0; }
-  .tagline{
-    margin:1rem 0 0; padding:0.9rem 1.1rem; text-align:center;
-    background:var(--accent-soft); border-radius:10px;
-    font-family:"Noto Serif JP",serif; color:var(--ink); font-size:1.02rem;
-  }
-
-  /* tables */
-  .twrap{ overflow-x:auto; margin:1rem 0 1.4rem; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); }
-  table{ border-collapse:collapse; width:100%; min-width:560px; font-size:0.87rem; background:var(--paper-raised); }
-  table caption{ text-align:left; padding:0.7rem 1rem 0; font-size:0.78rem; color:var(--ink-soft); }
-  th, td{ padding:0.65rem 0.85rem; text-align:left; border-bottom:1px solid var(--line-soft); vertical-align:top; }
-  thead th{
-    background:var(--accent-soft); color:var(--accent);
-    font-size:0.72rem; letter-spacing:0.03em; font-weight:700;
-    position:sticky; top:0;
-  }
-  tbody tr:last-child td{ border-bottom:none; }
-  tbody th[scope="row"]{ font-weight:700; color:var(--ink); background:var(--line-soft); }
-  td.num, th.num{ font-variant-numeric:tabular-nums; }
-  td small, .muted{ color:var(--ink-soft); }
-
-  /* stars */
-  .stars{ color:var(--accent); letter-spacing:0.05em; font-variant-numeric:tabular-nums; }
-  .stars .off{ color:var(--line); }
-
-  /* timeline (CRM / sequential) */
-  .timeline{ list-style:none; margin:1.2rem 0; padding:0; border-left:2px solid var(--line); }
-  .timeline li{ position:relative; padding:0 0 1.4rem 1.5rem; }
-  .timeline li:last-child{ padding-bottom:0; }
-  .timeline li::before{
-    content:""; position:absolute; left:-6.5px; top:0.3rem;
-    width:11px; height:11px; border-radius:50%;
-    background:var(--paper-raised); border:2px solid var(--accent);
-  }
-  .timeline .when{ font-size:0.76rem; font-weight:700; color:var(--accent); letter-spacing:0.02em; }
-  .timeline .what{ margin-top:0.2rem; font-size:0.92rem; }
-
-  /* gate cards */
-  .gate-grid{ display:grid; grid-template-columns:1fr; gap:1rem; margin:1.2rem 0; }
-  .gate-card{ background:var(--paper-raised); border:1px solid var(--line); border-radius:12px; padding:1.1rem 1.3rem; box-shadow:var(--shadow); }
-  .gate-card h4{ margin:0 0 0.7rem; font-size:0.94rem; font-family:"Noto Serif JP",serif; }
-  .gate-card ol{ margin:0 0 0.8rem; padding-left:1.2rem; }
-  .gate-card ol li{ margin-bottom:0.4rem; font-size:0.9rem; }
-  .gate-card .verdict{
-    font-size:0.84rem; font-weight:700; color:var(--accent-2);
-    border-top:1px dashed var(--line); padding-top:0.6rem; margin-top:0.6rem;
-  }
-
-  /* priority ordered list */
-  ol.priority{ list-style:none; margin:1.2rem 0; padding:0; counter-reset:pr; }
-  ol.priority li{
-    counter-increment:pr; position:relative; padding:0.7rem 1rem 0.7rem 3rem;
-    background:var(--paper-raised); border:1px solid var(--line); border-radius:10px;
-    margin-bottom:0.6rem; font-size:0.92rem; box-shadow:var(--shadow);
-  }
-  ol.priority li::before{
-    content:counter(pr); position:absolute; left:0.9rem; top:50%; transform:translateY(-50%);
-    width:1.6rem; height:1.6rem; border-radius:50%; background:var(--accent); color:var(--paper-raised);
-    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem;
-    font-variant-numeric:tabular-nums;
-  }
-
-  footer.doc-footer{
-    max-width:740px; padding-top:1.6rem; border-top:1px solid var(--line);
-    font-size:0.8rem; color:var(--ink-soft);
-  }
-  footer.doc-footer a{ color:var(--accent); }
-  footer.doc-footer .related{ margin-top:0.5rem; }
-
-  @media (max-width:860px){
-    .layout{ grid-template-columns:1fr; }
-    .rail{
-      position:sticky; height:auto; padding:1rem 1.2rem; border-right:none; border-bottom:1px solid var(--line);
-      flex-direction:row; align-items:center; justify-content:space-between; gap:0.8rem;
-    }
-    .rail-title{ font-size:1.1rem; }
-    .rail-meta, .rail-note, .toc{ display:none; }
-    details.mobile-toc{ display:block; }
-    details.mobile-toc summary{
-      cursor:pointer; list-style:none; font-size:0.8rem; font-weight:700;
-      color:var(--accent); border:1px solid var(--accent); border-radius:999px;
-      padding:0.4rem 0.9rem;
-    }
-    details.mobile-toc summary::-webkit-details-marker{ display:none; }
-    details.mobile-toc[open] summary{ margin-bottom:0.6rem; }
-    details.mobile-toc .toc{ display:flex; position:absolute; right:1.2rem; top:3.4rem; z-index:5;
-      background:var(--paper-raised); border:1px solid var(--line); border-radius:10px; padding:0.5rem; box-shadow:var(--shadow); }
-    .content{ padding:2rem 1.1rem 4rem; }
-  }
-
-  @media (prefers-reduced-motion:no-preference){
-    .toc a{ transition:background 0.15s ease,color 0.15s ease; }
-  }
-</style>
+<meta name="description" content="skimamaのLP戦略・LPO（実行版）。LINE登録LPの構成案・コピー草案・A/Bテスト観点・景表法対応をまとめた公開資料。">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<a class="skip" href="#content">本文へスキップ</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">skimama <span class="en">Marketing Docs</span></a>
+    <nav class="topbar-docs" aria-label="ドキュメント">
+      <a href="skimama_マーケティング戦略_実行版.html"><i>01</i>マーケティング戦略</a>
+      <a href="skimama_SNS戦略_実行版.html"><i>02</i>SNS戦略</a>
+      <a href="skimama_LP戦略_実行版.html" aria-current="page"><i>03</i>LP戦略・LPO</a>
+    </nav>
+  </div>
+</header>
+
+<div class="doc-hero">
+  <div class="doc-hero-inner">
+    <span class="doc-vertical" aria-hidden="true">実行版・参画前初版仮説</span>
+    <p class="kicker">Document 03 — Landing Page</p>
+    <h1>skimama LP戦略・LPO<br>実行版</h1>
+    <p class="doc-lede">本ドキュメントは社内の顧客理解（ペイン4層・行動コスト3層）とコントラスト法、USP・チャネル戦略を土台に、LINE登録LP（Organic→LINE登録の主要CVポイント）の構成案・コピー草案として具体化したもの。ステータス：<strong>参画前の初版仮説</strong>。</p>
+    <div class="meta-row">
+      <span>最終更新：2026-07-07</span><span class="sep">／</span>
+      <span class="hypo">参画前・初版仮説</span><span class="sep">／</span>
+      <span>S1〜S7構成案＋コピー草案</span>
+    </div>
+    <div class="notice">本リポジトリは社内ナレッジベースの一部を公開用に抜粋したものです。参照している社内ドキュメント（CLAUDE.md・競合リサーチ・思考フレームワーク集等）はここには含まれていません。</div>
+    <div class="callout amber" style="max-width:52em;">
+      <span class="co-label">重要な前提</span>
+      <p>本リポジトリには既存LPの実物（HTML・コピー原稿・現状CVR等の計測データ）が格納されておらず、実LPの検証は未実施。したがって本書は「既存LPの改善提案」ではなく、構成案・コピー草案・改善観点の提案である。参画後、実LPとCVRデータを取得した時点で「現状とのギャップ分析」として本書を更新する（→§8）。</p>
+    </div>
+  </div>
+</div>
 
 <div class="layout">
   <aside class="rail">
-    <div>
-      <a class="rail-back" href="index.html">← 全ドキュメント一覧</a>
-      <p class="eyebrow">skimama marketing</p>
-      <h1 class="rail-title">LP戦略・LPO<br><span>実行版</span></h1>
-      <p class="rail-meta">最終更新 2026-07-07</p>
-      <details class="mobile-toc">
-        <summary>目次を開く</summary>
-        <nav class="toc">
-          <a href="#s1"><b>01</b>LPの位置づけ</a>
-          <a href="#s2"><b>02</b>核メッセージ</a>
-          <a href="#s3"><b>03</b>設計原則</a>
-          <a href="#s4"><b>04</b>LP構成案</a>
-          <a href="#s5"><b>05</b>セクション順序</a>
-          <a href="#s6"><b>06</b>A/Bテスト観点</a>
-          <a href="#s7"><b>07</b>景表法・特商法</a>
-          <a href="#s8"><b>08</b>未検証事項</a>
-        </nav>
-      </details>
+    <details class="toc-box">
+      <summary>Contents</summary>
+      <nav class="toc" aria-label="目次">
+        <a href="#s1"><b>01</b>対象LPの位置づけ</a>
+        <a href="#s2"><b>02</b>核メッセージ：コントラスト法</a>
+        <a href="#s3"><b>03</b>設計原則</a>
+        <a href="#s4"><b>04</b>LP構成案（S1〜S7）</a>
+        <a href="#s5"><b>05</b>セクション順序の設計意図</a>
+        <a href="#s6"><b>06</b>A/Bテスト観点</a>
+        <a href="#s7"><b>07</b>景表法・特商法対比表</a>
+        <a href="#s8"><b>08</b>未検証事項</a>
+      </nav>
+    </details>
+    <div class="rail-links">
+      <a href="index.html"><i>HUB</i>資料一覧に戻る</a>
+      <a href="skimama_マーケティング戦略_実行版.html"><i>01</i>マーケティング戦略</a>
+      <a href="skimama_SNS戦略_実行版.html"><i>02</i>SNS戦略（Organic）</a>
     </div>
-    <nav class="toc">
-      <a href="#s1"><b>01</b>LPの位置づけ</a>
-      <a href="#s2"><b>02</b>核メッセージ</a>
-      <a href="#s3"><b>03</b>設計原則</a>
-      <a href="#s4"><b>04</b>LP構成案</a>
-      <a href="#s5"><b>05</b>セクション順序</a>
-      <a href="#s6"><b>06</b>A/Bテスト観点</a>
-      <a href="#s7"><b>07</b>景表法・特商法</a>
-      <a href="#s8"><b>08</b>未検証事項</a>
-    </nav>
-    <p class="rail-note">社内ナレッジベースからの公開抜粋。<span class="tag hypo">仮説</span>の付いた内容は一次データでの検証待ちです。</p>
   </aside>
 
-  <main class="content">
+  <main id="content" class="content">
 
-    <div class="doc-intro">
-      <p class="lede">LINE登録LP（Organic→LINE登録の主要CVポイント）の構成案・コピー草案。<span class="tag hypo">参画前の初版仮説</span>。</p>
-      <div class="callout warn">
-        <span class="label">重要な前提</span>
-        本リポジトリには既存LPの実物（HTML・コピー原稿・現状CVR等の計測データ）が格納されておらず、実LPの検証は未実施。したがって本書は「既存LPの改善提案」ではなく、構成案・コピー草案・改善観点の提案である。参画後、実LPとCVRデータを取得した時点で「現状とのギャップ分析」として本書を更新する（→§8）。
+    <section class="sec fx" id="s1">
+      <div class="sec-head"><span class="no">§1</span><h2>対象LPの位置づけ（ファネル上のどこか）</h2></div>
+      <div class="flow">
+        <div class="f-node">Organic投稿<span class="d">TikTok/リール/Threads/YouTube</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">プロフィール</div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node hot">【本書の対象：LINE登録LP】</div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">LINE登録<span class="d">特典：在宅ワークママBOOK</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">無料オンライン勉強会</div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">本講座申込<span class="d">259,800円</span></div>
       </div>
-    </div>
-
-    <section id="s1">
-      <div class="kicker"><span class="num">01</span><span class="rule"></span></div>
-      <h2 class="h">対象LPの位置づけ（ファネル上のどこか）</h2>
-      <pre class="tree">Organic投稿（TikTok/リール/Threads/YouTube）
-  → プロフィール
-    → 【本書の対象：LINE登録LP】
-      → LINE登録（特典：在宅ワークママBOOK）
-        → 無料オンライン勉強会
-          → 本講座申込（259,800円）</pre>
-      <ul class="plain">
+      <ul>
         <li>このLPのCVは<strong>入会ではなくLINE登録</strong>。要求する行動は「無料・匿名性が高い・いつでもブロックできる」ゼロリスクの一歩であり、LPもその温度感で設計する（本講座のセールスをここでしない）</li>
         <li>流入者の大半は<strong>関心期〜準備期</strong>（Organicで温まった層）と仮定。無関心期にはOrganic側で対応済みの前提</li>
         <li>広告流入（刈り取り）と兼用する場合、Organic流入とは温度が異なるため、<strong>将来的には流入元別の出し分け（少なくともファーストビューの差し替え）を検討</strong>する（→§6 A/Bテスト観点）</li>
@@ -405,174 +89,225 @@
       </ul>
     </section>
 
-    <section id="s2">
-      <div class="kicker"><span class="num">02</span><span class="rule"></span></div>
-      <h2 class="h">核メッセージ：コントラスト法による再定義</h2>
-      <p>「実は〜ではなく〜だ」型（<code>brain/01</code> PART5相当）で、比較の土俵そのものをずらす一文をLP全体の背骨にする。</p>
-      <div class="callout">
-        <span class="label">核メッセージ案（主）</span>
-        「在宅ワークで挫折する原因は、スキル不足ではありません。<strong>"何を・どの順番で・誰とやるか"を決めてくれる人がいない</strong>ことです。」
-      </div>
-      <div class="twrap">
-        <table style="min-width:760px;">
-          <thead><tr><th>案</th><th>コントラスト（実は〜ではなく〜）</th><th>対応する顧客理解</th></tr></thead>
+    <section class="sec fx" id="s2">
+      <div class="sec-head"><span class="no">§2</span><h2>核メッセージ：コントラスト法による再定義</h2></div>
+      <p>「実は〜ではなく〜だ」型で、比較の土俵そのものをずらす一文をLP全体の背骨にする。</p>
+      <p class="pull">「在宅ワークで挫折する原因は、スキル不足ではありません。<strong>“何を・どの順番で・誰とやるか”を決めてくれる人がいない</strong>ことです。」<span class="src">— 核メッセージ案（主）</span></p>
+      <div class="twrap mid">
+        <table>
+          <thead>
+            <tr><th>案</th><th>コントラスト（実は〜ではなく〜）</th><th>対応する顧客理解</th></tr>
+          </thead>
           <tbody>
-            <tr><th scope="row">主案</th><td>スクール選びで見るべきは「何が学べるか」ではなく「<strong>仕事獲得まで誰が伴走してくれるか</strong>」</td><td>行動コスト層2（独学の迷子）／USP（伴走・獲得率93%）</td></tr>
-            <tr><th scope="row">副案1</th><td>足りないのは才能でも時間でもなく、「<strong>ママの生活リズムを前提にした設計</strong>」</td><td>ペイン層2（細切れ時間・急な発熱）／Famm・SHElikesとの差別化</td></tr>
-            <tr><th scope="row">副案2</th><td>在宅ワークの最初の壁はスキルではなく、「<strong>自分に合う職種を知らない</strong>こと」</td><td>卒業生の約67%が秘書・SNS運用で獲得（職種選択の自由）</td></tr>
+            <tr><td class="rowh">主案</td><td>スクール選びで見るべきは「何が学べるか」ではなく「<strong>仕事獲得まで誰が伴走してくれるか</strong>」</td><td>行動コスト層2（独学の迷子）／USP（伴走・獲得率93%）</td></tr>
+            <tr><td class="rowh">副案1</td><td>足りないのは才能でも時間でもなく、「<strong>ママの生活リズムを前提にした設計</strong>」</td><td>ペイン層2（細切れ時間・急な発熱）／他スクールとの差別化</td></tr>
+            <tr><td class="rowh">副案2</td><td>在宅ワークの最初の壁はスキルではなく、「<strong>自分に合う職種を知らない</strong>こと」</td><td>卒業生の約67%が秘書・SNS運用で獲得（職種選択の自由）</td></tr>
           </tbody>
         </table>
       </div>
-      <ul class="plain">
+      <ul>
         <li>主案を軸に、副案1・2をLP内の各セクション（§4のS3・S4）で回収する</li>
-        <li>3案とも「あなたが悪いのではない、構造の問題だ」という<strong>自己否定の解除</strong>を含む。層3ペイン（自己効力感の低さ）に対して「できない理由の再定義」が最も効くという仮説に基づく（要検証）</li>
+        <li>3案とも「あなたが悪いのではない、構造の問題だ」という<strong>自己否定の解除</strong>を含む。層3ペイン（自己効力感の低さ）に対して「できない理由の再定義」が最も効くという仮説に基づく（<span class="hypo">要検証</span>）</li>
       </ul>
     </section>
 
-    <section id="s3">
-      <div class="kicker"><span class="num">03</span><span class="rule"></span></div>
-      <h2 class="h">設計原則（このLPで守ること）</h2>
-      <ol class="priority">
+    <section class="sec fx" id="s3">
+      <div class="sec-head"><span class="no">§3</span><h2>設計原則（このLPで守ること）</h2></div>
+      <ol>
         <li><strong>CTAはLINE登録（＋その先の無料勉強会案内）に統一</strong>する。理由：行動コスト3層モデルにおいて、259,800円の講座申込は層3（最も重い行動）であり、関心期〜準備期の読者に直接要求すると離脱する。LPの仕事は「層1・層2の読者に、コストほぼゼロの一歩（層3への中間ステップ）を踏ませる」ことだけに絞る</li>
-        <li><strong>売り込み臭の徹底除去</strong>。市場には「怪しい副業商材」への強い不信がある（戦略書§2）。煽り・カウントダウン・過剰装飾はシグナルとして逆効果。ポジショニング「在宅ワークの実家」のトーン（誠実・等身大・温かい）で統一</li>
+        <li><strong>売り込み臭の徹底除去</strong>。市場には「怪しい副業商材」への強い不信がある。煽り・カウントダウン・過剰装飾はシグナルとして逆効果。ポジショニング「在宅ワークの実家」のトーン（誠実・等身大・温かい）で統一</li>
         <li><strong>無形商材の信頼要素を厚く</strong>。経験財ゆえ購入前に品質を確かめられない→実績数値（根拠つき）・卒業生実例・メンターの顔・第三者権威（受賞歴）を「品質の試食」として配置</li>
         <li><strong>モバイル前提</strong>（流入はほぼSNSアプリ内ブラウザと推定）。1画面1メッセージ、CTAはファーストビュー直下・中間・末尾の最低3箇所</li>
       </ol>
     </section>
 
-    <section id="s4">
-      <div class="kicker"><span class="num">04</span><span class="rule"></span></div>
-      <h2 class="h">LP構成案（セクション別ワイヤーフレーム＋コピー草案）</h2>
+    <section class="sec fx" id="s4">
+      <div class="sec-head"><span class="no">§4</span><h2>LP構成案（セクション別ワイヤーフレーム＋コピー草案）</h2></div>
+      <p>S1〜S7はLPのスクロール順そのもの。この順序自体が「共感→再定義→解決→証明→不安払拭→一歩」という説得の設計である（→§5）。</p>
 
-      <h3 class="h3">S1. ファーストビュー</h3>
-      <p><strong>目的</strong>：3秒で「私のことだ」＋「怪しくない」を成立させ、スクロールさせる</p>
-      <p><strong>要素</strong>：フックコピー／USP一文／実績バッジ（数値3点＋受賞歴）／第一CTA／ビジュアルは「キラキラした女性起業家」ではなく等身大のママ（生活感のあるトーン）</p>
-      <div class="copy-draft">
-        <span class="label">コピー草案</span>
-        <p><strong>フックコピー</strong>：「パートに戻るしかない、と決める前に。」</p>
-        <p><strong>USP一文（サブコピー）</strong>：「未経験のママが、自分に合った職種を選んで、2ヶ月で在宅ワークデビュー。仕事獲得まで、同じママたちと一緒に伴走します。」</p>
-        <p><strong>実績バッジ</strong>：在宅ワーク獲得率93.0%※／メンター満足度99.3%※／ベビーテックアワード2024優秀賞（※算出根拠を注記リンクで開示。定義確認まで掲出保留 →§7）</p>
-        <p><strong>第一CTA</strong>：「まずは無料で『在宅ワークママBOOK』を受け取る（LINEで10秒）」</p>
-      </div>
-      <p>フック代替案（A/Bテスト用 →§6）：「『また明日から、同じ毎日』を、そろそろ終わりにしたい人へ。」／「在宅ワーク、"何から"始めるかで9割決まります。」</p>
+      <div class="steps" style="margin-top:2rem;">
 
-      <h3 class="h3">S2. 共感（ペイン層2〜3の言語化）</h3>
-      <p><strong>目的</strong>：「これ、私だ」→「なんで分かるの」を作る。解決策はまだ出さない</p>
-      <p><strong>構成</strong>：チェックリスト形式（層2）→ 地の文で層3へ一段降りる</p>
-      <div class="copy-draft">
-        <span class="label">コピー草案（層2チェックリスト）</span>
-        <p>こんな毎日に、心当たりはありませんか。</p>
-        <ul>
-          <li>パート代が、保育料とガソリン代でほとんど消えていく</li>
-          <li>子どもの発熱で休むたび、職場に謝ってばかり</li>
-          <li>在宅ワークを調べてみたけど、何が正解か分からなくて閉じた</li>
-        </ul>
-      </div>
-      <div class="copy-draft">
-        <span class="label">層3への一段（地の文）</span>
-        <p>本当は、お金のことだけじゃないのかもしれません。「ママ」でも「妻」でもない、自分の名前で何かをしている感覚が、いつからかなくなっていること。誰にも責められていないのに、なんとなく取り残されている気がすること。その感覚は、あなたの甘えではありません。</p>
-      </div>
+        <div class="step lp">
+          <span class="step-no" aria-hidden="true">S1</span>
+          <p class="step-title">ファーストビュー<span class="aim">目的：3秒で「私のことだ」＋「怪しくない」を成立させ、スクロールさせる</span></p>
+          <div class="step-body">
+            <p><strong>要素</strong>：フックコピー／USP一文／実績バッジ（数値3点＋受賞歴）／第一CTA／ビジュアルは「キラキラした女性起業家」ではなく等身大のママ（生活感のあるトーン）</p>
+            <div class="draft">
+              <div class="draft-label">Copy Draft<span class="ja">コピー草案</span></div>
+              <div class="draft-body">
+                <p class="copy big">パートに戻るしかない、と決める前に。</p>
+                <p class="copy" style="font-size:0.95rem;"><strong>USP一文（サブコピー）</strong>：未経験のママが、自分に合った職種を選んで、2ヶ月で在宅ワークデビュー。仕事獲得まで、同じママたちと一緒に伴走します。</p>
+                <p style="margin:0.8rem 0 0.3rem;"><strong>実績バッジ</strong>：在宅ワーク獲得率93.0%※ ／ メンター満足度99.3%※ ／ ベビーテックアワード2024優秀賞<br><span class="hypo">※算出根拠を注記リンクで開示。定義確認まで掲出保留 →§7</span></p>
+                <p style="margin:0.8rem 0 0;"><strong>第一CTA</strong>：「まずは無料で『在宅ワークママBOOK』を受け取る（LINEで10秒）」</p>
+              </div>
+            </div>
+            <p><strong>フック代替案（A/Bテスト用 →§6）</strong>：「『また明日から、同じ毎日』を、そろそろ終わりにしたい人へ。」／「在宅ワーク、“何から”始めるかで9割決まります。」</p>
+          </div>
+        </div>
 
-      <h3 class="h3">S3. 問題の再定義（コントラスト法・§2の主案）</h3>
-      <p><strong>目的</strong>：「できない理由」を本人の資質から構造へ移し替え、自己否定を解除する</p>
-      <div class="copy-draft">
-        <span class="label">コピー草案</span>
-        <p>在宅ワークに挫折するのは、スキルや意志が足りないからではありません。<strong>「何を・どの順番で・誰とやるか」を決めてくれる人がいない</strong>からです。独学で迷子になった経験がある人ほど、教材ではなく「伴走者」が必要だったことに気づきます。</p>
-        <p>そしてもうひとつ。ママの毎日は、計画どおりに進みません。子どもの発熱で1週間止まることを<strong>前提にしていない学び方</strong>は、ママには合わないのです。</p>
-      </div>
+        <div class="step lp">
+          <span class="step-no" aria-hidden="true">S2</span>
+          <p class="step-title">共感（ペイン層2〜3の言語化）<span class="aim">目的：「これ、私だ」→「なんで分かるの」を作る。解決策はまだ出さない</span></p>
+          <div class="step-body">
+            <p><strong>構成</strong>：チェックリスト形式（層2）→ 地の文で層3へ一段降りる</p>
+            <div class="draft">
+              <div class="draft-label">Copy Draft<span class="ja">コピー草案（層2チェックリスト）</span></div>
+              <div class="draft-body">
+                <p class="copy" style="font-size:0.98rem;">こんな毎日に、心当たりはありませんか。</p>
+                <ul>
+                  <li>パート代が、保育料とガソリン代でほとんど消えていく</li>
+                  <li>子どもの発熱で休むたび、職場に謝ってばかり</li>
+                  <li>在宅ワークを調べてみたけど、何が正解か分からなくて閉じた</li>
+                </ul>
+                <p style="margin-top:1rem;"><strong>層3への一段（地の文）</strong>：</p>
+                <p class="copy" style="font-size:0.95rem;">本当は、お金のことだけじゃないのかもしれません。<br>「ママ」でも「妻」でもない、自分の名前で何かをしている感覚が、いつからかなくなっていること。誰にも責められていないのに、なんとなく取り残されている気がすること。<br>その感覚は、あなたの甘えではありません。</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <h3 class="h3">S4. 解決策としてのskimama（USP・機能的ニーズ）</h3>
-      <p><strong>目的</strong>：S3で再定義した問題への回答としてサービスを提示（「だからこう作った」の順序）</p>
-      <p><strong>構成</strong>：3つの約束＋学べる職種＋学習設計＋価格</p>
-      <div class="copy-draft">
-        <span class="label">コピー草案（3つの約束）</span>
-        <ol>
-          <li><strong>職種は、あなたに合うものを選べます</strong>——オンライン秘書・Webライター・SNS運用・デザイン。デザイン一択ではなく、適性を見ながらメンターと一緒に決められます（卒業生の職種内訳：秘書約50%／ライター約23%／SNS運用約17%／デザイン約9%）</li>
-          <li><strong>ママの生活リズムのままで</strong>——週4日の動画学習＋2日の課題＋1日のワークショップ。寝かしつけ後の30分から。止まっても再開できる設計で、教材とコミュニティは無期限です</li>
-          <li><strong>「学んで終わり」にしません</strong>——お金の知識（確定申告・開業手続き）まで含めて、最初の仕事獲得まで伴走します</li>
-        </ol>
-        <p><strong>価格表記</strong>：一括259,800円（税込285,780円）／24回分割で月12,000円〜。※LINE登録時点で費用は一切かかりません（このLPのCVは無料登録であることを明記）</p>
-      </div>
+        <div class="step lp">
+          <span class="step-no" aria-hidden="true">S3</span>
+          <p class="step-title">問題の再定義（コントラスト法・§2の主案）<span class="aim">目的：「できない理由」を本人の資質から構造へ移し替え、自己否定を解除する</span></p>
+          <div class="step-body">
+            <div class="draft">
+              <div class="draft-label">Copy Draft<span class="ja">コピー草案</span></div>
+              <div class="draft-body">
+                <p class="copy" style="font-size:0.95rem;">在宅ワークに挫折するのは、スキルや意志が足りないからではありません。<br><strong>「何を・どの順番で・誰とやるか」を決めてくれる人がいない</strong>からです。<br>独学で迷子になった経験がある人ほど、教材ではなく「伴走者」が必要だったことに気づきます。<br>そしてもうひとつ。ママの毎日は、計画どおりに進みません。子どもの発熱で1週間止まることを<strong>前提にしていない学び方</strong>は、ママには合わないのです。</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <h3 class="h3">S5. 実績・信頼要素</h3>
-      <p><strong>目的</strong>：主張を証明に変える（<code>brain/09</code> §9 エビデンス戦略）</p>
-      <p><strong>要素</strong>：</p>
-      <ul class="plain">
-        <li><strong>数値と根拠</strong>：獲得率93.0%等は「◯年◯月時点・母数◯名・定義：△△」の注記つきで掲出（確認完了まで保留）</li>
-        <li><strong>卒業生実例2〜3名</strong>：ビフォー→過程→アフターの型（SNS戦略 §8）。職種・稼働時間・時期を明記し「個人の実例です」を添える</li>
-        <li><strong>メンター紹介</strong>：顔・経歴・「どう伴走するか」の一言。無形商材は人が品質</li>
-        <li><strong>第三者権威</strong>：ベビーテックアワード2024優秀賞／都営地下鉄新宿線広告掲載／提携（フジ子さん等）</li>
-      </ul>
-      <div class="copy-draft">
-        <span class="label">卒業生実例のコピー型（草案）</span>
-        <p>「事務パート歴10年。PCはメールくらいしか使えませんでした」——Aさん（30代・お子さん2人）は、受講◯ヶ月後にオンライン秘書として初案件を獲得。「収入よりも先に、『私にもできた』が来ました」（※個人の実例です。成果には個人差があります）</p>
-      </div>
+        <div class="step lp">
+          <span class="step-no" aria-hidden="true">S4</span>
+          <p class="step-title">解決策としてのskimama（USP・機能的ニーズ）<span class="aim">目的：S3で再定義した問題への回答としてサービスを提示（「だからこう作った」の順序）</span></p>
+          <div class="step-body">
+            <p><strong>構成</strong>：3つの約束＋学べる職種＋学習設計＋価格</p>
+            <div class="draft">
+              <div class="draft-label">Copy Draft<span class="ja">コピー草案（3つの約束）</span></div>
+              <div class="draft-body">
+                <ol>
+                  <li><strong>職種は、あなたに合うものを選べます</strong>——オンライン秘書・Webライター・SNS運用・デザイン。デザイン一択ではなく、適性を見ながらメンターと一緒に決められます（卒業生の職種内訳：秘書約50%／ライター約23%／SNS運用約17%／デザイン約9%）</li>
+                  <li><strong>ママの生活リズムのままで</strong>——週4日の動画学習＋2日の課題＋1日のワークショップ。寝かしつけ後の30分から。止まっても再開できる設計で、教材とコミュニティは無期限です</li>
+                  <li><strong>「学んで終わり」にしません</strong>——お金の知識（確定申告・開業手続き）まで含めて、最初の仕事獲得まで伴走します</li>
+                </ol>
+                <p style="margin-top:1rem;"><strong>価格表記</strong>：一括259,800円（税込285,780円）／24回分割で月12,000円〜。※LINE登録時点で費用は一切かかりません（このLPのCVは無料登録であることを明記）</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <h3 class="h3">S6. 不安払拭（FAQ）</h3>
-      <p><strong>目的</strong>：登録直前の心理的ブレーキを一つずつ外す。誠実な回答＝信頼の最後の一押し</p>
-      <div class="copy-draft">
-        <span class="label">FAQ草案（景表法を踏まえた回答例）</span>
-        <p><strong>Q. 本当に未経験でも大丈夫ですか？</strong><br>A. 受講生の多くがPC操作に自信のない状態からのスタートです。だからこそ基礎から段階的に進むカリキュラムと、メンター1名が担当につく体制にしています。ただし成果には個人差があります。学習の進め方はメンターと一緒に調整できます。</p>
-        <p><strong>Q. 必ず仕事が取れますか？</strong><br>A. 「必ず」とお約束することはできません。実績として、卒業生の93.0%が在宅ワークを獲得しています（※算出定義を注記）。仕事獲得までのサポート内容は無料勉強会で具体的にご説明します。</p>
-        <p><strong>Q. LINE登録したら、しつこく勧誘されませんか？</strong><br>A. 登録後に届くのは特典と勉強会のご案内です。不要になればいつでもブロックしていただけます。勉強会も、参加したからといって入会をその場で迫ることはありません。</p>
-        <p><strong>Q. 子どもの体調不良で学習が止まりそうです。</strong><br>A. 止まる前提で設計しています。動画学習は途中で止められ、教材は無期限で見返せます。ペースの組み直しはメンターにご相談ください。</p>
-      </div>
-      <p>ほか想定質問：「顔出しは必要?」「夫に相談してからでもいい?」「パートと両立できる?」（実際の勉強会・CSへの質問ログから優先順位を再構成する →§8）</p>
+        <div class="step lp">
+          <span class="step-no" aria-hidden="true">S5</span>
+          <p class="step-title">実績・信頼要素<span class="aim">目的：主張を証明に変える</span></p>
+          <div class="step-body">
+            <ul>
+              <li><strong>数値と根拠</strong>：獲得率93.0%等は「◯年◯月時点・母数◯名・定義：△△」の注記つきで掲出（<span class="hypo">確認完了まで保留</span>）</li>
+              <li><strong>卒業生実例2〜3名</strong>：ビフォー→過程→アフターの型（<a href="skimama_SNS戦略_実行版.html">skimama_SNS戦略_実行版</a> §8参照）。職種・稼働時間・時期を明記し「個人の実例です」を添える</li>
+              <li><strong>メンター紹介</strong>：顔・経歴・「どう伴走するか」の一言。無形商材は人が品質</li>
+              <li><strong>第三者権威</strong>：ベビーテックアワード2024優秀賞／都営地下鉄新宿線広告掲載／提携先との連携</li>
+            </ul>
+            <div class="draft">
+              <div class="draft-label">Copy Draft<span class="ja">卒業生実例のコピー型（草案）</span></div>
+              <div class="draft-body">
+                <p class="copy" style="font-size:0.95rem;">「事務パート歴10年。PCはメールくらいしか使えませんでした」——Aさん（30代・お子さん2人）は、受講◯ヶ月後にオンライン秘書として初案件を獲得。「収入よりも先に、『私にもできた』が来ました」<br><small>（※個人の実例です。成果には個人差があります）</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <h3 class="h3">S7. クロージング＋最終CTA</h3>
-      <p><strong>目的</strong>：行動コスト3層の言葉で「今日の一歩はこれだけ」に絞り込む</p>
-      <div class="copy-draft">
-        <span class="label">コピー草案</span>
-        <p>今日、講座に申し込む必要はありません。まずは、在宅ワークの現実がわかる『在宅ワークママBOOK』を読んでみてください。読んで「今じゃない」と思ったら、それも一つの答えです。ただ、「子どもが大きくなったら考えよう」を何年か続けてきた人ほど、<strong>情報だけは今日、手元に置いておいてほしい</strong>のです。</p>
-        <p><strong>最終CTA</strong>：「無料で『在宅ワークママBOOK』を受け取る（LINE登録・10秒）」</p>
-        <p>添え書き：登録は無料です。合わないと思ったらいつでもブロックできます。</p>
-      </div>
-      <div class="callout">
-        <span class="label">CTAをLINE登録に統一する理由（再掲・社内説明用）</span>
-        行動コスト3層モデルでは、読者の大半は層1（何もしない）・層2（独学）にいる。彼女たちに層3（入会）を直接要求するのは飛距離が大きすぎて離脱を生む。LINE登録は「金銭ゼロ・匿名性高・撤回可能」でほぼ層1のコストのまま踏める一歩であり、その後のナーチャリング（LINE→勉強会）はCRMの仕事として分離する。LP内に複数種類のCTA（資料請求・電話・入会申込等）を並べると意思決定コストが増えCVRが下がるという一般則も踏まえ、出口は1つにする。
+        <div class="step lp">
+          <span class="step-no" aria-hidden="true">S6</span>
+          <p class="step-title">不安払拭（FAQ）<span class="aim">目的：登録直前の心理的ブレーキを一つずつ外す。誠実な回答＝信頼の最後の一押し</span></p>
+          <div class="step-body">
+            <div class="draft">
+              <div class="draft-label">Copy Draft<span class="ja">FAQ草案（景表法を踏まえた回答例）</span></div>
+              <div class="draft-body">
+                <p><strong>Q. 本当に未経験でも大丈夫ですか？</strong><br>A. 受講生の多くがPC操作に自信のない状態からのスタートです。だからこそ基礎から段階的に進むカリキュラムと、メンター1名が担当につく体制にしています。ただし成果には個人差があります。学習の進め方はメンターと一緒に調整できます。</p>
+                <p><strong>Q. 必ず仕事が取れますか？</strong><br>A. 「必ず」とお約束することはできません。実績として、卒業生の93.0%が在宅ワークを獲得しています（※算出定義を注記）。仕事獲得までのサポート内容は無料勉強会で具体的にご説明します。</p>
+                <p><strong>Q. LINE登録したら、しつこく勧誘されませんか？</strong><br>A. 登録後に届くのは特典と勉強会のご案内です。不要になればいつでもブロックしていただけます。勉強会も、参加したからといって入会をその場で迫ることはありません。</p>
+                <p><strong>Q. 子どもの体調不良で学習が止まりそうです。</strong><br>A. 止まる前提で設計しています。動画学習は途中で止められ、教材は無期限で見返せます。ペースの組み直しはメンターにご相談ください。</p>
+              </div>
+            </div>
+            <p>ほか想定質問：「顔出しは必要?」「夫に相談してからでもいい?」「パートと両立できる?」（実際の勉強会・CSへの質問ログから優先順位を再構成する →§8）</p>
+          </div>
+        </div>
+
+        <div class="step lp">
+          <span class="step-no" aria-hidden="true">S7</span>
+          <p class="step-title">クロージング＋最終CTA<span class="aim">目的：行動コスト3層の言葉で「今日の一歩はこれだけ」に絞り込む</span></p>
+          <div class="step-body">
+            <div class="draft">
+              <div class="draft-label">Copy Draft<span class="ja">コピー草案</span></div>
+              <div class="draft-body">
+                <p class="copy" style="font-size:0.95rem;">今日、講座に申し込む必要はありません。<br>まずは、在宅ワークの現実がわかる『在宅ワークママBOOK』を読んでみてください。読んで「今じゃない」と思ったら、それも一つの答えです。<br>ただ、「子どもが大きくなったら考えよう」を何年か続けてきた人ほど、<strong>情報だけは今日、手元に置いておいてほしい</strong>のです。</p>
+                <p style="margin-top:1rem;"><strong>最終CTA</strong>：「無料で『在宅ワークママBOOK』を受け取る（LINE登録・10秒）」<br>添え書き：登録は無料です。合わないと思ったらいつでもブロックできます。</p>
+              </div>
+            </div>
+            <div class="callout">
+              <span class="co-label">CTAをLINE登録に統一する理由（再掲・社内説明用）</span>
+              <p>行動コスト3層モデルでは、読者の大半は層1（何もしない）・層2（独学）にいる。彼女たちに層3（入会）を直接要求するのは飛距離が大きすぎて離脱を生む。LINE登録は「金銭ゼロ・匿名性高・撤回可能」でほぼ層1のコストのまま踏める一歩であり、その後のナーチャリング（LINE→勉強会）はCRMの仕事として分離する。LP内に複数種類のCTA（資料請求・電話・入会申込等）を並べると意思決定コストが増えCVRが下がるという一般則も踏まえ、<strong>出口は1つ</strong>にする。</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <section id="s5">
-      <div class="kicker"><span class="num">05</span><span class="rule"></span></div>
-      <h2 class="h">セクション順序の設計意図（まとめ）</h2>
-      <pre class="tree">S1 FV（私のことだ＋怪しくない） → S2 共感（層2→層3） → S3 再定義（あなたのせいじゃない）
-→ S4 解決策（だからこう作った） → S5 証明（実例・数値・人） → S6 不安払拭（FAQ）
-→ S7 ゼロリスクの一歩（LINE登録）</pre>
-      <p>「共感→再定義→解決」の順序は、<code>brain/07</code>8ブロック（②現実の言語化→③教育→④コンセプト）とLINE後のステップ配信・勉強会の話法とも揃えられる。<strong>接点をまたいで同じ物語構造</strong>にすることで、LP→LINE→勉強会の温度落差をなくす。</p>
+    <section class="sec fx" id="s5">
+      <div class="sec-head"><span class="no">§5</span><h2>セクション順序の設計意図（まとめ）</h2></div>
+      <div class="flow">
+        <div class="f-node">S1 FV<span class="d">私のことだ＋怪しくない</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">S2 共感<span class="d">層2→層3</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">S3 再定義<span class="d">あなたのせいじゃない</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">S4 解決策<span class="d">だからこう作った</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">S5 証明<span class="d">実例・数値・人</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node">S6 不安払拭<span class="d">FAQ</span></div>
+        <span class="f-arrow" aria-hidden="true">↓</span>
+        <div class="f-node hot">S7 ゼロリスクの一歩<span class="d">LINE登録</span></div>
+      </div>
+      <p>「共感→再定義→解決」の順序は、Organic側の台本構成（現実の言語化→教育→コンセプト）とLINE後のステップ配信・勉強会の話法とも揃えられる。<strong>接点をまたいで同じ物語構造</strong>にすることで、LP→LINE→勉強会の温度落差をなくす。</p>
     </section>
 
-    <section id="s6">
-      <div class="kicker"><span class="num">06</span><span class="rule"></span></div>
-      <h2 class="h">A/Bテスト観点（検証すべき仮説）</h2>
+    <section class="sec fx" id="s6">
+      <div class="sec-head"><span class="no">§6</span><h2>A/Bテスト観点（検証すべき仮説）</h2></div>
       <p>現状データがないため、優先度は「CVRへの影響が大きい順×検証コストが低い順」の仮説。<strong>1回のテストで変える変数は1つ</strong>。</p>
-      <div class="twrap">
-        <table style="min-width:920px;">
-          <thead><tr><th>#</th><th>テスト対象</th><th>仮説A vs 仮説B</th><th>検証したい問い</th></tr></thead>
+      <div class="twrap wide">
+        <table>
+          <thead>
+            <tr><th>#</th><th>テスト対象</th><th>仮説A vs 仮説B</th><th>検証したい問い</th></tr>
+          </thead>
           <tbody>
-            <tr><th scope="row">1</th><td>FVフックコピー</td><td>情緒型「パートに戻るしかない、と決める前に。」 vs 機能型「未経験から2ヶ月で在宅ワークデビュー」</td><td>流入層に効くのは情緒訴求か機能訴求か（＝ペイン層4インサイトの間接検証になる）</td></tr>
-            <tr><th scope="row">2</th><td>CTA文言</td><td>特典主導「無料で在宅ワークママBOOKを受け取る」 vs 行動主導「LINEで10秒、はじめの一歩」</td><td>「もらえる価値」と「一歩の軽さ」のどちらが登録を後押しするか</td></tr>
-            <tr><th scope="row">3</th><td>実績数値の見せ方</td><td>FVにバッジ掲出 vs S5まで温存（共感を先に）</td><td>数値の早出しは信頼を作るか、広告臭で離脱を生むか</td></tr>
-            <tr><th scope="row">4</th><td>卒業生実例の職種</td><td>オンライン秘書の実例先頭 vs ライター/デザイン先頭</td><td>最多職種（秘書50%）への共感が最大か、憧れ職種が引くか</td></tr>
-            <tr><th scope="row">5</th><td>S2共感の深度</td><td>層2チェックリストのみ vs 層3の地の文まで</td><td>深い共感は「分かってくれてる」を作るか、重すぎて離脱を生むか</td></tr>
-            <tr><th scope="row">6</th><td>流入元別出し分け</td><td>Organic流入用（共感厚め） vs 広告流入用（実績・機能早出し）</td><td>温度の違う流入に同一LPで良いか</td></tr>
-            <tr><th scope="row">7</th><td>FAQの「必ず仕事が取れますか?」</td><td>掲載 vs 非掲載</td><td>正直な回答は信頼でCVRを上げるか、不安を喚起して下げるか</td></tr>
+            <tr><td class="rowh">1</td><td>FVフックコピー</td><td>情緒型「パートに戻るしかない、と決める前に。」 vs 機能型「未経験から2ヶ月で在宅ワークデビュー」</td><td>流入層に効くのは情緒訴求か機能訴求か（＝ペイン層4インサイトの間接検証になる）</td></tr>
+            <tr><td class="rowh">2</td><td>CTA文言</td><td>特典主導「無料で在宅ワークママBOOKを受け取る」 vs 行動主導「LINEで10秒、はじめの一歩」</td><td>「もらえる価値」と「一歩の軽さ」のどちらが登録を後押しするか</td></tr>
+            <tr><td class="rowh">3</td><td>実績数値の見せ方</td><td>FVにバッジ掲出 vs S5まで温存（共感を先に）</td><td>数値の早出しは信頼を作るか、広告臭で離脱を生むか</td></tr>
+            <tr><td class="rowh">4</td><td>卒業生実例の職種</td><td>オンライン秘書の実例先頭 vs ライター/デザイン先頭</td><td>最多職種（秘書50%）への共感が最大か、憧れ職種が引くか</td></tr>
+            <tr><td class="rowh">5</td><td>S2共感の深度</td><td>層2チェックリストのみ vs 層3の地の文まで</td><td>深い共感は「分かってくれてる」を作るか、重すぎて離脱を生むか</td></tr>
+            <tr><td class="rowh">6</td><td>流入元別出し分け</td><td>Organic流入用（共感厚め） vs 広告流入用（実績・機能早出し）</td><td>温度の違う流入に同一LPで良いか</td></tr>
+            <tr><td class="rowh">7</td><td>FAQの「必ず仕事が取れますか?」</td><td>掲載 vs 非掲載</td><td>正直な回答は信頼でCVRを上げるか、不安を喚起して下げるか</td></tr>
           </tbody>
         </table>
       </div>
-      <p>計測設計：ヒートマップ・スクロール到達率・CTA別タップ率を最初から仕込む（現状の計測環境は未確認 →§8）。</p>
+      <p><strong>計測設計</strong>：ヒートマップ・スクロール到達率・CTA別タップ率を最初から仕込む（現状の計測環境は未確認 →§8）。</p>
     </section>
 
-    <section id="s7">
-      <div class="kicker"><span class="num">07</span><span class="rule"></span></div>
-      <h2 class="h">景表法・特商法：NGコピーとOK言い換え対比表</h2>
-      <div class="twrap">
-        <table style="min-width:860px;">
-          <thead><tr><th>NG例（使わない）</th><th>抵触リスク</th><th>OKな言い換え例</th></tr></thead>
+    <section class="sec fx" id="s7">
+      <div class="sec-head"><span class="no">§7</span><h2>景表法・特商法：NGコピーとOK言い換え対比表</h2></div>
+      <div class="twrap wide">
+        <table>
+          <thead>
+            <tr><th>NG例（使わない）</th><th>抵触リスク</th><th>OKな言い換え例</th></tr>
+          </thead>
           <tbody>
             <tr><td>「未経験でも必ず稼げます」</td><td>景表法（優良誤認）・断定的判断の提供</td><td>「未経験から在宅ワークを獲得した卒業生が93.0%※」（※算出定義・時期・母数を注記）</td></tr>
             <tr><td>「誰でも月10万円」</td><td>優良誤認・成果の一般化</td><td>「Aさんは卒業◯ヶ月で月◯万円の案件を獲得（個人の実例です。成果には個人差があります）」</td></tr>
-            <tr><td>「絶対に損はさせません」「返金保証だから安心」（条件を明示しない場合）</td><td>優良誤認・特商法（誇大広告）</td><td>返金・サポートポリシーの条件を明記した上で事実のみ記載</td></tr>
+            <tr><td>「絶対に損はさせません」「返金保証だから安心」（条件を明示しない場合）</td><td>優良誤認・特商法（誇大広告）</td><td>返金・サポートポリシーの<strong>条件を明記した上で</strong>事実のみ記載</td></tr>
             <tr><td>「今だけ残り3名！」（事実でない場合）</td><td>有利誤認</td><td>実際に定員・期限がある場合のみ、その事実を記載（「◯月開講クラスは定員◯名です」）</td></tr>
             <tr><td>「業界No.1」「日本一のスクール」（根拠なし）</td><td>優良誤認（No.1表示ガイドライン）</td><td>第三者による事実のみ：「ベビーテックアワード2024優秀賞受賞」</td></tr>
             <tr><td>「スキル不要・作業だけで収入」</td><td>副業商材的表現・信頼毀損</td><td>「基礎から段階的に学ぶカリキュラムです（学習時間の目安：週◯時間）」</td></tr>
@@ -580,15 +315,14 @@
           </tbody>
         </table>
       </div>
-      <ul class="plain">
+      <ul>
         <li><strong>特商法対応</strong>：LP下部に運営者情報（社名・所在地・連絡先）・プライバシーポリシーへのリンクを必置。LINE登録LPでも事業者の実在性表示は信頼要素として機能する</li>
         <li>実績数値の注記が用意できるまで、数値の単独掲出（注記なしバッジ）は行わない</li>
       </ul>
     </section>
 
-    <section id="s8">
-      <div class="kicker"><span class="num">08</span><span class="rule"></span></div>
-      <h2 class="h">未検証事項（本提案の限界）</h2>
+    <section class="sec fx" id="s8">
+      <div class="sec-head"><span class="no">§8</span><h2>未検証事項（本提案の限界）</h2></div>
       <p>以下はすべて仮説であり、参画後に一次情報で検証・補正する。</p>
       <ul class="checklist">
         <li><strong>既存LPの実物・現状CVR・流入内訳が未取得</strong>。まず現状LP（存在すればLINE登録LP／勉強会LP／本講座LPの3枚構成の可能性が高い）を取得し、本構成案とのギャップ分析を行う。本書はその叩き台</li>
@@ -598,16 +332,39 @@
         <li><strong>FAQの実需</strong>：勉強会・CSに実際に寄せられる質問ログ → S6の質問リストを実データで組み直す</li>
         <li><strong>「しつこく勧誘されません」と書いてよいか</strong> → 実際のLINE配信頻度・勉強会での案内実態との整合を社内確認（書いた以上、運用が伴わないと信頼を毀損する）</li>
         <li><strong>計測環境</strong>（GA4・ヒートマップ・LINE流入元パラメータ）の現状 → A/Bテスト実施の前提</li>
-        <li>社内の表現ガイドライン・法務レビューフローの有無 → 存在すれば§7より優先</li>
+        <li><strong>社内の表現ガイドライン・法務レビューフローの有無</strong> → 存在すれば§7より優先</li>
       </ul>
+      <p class="related">関連：CLAUDE.md（顧客理解・読み替えルール）／01_戦略/02_マーケティング戦略.md（上位戦略・SECTION 3〜6）／01_戦略/01_競合リサーチ.md（競合の訴求）／<a href="skimama_SNS戦略_実行版.html">skimama_SNS戦略_実行版</a>（このLPへ流入させるOrganic側の設計）／brain/08_アウトライン雛形集.md（LP戦略雛形の原典）</p>
     </section>
-
-    <footer class="doc-footer">
-      skimama LP戦略・LPO（実行版）— 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。一次データ取得後、随時更新。
-      <div class="related">関連：<a href="skimama_マーケティング戦略_実行版.html">マーケティング戦略（実行版）</a>／<a href="skimama_SNS戦略_実行版.html">SNS戦略・Organic（実行版）</a></div>
-    </footer>
 
   </main>
 </div>
+
+<footer class="doc-nav">
+  <div class="doc-nav-inner">
+    <p class="kicker">Other Documents</p>
+    <div class="doc-nav-grid">
+      <a href="index.html"><i>Hub</i><span class="t">資料一覧に戻る</span><span class="d">skimama マーケティング資料 トップ</span></a>
+      <a href="skimama_マーケティング戦略_実行版.html"><i>Document 01</i><span class="t">マーケティング戦略（実行版）</span><span class="d">本書の前提となる上位戦略</span></a>
+      <a href="skimama_SNS戦略_実行版.html"><i>Document 02</i><span class="t">SNS戦略（Organic・実行版）</span><span class="d">このLPへ流入させるOrganic側の設計</span></a>
+    </div>
+  </div>
+</footer>
+<div class="doc-foot">skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。</div>
+
+<script>
+addEventListener('DOMContentLoaded',function(){
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.fx').forEach(function(el){ io.observe(el); });
+  }else{
+    document.querySelectorAll('.fx').forEach(function(el){ el.classList.add('in'); });
+  }
+  var toc=document.querySelector('.toc-box');
+  if(toc && matchMedia('(min-width:1024px)').matches){ toc.open=true; }
+});
+</script>
 </body>
 </html>

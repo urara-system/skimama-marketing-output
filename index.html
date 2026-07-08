@@ -6,182 +6,136 @@
 <meta name="color-scheme" content="light dark">
 <title>skimama マーケティング資料</title>
 <meta name="description" content="skimamaのマーケティング資料一覧。マーケティング戦略・SNS戦略（Organic）・LP戦略/LPOの公開版ドキュメントへのリンク集。">
-<style>
-  :root{
-    --paper:#F4EFF0;
-    --paper-raised:#FFFFFF;
-    --ink:#241E22;
-    --ink-soft:#5B4F54;
-    --line:rgba(36,30,34,0.14);
-    --line-soft:rgba(36,30,34,0.08);
-    --accent:#9C3B52;
-    --accent-soft:rgba(156,59,82,0.09);
-    --accent-2:#4F6B58;
-    --accent-2-soft:rgba(79,107,88,0.10);
-    --hypo:#8A6D1E;
-    --hypo-soft:rgba(138,109,30,0.10);
-    --shadow: 0 1px 2px rgba(36,30,34,0.06), 0 8px 24px rgba(36,30,34,0.05);
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --paper:#201A1D;
-      --paper-raised:#282124;
-      --ink:#EDE6E8;
-      --ink-soft:#B9ACB1;
-      --line:rgba(237,230,232,0.16);
-      --line-soft:rgba(237,230,232,0.09);
-      --accent:#E38DA0;
-      --accent-soft:rgba(227,141,160,0.12);
-      --accent-2:#8FB69D;
-      --accent-2-soft:rgba(143,182,157,0.12);
-      --hypo:#D8B24A;
-      --hypo-soft:rgba(216,178,74,0.12);
-      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#201A1D; --paper-raised:#282124; --ink:#EDE6E8; --ink-soft:#B9ACB1;
-    --line:rgba(237,230,232,0.16); --line-soft:rgba(237,230,232,0.09);
-    --accent:#E38DA0; --accent-soft:rgba(227,141,160,0.12);
-    --accent-2:#8FB69D; --accent-2-soft:rgba(143,182,157,0.12);
-    --hypo:#D8B24A; --hypo-soft:rgba(216,178,74,0.12);
-    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
-  }
-  :root[data-theme="light"]{
-    --paper:#F4EFF0; --paper-raised:#FFFFFF; --ink:#241E22; --ink-soft:#5B4F54;
-    --line:rgba(36,30,34,0.14); --line-soft:rgba(36,30,34,0.08);
-    --accent:#9C3B52; --accent-soft:rgba(156,59,82,0.09);
-    --accent-2:#4F6B58; --accent-2-soft:rgba(79,107,88,0.10);
-    --hypo:#8A6D1E; --hypo-soft:rgba(138,109,30,0.10);
-    --shadow: 0 1px 2px rgba(36,30,34,0.06), 0 8px 24px rgba(36,30,34,0.05);
-  }
-
-  *{ box-sizing:border-box; }
-  html{ -webkit-text-size-adjust:100%; }
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
-    line-height:1.8;
-    font-feature-settings:"palt" 1;
-  }
-  h1,h2,h3{
-    font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
-    font-weight:600;
-    text-wrap:balance;
-    color:var(--ink);
-  }
-  a{ color:var(--accent); }
-  ::selection{ background:var(--accent-soft); }
-
-  .page{
-    max-width:760px;
-    margin:0 auto;
-    padding:clamp(2.4rem,6vw,5rem) clamp(1.2rem,4vw,2rem) 5rem;
-  }
-
-  .eyebrow{
-    margin:0; font-size:0.72rem; letter-spacing:0.14em;
-    color:var(--accent); text-transform:uppercase; font-weight:700;
-  }
-  h1.hub-title{
-    margin:0.6rem 0 0; font-size:clamp(1.8rem,4vw,2.3rem); line-height:1.4;
-  }
-  h1.hub-title span{ color:var(--accent); }
-  .hub-lede{
-    margin:1rem 0 0; font-size:1.02rem; color:var(--ink-soft); max-width:56ch;
-  }
-
-  .disclaimer{
-    margin:1.6rem 0 2.6rem;
-    border-left:3px solid var(--accent-2);
-    background:var(--accent-2-soft);
-    padding:0.9rem 1.1rem;
-    border-radius:0 10px 10px 0;
-    font-size:0.86rem;
-    color:var(--ink);
-  }
-
-  .doc-list{
-    display:flex; flex-direction:column; gap:1rem;
-    margin-top:0.6rem;
-  }
-  .doc-card{
-    display:block;
-    background:var(--paper-raised);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:1.4rem 1.5rem;
-    box-shadow:var(--shadow);
-    text-decoration:none;
-    color:inherit;
-    transition:transform 0.15s ease, border-color 0.15s ease;
-  }
-  .doc-card:hover{
-    transform:translateY(-2px);
-    border-color:var(--accent);
-  }
-  .doc-card .kicker-row{
-    display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;
-  }
-  .doc-card .num{
-    font-family:"Noto Serif JP",serif; font-weight:600; color:var(--accent);
-    font-size:0.85rem; font-variant-numeric:tabular-nums;
-  }
-  .doc-card h2{
-    margin:0 0 0.5rem; font-size:1.2rem;
-  }
-  .doc-card p{
-    margin:0; font-size:0.92rem; color:var(--ink-soft);
-  }
-  .doc-card .go{
-    display:inline-flex; align-items:center; gap:0.3rem;
-    margin-top:0.9rem; font-size:0.82rem; font-weight:700; color:var(--accent);
-  }
-
-  footer.hub-footer{
-    margin-top:3rem; padding-top:1.6rem; border-top:1px solid var(--line);
-    font-size:0.78rem; color:var(--ink-soft);
-  }
-</style>
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<a class="skip" href="#docs">本文へスキップ</a>
 
-<div class="page">
-  <p class="eyebrow">skimama marketing</p>
-  <h1 class="hub-title">skimama マーケティング資料<br><span>公開ドキュメント一覧</span></h1>
-  <p class="hub-lede">3C/STP/USPから顧客理解、チャネル戦略・実行フレームまでを整理した、skimamaのマーケティング関連ドキュメント群です。</p>
-
-  <div class="disclaimer">
-    本リポジトリは社内ナレッジベースの一部を公開用に抜粋したものです。参照している社内ドキュメント（CLAUDE.md・競合リサーチ・思考フレームワーク集等）はここには含まれていません。内容の多くは参画前の初版仮説であり、一次データ取得後に随時更新されます。
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">skimama <span class="en">Marketing Docs</span></a>
+    <nav class="topbar-docs" aria-label="ドキュメント">
+      <a href="skimama_マーケティング戦略_実行版.html"><i>01</i>マーケティング戦略</a>
+      <a href="skimama_SNS戦略_実行版.html"><i>02</i>SNS戦略</a>
+      <a href="skimama_LP戦略_実行版.html"><i>03</i>LP戦略・LPO</a>
+    </nav>
   </div>
+</header>
 
-  <div class="doc-list">
-    <a class="doc-card" href="skimama_マーケティング戦略_実行版.html">
-      <div class="kicker-row"><span class="num">01</span></div>
-      <h2>マーケティング戦略（実行版）</h2>
-      <p>3C/STP/USPから顧客理解、ポジショニング・競合分解・9セルマトリクス・KPIロードマップまでの全体戦略。</p>
-      <span class="go">ドキュメントを見る →</span>
-    </a>
-    <a class="doc-card" href="skimama_SNS戦略_実行版.html">
-      <div class="kicker-row"><span class="num">02</span></div>
-      <h2>SNS戦略（Organic・実行版）</h2>
-      <p>Instagram／Threads／TikTok／YouTubeの企画・運用設計。KPIツリー、プラットフォーム別役割分担、9セルマトリクス、台本設計まで。</p>
-      <span class="go">ドキュメントを見る →</span>
-    </a>
-    <a class="doc-card" href="skimama_LP戦略_実行版.html">
-      <div class="kicker-row"><span class="num">03</span></div>
-      <h2>LP戦略・LPO（実行版）</h2>
-      <p>LINE登録LPの構成案・コピー草案。核メッセージのコントラスト法、セクション別ワイヤーフレーム、A/Bテスト観点、景表法対応。</p>
-      <span class="go">ドキュメントを見る →</span>
-    </a>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Skimama Marketing Documents</p>
+    <h1 class="hero-title">最大の敵は他スクールではなく、<br><em>「現状維持」</em>である。</h1>
+    <p class="hero-tagline">
+      「意識が高い系」でも「怪しい副業」でもない、同じ“普通のママ”が伴走してくれる<em style="font-style:normal;color:#EFB3C0;">在宅ワークの実家</em>。
+      <span class="hero-tagline-src">— ポジショニング一文（タグライン仮説）。全ドキュメント・全施策のトーンの判定基準</span>
+    </p>
+    <p class="hero-lede">未経験ママ向け在宅ワーク支援スクール skimama のマーケティング戦略ドキュメント群。3C/STP/USP・顧客理解から、Organic（SNS）の企画・運用設計、LINE登録LPの構成案まで、意思決定と実行の間を埋める「実行版」として整理しています。</p>
+
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="num">93.0<span class="unit">%</span></div>
+        <div class="label">在宅ワーク獲得率※</div>
+      </div>
+      <div class="stat">
+        <div class="num">99.3<span class="unit">%</span></div>
+        <div class="label">メンター満足度※</div>
+      </div>
+      <div class="stat">
+        <div class="num">2<span class="unit">ヶ月</span></div>
+        <div class="label">未経験から在宅ワークデビュー</div>
+      </div>
+      <div class="stat">
+        <div class="num" style="font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.5;">ベビーテック<br>アワード2024</div>
+        <div class="label">優秀賞受賞</div>
+      </div>
+      <p class="stat-note"><b>※実績数値はいずれも算出定義・母数が社内未確認の仮説段階。</b>外部発信時は根拠確認・注記併載を必須とする（各ドキュメントの「要検証」参照）。</p>
+    </div>
   </div>
+</section>
 
-  <footer class="hub-footer">
-    skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。最終更新 2026-07-07。
-  </footer>
-</div>
+<main class="hub-main">
 
+  <section class="hub-sec fx" id="about">
+    <div class="callout amber" style="margin-top:2.2rem;">
+      <span class="co-label">この資料について</span>
+      <p>本リポジトリは社内ナレッジベースの一部を公開用に抜粋したものです。参照している社内ドキュメント（CLAUDE.md・競合リサーチ・思考フレームワーク集等）はここには含まれていません。内容の多くは参画前の初版仮説であり、一次データ取得後に随時更新されます。</p>
+    </div>
+  </section>
+
+  <section class="hub-sec fx" id="docs">
+    <div class="hub-sec-head">
+      <p class="kicker">Documents</p>
+      <h2>公開ドキュメント一覧</h2>
+    </div>
+    <div class="doc-grid">
+      <a class="doc-card" href="skimama_マーケティング戦略_実行版.html">
+        <span class="no">Document 01</span>
+        <h3>マーケティング戦略<span class="sub" style="display:block;margin-top:0.2rem;">Strategy — 実行版</span></h3>
+        <p>3C/STP/USPと顧客理解を土台にした全体戦略。ポジショニング一文・競合分解表・ペルソナ星取り表・9セルマトリクス・フェーズ移行ゲート・KPIロードマップまで。</p>
+        <div class="tags"><span>ポジショニング</span><span>競合分解</span><span>KPIロードマップ</span><span>リスク対応</span></div>
+        <span class="go">ドキュメントを読む<span class="arrow">→</span></span>
+      </a>
+      <a class="doc-card" href="skimama_SNS戦略_実行版.html">
+        <span class="no">Document 02</span>
+        <h3>SNS戦略（Organic）<span class="sub" style="display:block;margin-top:0.2rem;">Organic Social — 実行版</span></h3>
+        <p>Instagram／Threads／TikTok／YouTubeの企画・運用設計。KPIツリー、プラットフォーム別役割分担、9セルマトリクス、台本設計、UGC型化、表現コンプライアンスまで。</p>
+        <div class="tags"><span>KPIツリー</span><span>PF別役割</span><span>企画17本</span><span>台本8ブロック</span></div>
+        <span class="go">ドキュメントを読む<span class="arrow">→</span></span>
+      </a>
+      <a class="doc-card" href="skimama_LP戦略_実行版.html">
+        <span class="no">Document 03</span>
+        <h3>LP戦略・LPO<span class="sub" style="display:block;margin-top:0.2rem;">Landing Page — 実行版</span></h3>
+        <p>LINE登録LPの構成案・コピー草案。核メッセージのコントラスト法、S1〜S7のセクション別ワイヤーフレーム、A/Bテスト観点、景表法・特商法の言い換え対比表。</p>
+        <div class="tags"><span>コントラスト法</span><span>S1〜S7構成</span><span>A/Bテスト</span><span>景表法対応</span></div>
+        <span class="go">ドキュメントを読む<span class="arrow">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="hub-sec fx" id="how-to-read">
+    <div class="hub-sec-head">
+      <p class="kicker">How to Read</p>
+      <h2>3つのドキュメントの関係</h2>
+    </div>
+    <p style="font-size:0.92rem;max-width:46em;color:var(--sumi-soft);">上位戦略が需要創出（Organic）と受け皿（LP）の設計を規定する、という依存関係で書かれています。この順に読むと前提が揃います。</p>
+    <div class="read-flow" style="margin-top:1.3rem;">
+      <div class="rf-step">
+        <span class="t">01 マーケティング戦略</span>
+        <span class="d">誰の・どのステージを・どの仕事（JTBD）で動かすか。チャネルの役割分担と投資順序を決める上位文書。</span>
+      </div>
+      <span class="rf-arrow" aria-hidden="true">→</span>
+      <div class="rf-step">
+        <span class="t">02 SNS戦略（Organic）</span>
+        <span class="d">「需要創出」チャネルの実行翻訳。無関心期〜準備期のママをLINE登録という一歩まで運ぶ企画・運用設計。</span>
+      </div>
+      <span class="rf-arrow" aria-hidden="true">→</span>
+      <div class="rf-step">
+        <span class="t">03 LP戦略・LPO</span>
+        <span class="d">Organicから流入した読者を受け止める「受け皿」。LINE登録LPの構成案・コピー草案・検証計画。</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="hub-footer">
+  <span>skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。</span>
+  <span>最終更新 2026-07-07</span>
+</footer>
+
+<script>
+addEventListener('DOMContentLoaded',function(){
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.fx').forEach(function(el){ io.observe(el); });
+  }else{
+    document.querySelectorAll('.fx').forEach(function(el){ el.classList.add('in'); });
+  }
+});
+</script>
 </body>
 </html>
