@@ -34,6 +34,7 @@
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 12h0"/></symbol>
   <symbol id="i-layout" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16"/><rect x="8" y="13" width="8" height="3.5" rx="1"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="5.5"/><path d="M15.2 15.2 20 20"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4.5 3 19.5h18L12 4.5z"/><path d="M12 10.5v4"/><path d="M12 17.3h0"/></symbol>
 </svg>
 
 <header class="topbar">
@@ -264,39 +265,68 @@
 
     <section class="sec fx" id="s3">
       <div class="sec-head"><span class="no">§3</span><h2>ペルソナ優先度・星取り表（brain/09 §3 の型）</h2></div>
-      <p>CLAUDE.mdのTier仮説を、入口の悩みと刺さる訴求順序まで具体化。</p>
-      <div class="twrap wide">
-        <table>
-          <thead>
-            <tr><th>優先度</th><th>ペルソナ</th><th>痛みの強度</th><th>入口→中間→出口の訴求順序</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="rowh"><strong>1st</strong></td>
-              <td>育休復帰前後で「パートに戻るしかないのか」と悩む層／パート収入の天井に限界を感じている層</td>
-              <td>★★★★★</td>
-              <td>入口：「このままパートに戻ったら何を失うか」の可視化 → 中間：獲得率93%・職種を選べる自由 → 出口：分割12,000円〜・無料勉強会でのゼロリスク体験</td>
-            </tr>
-            <tr>
-              <td class="rowh"><strong>2nd</strong></td>
-              <td>専業主婦で「そろそろ何か始めたい」と漠然と思っている層</td>
-              <td>★★★★☆</td>
-              <td>入口：「自己肯定感を取り戻す」共感コンテンツ → 中間：同じ境遇のママ仲間・メンター伴走の安心 → 出口：無料勉強会（特典：在宅ワークママBOOK）</td>
-            </tr>
-            <tr>
-              <td class="rowh"><strong>3rd</strong></td>
-              <td>小学生以上の子を持ち「小1の壁」に直面／地方在住で働き口が限られる層</td>
-              <td>★★★★☆</td>
-              <td>入口：「小1の壁」あるあるの共感 → 中間：フルオンライン・時間拘束のなさ → 出口：職種診断・卒業生実例</td>
-            </tr>
-            <tr>
-              <td class="rowh"><strong>4th</strong></td>
-              <td>育休中で復職に迷いがある層（将来層としてのフォロー）</td>
-              <td>★★★☆☆</td>
-              <td>入口：産後キャリア不安の社会課題化コンテンツ → 中間：将来の選択肢としての在宅ワーク認知 → 出口：LINE登録によるナーチャリング開始</td>
-            </tr>
-          </tbody>
-        </table>
+      <p>CLAUDE.mdのTier仮説を、入口の悩みと刺さる訴求順序まで具体化。カード＝ペルソナ（優先度順）、バー＝痛みの強度（5段階）、下段＝入口→中間→出口の訴求順序。</p>
+      <div class="persona-grid">
+        <article class="persona top">
+          <span class="ps-ghost" aria-hidden="true">1</span>
+          <span class="ps-rank">1st — 最優先</span>
+          <p class="ps-who">育休復帰前後で「パートに戻るしかないのか」と悩む層／パート収入の天井に限界を感じている層</p>
+          <div class="ps-pain" role="img" aria-label="痛みの強度：5段階中5">
+            <span class="k" aria-hidden="true">痛みの強度</span>
+            <span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+            <span class="v" aria-hidden="true">5/5</span>
+          </div>
+          <ol class="ps-route">
+            <li><b>入口</b><span>「このままパートに戻ったら何を失うか」の可視化</span></li>
+            <li><b>中間</b><span>獲得率93%・職種を選べる自由</span></li>
+            <li><b>出口</b><span>分割12,000円〜・無料勉強会でのゼロリスク体験</span></li>
+          </ol>
+        </article>
+        <article class="persona">
+          <span class="ps-ghost" aria-hidden="true">2</span>
+          <span class="ps-rank">2nd</span>
+          <p class="ps-who">専業主婦で「そろそろ何か始めたい」と漠然と思っている層</p>
+          <div class="ps-pain" role="img" aria-label="痛みの強度：5段階中4">
+            <span class="k" aria-hidden="true">痛みの強度</span>
+            <span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+            <span class="v" aria-hidden="true">4/5</span>
+          </div>
+          <ol class="ps-route">
+            <li><b>入口</b><span>「自己肯定感を取り戻す」共感コンテンツ</span></li>
+            <li><b>中間</b><span>同じ境遇のママ仲間・メンター伴走の安心</span></li>
+            <li><b>出口</b><span>無料勉強会（特典：在宅ワークママBOOK）</span></li>
+          </ol>
+        </article>
+        <article class="persona">
+          <span class="ps-ghost" aria-hidden="true">3</span>
+          <span class="ps-rank">3rd</span>
+          <p class="ps-who">小学生以上の子を持ち「小1の壁」に直面／地方在住で働き口が限られる層</p>
+          <div class="ps-pain" role="img" aria-label="痛みの強度：5段階中4">
+            <span class="k" aria-hidden="true">痛みの強度</span>
+            <span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+            <span class="v" aria-hidden="true">4/5</span>
+          </div>
+          <ol class="ps-route">
+            <li><b>入口</b><span>「小1の壁」あるあるの共感</span></li>
+            <li><b>中間</b><span>フルオンライン・時間拘束のなさ</span></li>
+            <li><b>出口</b><span>職種診断・卒業生実例</span></li>
+          </ol>
+        </article>
+        <article class="persona">
+          <span class="ps-ghost" aria-hidden="true">4</span>
+          <span class="ps-rank">4th</span>
+          <p class="ps-who">育休中で復職に迷いがある層（将来層としてのフォロー）</p>
+          <div class="ps-pain" role="img" aria-label="痛みの強度：5段階中3">
+            <span class="k" aria-hidden="true">痛みの強度</span>
+            <span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+            <span class="v" aria-hidden="true">3/5</span>
+          </div>
+          <ol class="ps-route">
+            <li><b>入口</b><span>産後キャリア不安の社会課題化コンテンツ</span></li>
+            <li><b>中間</b><span>将来の選択肢としての在宅ワーク認知</span></li>
+            <li><b>出口</b><span>LINE登録によるナーチャリング開始</span></li>
+          </ol>
+        </article>
       </div>
       <div class="callout">
         <span class="co-label">ポイント（brain/09 §3準拠）</span>
@@ -667,44 +697,38 @@
 
     <section class="sec fx" id="s9">
       <div class="sec-head"><span class="no">§9</span><h2>リスクと対応方針表（brain/09 §13）</h2></div>
-      <div class="twrap wide">
-        <table>
-          <thead>
-            <tr><th>リスク</th><th>影響</th><th>対応方針</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>現状値（フォロワー・LINE登録・CPA等）が未取得のままKPI目標を確定してしまう</td>
-              <td>目標が非現実的になり、Organic投資の意思決定を誤る</td>
-              <td>着手初週で社内データ・既存アカウント現状の棚卸しを最優先タスク化</td>
-            </tr>
-            <tr>
-              <td>「獲得率93%」等の実績数値の算出根拠が未確認</td>
-              <td>外部発信時に景表法リスク、社内外の信頼低下</td>
-              <td>発信前に算出定義・母数を確認し、根拠を開示できる形に整理（brain/09 §9エビデンス戦略）</td>
-            </tr>
-            <tr>
-              <td>Famm・SHElikesの実クリエイティブ未確認のまま訴求を推定で作る</td>
-              <td>差別化訴求が的外れになるリスク</td>
-              <td>Meta広告ライブラリでの実物収集を早期に実施（01_競合リサーチ.md §8）</td>
-            </tr>
-            <tr>
-              <td>メンター品質がスケール時に毀損する</td>
-              <td>獲得率93%・満足度99.3%というブランド最大の資産が崩れる</td>
-              <td>メンター1名あたり受講生数・品質指標をKPIロードマップに組み込み、拡大速度をゲート条件で制御（§6）</td>
-            </tr>
-            <tr>
-              <td>提携先「フジ子さん」がスクール経由をバイパスし直接競合化する</td>
-              <td>卒業後の案件獲得導線が弱まる</td>
-              <td>提携関係の位置づけ（送客 vs 競合）を早期に整理（CLAUDE.md要検証事項）</td>
-            </tr>
-            <tr>
-              <td>Organic投稿がフォロワー数の最大化だけを目的化する</td>
-              <td>LINE登録・勉強会予約という本来のKPIから逸れる</td>
-              <td>フォロワー数を非目的化し、LINE登録転換数を常に主指標として運用会議で確認</td>
-            </tr>
-          </tbody>
-        </table>
+      <p>カード＝リスク。<span style="color:var(--karashi);font-weight:700;">影響</span>＝放置した場合に起きること、<span style="color:var(--matsuba);font-weight:700;">対応</span>＝先回りの方針。</p>
+      <div class="risk-grid">
+        <article class="risk">
+          <p class="rk-t"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>現状値（フォロワー・LINE登録・CPA等）が未取得のままKPI目標を確定してしまう</p>
+          <div class="rk-row impact"><span class="rk-k">影響</span><p>目標が非現実的になり、Organic投資の意思決定を誤る</p></div>
+          <div class="rk-row action"><span class="rk-k">対応</span><p>着手初週で社内データ・既存アカウント現状の棚卸しを最優先タスク化</p></div>
+        </article>
+        <article class="risk">
+          <p class="rk-t"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>「獲得率93%」等の実績数値の算出根拠が未確認</p>
+          <div class="rk-row impact"><span class="rk-k">影響</span><p>外部発信時に景表法リスク、社内外の信頼低下</p></div>
+          <div class="rk-row action"><span class="rk-k">対応</span><p>発信前に算出定義・母数を確認し、根拠を開示できる形に整理（brain/09 §9エビデンス戦略）</p></div>
+        </article>
+        <article class="risk">
+          <p class="rk-t"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>Famm・SHElikesの実クリエイティブ未確認のまま訴求を推定で作る</p>
+          <div class="rk-row impact"><span class="rk-k">影響</span><p>差別化訴求が的外れになるリスク</p></div>
+          <div class="rk-row action"><span class="rk-k">対応</span><p>Meta広告ライブラリでの実物収集を早期に実施（01_競合リサーチ.md §8）</p></div>
+        </article>
+        <article class="risk">
+          <p class="rk-t"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>メンター品質がスケール時に毀損する</p>
+          <div class="rk-row impact"><span class="rk-k">影響</span><p>獲得率93%・満足度99.3%というブランド最大の資産が崩れる</p></div>
+          <div class="rk-row action"><span class="rk-k">対応</span><p>メンター1名あたり受講生数・品質指標をKPIロードマップに組み込み、拡大速度をゲート条件で制御（§6）</p></div>
+        </article>
+        <article class="risk">
+          <p class="rk-t"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>提携先「フジ子さん」がスクール経由をバイパスし直接競合化する</p>
+          <div class="rk-row impact"><span class="rk-k">影響</span><p>卒業後の案件獲得導線が弱まる</p></div>
+          <div class="rk-row action"><span class="rk-k">対応</span><p>提携関係の位置づけ（送客 vs 競合）を早期に整理（CLAUDE.md要検証事項）</p></div>
+        </article>
+        <article class="risk">
+          <p class="rk-t"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>Organic投稿がフォロワー数の最大化だけを目的化する</p>
+          <div class="rk-row impact"><span class="rk-k">影響</span><p>LINE登録・勉強会予約という本来のKPIから逸れる</p></div>
+          <div class="rk-row action"><span class="rk-k">対応</span><p>フォロワー数を非目的化し、LINE登録転換数を常に主指標として運用会議で確認</p></div>
+        </article>
       </div>
     </section>
 

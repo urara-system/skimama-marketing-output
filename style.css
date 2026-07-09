@@ -3,7 +3,10 @@
    コンセプト：ダーク×テック基調への全面転換（クライアント確定方針）。
    ただし紫/青の汎用ネオンには逃げず、ブランド資産である小豆（azuki）を
    ダーク背景上のグロー・アクセントの中心に据える。
-   和文明朝×ゴシックの編集的タイポグラフィは維持（skimamaらしさの核）。
+   タイポグラフィはクライアント指示（参考サイトMeme準拠）により
+   全面ゴシック体基調へ更新（v2.1）。明朝は廃止し、階調は
+   「太さ」で作る：見出し＝極太ゴシック（W8/800）、本文＝通常ウェイト、
+   数値・英字ラベル＝欧文フォント（--font-num）のコントラストで担保。
    背景モチーフはコードスニペットではなく「刺し縫い（ステッチ）の点線」＋
    「戦略ドキュメント自身のフレーズが薄く浮かぶアンビエントテキスト」。
    -------------------------------------------------------------
@@ -51,7 +54,9 @@
   --c1:#D4718A; --c2:#41925F; --c3:#B28C2B; --c4:#9668BC;
   --shadow:0 1px 2px rgba(0,0,0,0.5), 0 14px 40px rgba(0,0,0,0.45);
   --glow-card:0 0 0 1px rgba(226,143,162,0.06), 0 8px 40px rgba(156,59,82,0.10);
-  --font-serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+  /* 見出し用：極太ゴシック（明朝は廃止。--font-serifは互換エイリアスとして残置） */
+  --font-head:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+  --font-serif:var(--font-head);
   --font-sans:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
   --font-num:"Avenir Next","Helvetica Neue","Segoe UI",Arial,sans-serif;
   /* 刺し縫い（running stitch）モチーフ */
@@ -75,7 +80,7 @@ body{
   overflow-wrap:break-word;
   overflow-x:hidden; /* safety net: no element should force page-level horizontal scroll */
 }
-h1,h2,h3{ font-family:var(--font-serif); font-weight:600; color:var(--sumi); text-wrap:balance; line-height:1.45; }
+h1,h2,h3{ font-family:var(--font-head); font-weight:800; color:var(--sumi); text-wrap:balance; line-height:1.45; letter-spacing:0.01em; }
 h4,h5{ font-family:var(--font-sans); font-weight:700; color:var(--sumi); }
 a{ color:var(--azuki); text-decoration-thickness:1px; text-underline-offset:3px; }
 a:hover{ color:var(--azuki-deep); }
@@ -161,7 +166,7 @@ small{ color:var(--sumi-soft); }
   display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap;
 }
 .brand{
-  font-family:var(--font-serif); font-weight:700; font-size:1.02rem;
+  font-family:var(--font-head); font-weight:700; font-size:1.02rem;
   color:var(--sumi); text-decoration:none; letter-spacing:0.04em;
   display:inline-flex; align-items:baseline; gap:0.55rem;
 }
@@ -256,7 +261,7 @@ small{ color:var(--sumi-soft); }
 /* 層3：アンビエントフレーズ（戦略ドキュメント自身の言葉が薄く浮かぶ） */
 .amb{ position:absolute; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
 .amb span{
-  position:absolute; font-family:var(--font-serif); white-space:nowrap;
+  position:absolute; font-family:var(--font-head); font-weight:600; white-space:nowrap;
   color:var(--azuki); opacity:0.07; letter-spacing:0.3em; font-size:0.95rem;
   user-select:none;
 }
@@ -281,14 +286,14 @@ small{ color:var(--sumi-soft); }
 .hero-title{
   margin:1.1rem 0 0; color:var(--fukaume-ink);
   font-size:clamp(1.8rem,5vw,3.4rem);
-  font-weight:700; line-height:1.5; letter-spacing:0.015em;
+  font-weight:800; line-height:1.5; letter-spacing:0.015em;
   max-width:24em;
   text-shadow:0 0 60px rgba(156,59,82,0.35);
 }
 .hero-title em{ font-style:normal; color:#EFB3C0; text-shadow:0 0 28px rgba(226,143,162,0.5); }
 .hero-tagline{
   position:relative; margin:2rem 0 0; max-width:36em;
-  font-family:var(--font-serif); font-size:clamp(1.02rem,1.9vw,1.25rem);
+  font-family:var(--font-head); font-weight:600; font-size:clamp(1.02rem,1.9vw,1.25rem);
   line-height:2.1; color:var(--fukaume-ink);
   padding-left:1.2em;
   border-left:2px solid #EFB3C0;
@@ -388,7 +393,7 @@ small{ color:var(--sumi-soft); }
   letter-spacing:0.22em; color:var(--azuki); font-variant-numeric:tabular-nums;
 }
 .doc-card h3{
-  margin:0.7rem 0 0.15rem; font-family:var(--font-serif);
+  margin:0.7rem 0 0.15rem; font-family:var(--font-head);
   font-size:1.22rem; line-height:1.5;
 }
 .doc-card .sub{
@@ -476,7 +481,7 @@ small{ color:var(--sumi-soft); }
 }
 .doc-hero h1{
   margin:1rem 0 0; font-size:clamp(1.7rem,4.4vw,2.7rem); line-height:1.5; letter-spacing:0.01em;
-  max-width:24em; font-weight:700;
+  max-width:24em; font-weight:800;
   text-shadow:0 0 50px rgba(156,59,82,0.3);
 }
 .doc-hero .doc-lede{
@@ -489,7 +494,7 @@ small{ color:var(--sumi-soft); }
 .doc-hero .meta-row .sep{ color:var(--line-strong); }
 .doc-vertical{
   position:absolute; top:clamp(2.8rem,7vw,4.8rem); right:clamp(1rem,3vw,2rem);
-  writing-mode:vertical-rl; font-family:var(--font-serif);
+  writing-mode:vertical-rl; font-family:var(--font-head);
   font-size:0.78rem; letter-spacing:0.35em; color:var(--sumi-faint);
   border-left:1px solid var(--line); padding-left:0.7rem;
   max-height:16em;
@@ -662,16 +667,16 @@ small{ color:var(--sumi-soft); }
 .draft .draft-body > :first-child{ margin-top:0; }
 .draft .draft-body > :last-child{ margin-bottom:0; }
 .draft .copy{
-  font-family:var(--font-serif); font-size:1.06rem; line-height:2; margin:0.5rem 0;
+  font-family:var(--font-head); font-weight:600; font-size:1.06rem; line-height:2; margin:0.5rem 0;
 }
-.draft .copy.big{ font-size:clamp(1.15rem,2.4vw,1.45rem); font-weight:600; }
+.draft .copy.big{ font-size:clamp(1.15rem,2.4vw,1.45rem); font-weight:800; }
 .draft ul{ margin:0.6rem 0; }
 
 /* pull quote */
 .pull{
   position:relative; margin:1.8rem 0; padding:0.4rem 0 0.4rem 1.6rem;
   border-left:2px solid var(--azuki);
-  font-family:var(--font-serif); font-size:clamp(1.05rem,2vw,1.25rem); line-height:2.1;
+  font-family:var(--font-head); font-weight:600; font-size:clamp(1.05rem,2vw,1.25rem); line-height:2.1;
 }
 .pull::before{
   content:""; position:absolute; left:-2px; top:0; width:2px; height:100%;
@@ -687,7 +692,7 @@ small{ color:var(--sumi-soft); }
 }
 .define .row:last-child{ border-bottom:none; }
 .define .k{
-  padding:1rem 1.1rem; font-family:var(--font-serif); font-weight:700; font-size:0.92rem;
+  padding:1rem 1.1rem; font-family:var(--font-head); font-weight:700; font-size:0.92rem;
   color:var(--azuki); border-right:1px solid var(--line-soft);
 }
 .define .v{ padding:1rem 1.2rem; font-size:0.9rem; line-height:1.95; }
@@ -751,7 +756,7 @@ small{ color:var(--sumi-soft); }
   border:1px solid var(--line); border-radius:8px; background:var(--kinu);
   box-shadow:var(--shadow); padding:1.2rem 1.25rem 1.1rem;
 }
-.gate .gate-title{ margin:0; font-family:var(--font-serif); font-weight:700; font-size:1rem; }
+.gate .gate-title{ margin:0; font-family:var(--font-head); font-weight:700; font-size:1rem; }
 .gate .gate-sub{ margin:0.15rem 0 0.8rem; font-size:0.76rem; color:var(--sumi-soft); }
 .gate ol{ margin:0; padding-left:1.3em; font-size:0.86rem; }
 .gate ol li{ margin:0.5rem 0; }
@@ -807,7 +812,7 @@ small{ color:var(--sumi-soft); }
   transition:border-color .18s ease, box-shadow .18s ease;
 }
 .doc-nav-grid a:hover{ border-color:rgba(226,143,162,0.55); box-shadow:0 0 26px rgba(156,59,82,0.18); }
-.doc-nav-grid .t{ display:block; font-weight:700; font-size:0.92rem; font-family:var(--font-serif); }
+.doc-nav-grid .t{ display:block; font-weight:700; font-size:0.92rem; font-family:var(--font-head); }
 .doc-nav-grid .d{ display:block; margin-top:0.25rem; font-size:0.76rem; color:var(--sumi-soft); }
 .doc-nav-grid i{
   font-style:normal; font-family:var(--font-num); font-size:0.62rem; font-weight:600;
@@ -1055,3 +1060,130 @@ th .ti{ color:var(--azuki); }
 
 /* ---------- カウントアップ数値 ---------- */
 .cnt{ font-variant-numeric:tabular-nums; }
+
+/* =============================================================
+   v2.1で追加した図解コンポーネント
+   （表・テキスト羅列の図解化：ペルソナカード／リスクカード／
+     企画カード／A/Bテスト優先度レーン）
+   ============================================================= */
+
+/* ---------- persona card（優先度・痛み強度・訴求ルート） ---------- */
+.persona-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1rem; margin:1.4rem 0; }
+.persona{
+  position:relative; overflow:hidden;
+  border:1px solid var(--line); border-radius:8px;
+  background:var(--kinu); box-shadow:var(--shadow);
+  padding:1.15rem 1.2rem 1.1rem;
+}
+.persona.top{ border-color:rgba(226,143,162,0.5); box-shadow:var(--shadow), 0 0 26px rgba(156,59,82,0.16); }
+.persona .ps-ghost{
+  position:absolute; right:0.3rem; top:-0.9rem; z-index:0;
+  font-family:var(--font-num); font-weight:700; font-size:4.8rem; line-height:1.4;
+  color:transparent; -webkit-text-stroke:1px rgba(226,143,162,0.16);
+  pointer-events:none; user-select:none; letter-spacing:-0.02em;
+}
+.persona > *{ position:relative; z-index:1; }
+.persona .ps-rank{
+  font-family:var(--font-num); font-weight:700; font-size:0.78rem;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--azuki);
+}
+.persona .ps-who{ margin:0.4rem 0 0; font-weight:700; font-size:0.89rem; line-height:1.85; }
+.ps-pain{ display:flex; align-items:center; gap:0.6rem; margin:0.9rem 0 0; }
+.ps-pain .k{ font-size:0.7rem; font-weight:700; color:var(--sumi-soft); letter-spacing:0.05em; white-space:nowrap; }
+.ps-pain .bar{ flex:1 1 auto; max-width:10.5rem; display:flex; gap:2px; }
+.ps-pain .bar i{ height:0.55rem; flex:1 1 0; border-radius:2px; background:rgba(242,233,237,0.06); border:1px solid var(--line-soft); }
+.ps-pain .bar i.on{ background:var(--c1); border-color:transparent; }
+.ps-pain .v{
+  font-family:var(--font-num); font-weight:700; font-size:0.8rem;
+  color:var(--sumi); font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.ps-route{
+  list-style:none; margin:1rem 0 0; padding:0.85rem 0 0;
+  border-top:1px dashed var(--line);
+  display:flex; flex-direction:column; gap:0.5rem;
+}
+.ps-route li{
+  margin:0; display:grid; grid-template-columns:3.6em minmax(0,1fr); gap:0.65rem;
+  font-size:0.8rem; line-height:1.8; color:var(--sumi-soft);
+}
+.ps-route li b{
+  align-self:start; text-align:center;
+  font-size:0.68rem; font-weight:700; line-height:1.7; color:var(--azuki);
+  border:1px solid rgba(226,143,162,0.35); border-radius:999px;
+  background:var(--azuki-soft); margin-top:0.15em;
+}
+.ps-route li:last-child b{ background:var(--azuki); color:var(--ink-dark); border-color:transparent; }
+.ps-route li span strong{ color:var(--sumi); }
+
+/* ---------- risk card（リスク・影響・対応方針） ---------- */
+.risk-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:0.9rem; margin:1.4rem 0; }
+.risk{
+  border:1px solid var(--line); border-left:3px solid var(--c1); border-radius:8px;
+  background:var(--kinu); box-shadow:var(--shadow);
+  padding:1rem 1.1rem 0.95rem;
+}
+.risk .rk-t{
+  margin:0; font-weight:700; font-size:0.88rem; line-height:1.85; color:var(--sumi);
+  display:flex; gap:0.55rem; align-items:flex-start;
+}
+.risk .rk-t .ico{ color:var(--c1); width:1.2em; height:1.2em; margin-top:0.35em; }
+.rk-row{
+  display:grid; grid-template-columns:3.4em minmax(0,1fr); gap:0.65rem;
+  margin-top:0.7rem; font-size:0.8rem; line-height:1.8; color:var(--sumi-soft);
+}
+.rk-row p{ margin:0; }
+.rk-row .rk-k{
+  align-self:start; text-align:center;
+  font-size:0.68rem; font-weight:700; line-height:1.7;
+  border-radius:999px; margin-top:0.15em;
+}
+.rk-row.impact .rk-k{ color:var(--karashi); background:var(--karashi-soft); border:1px solid rgba(217,180,87,0.3); }
+.rk-row.action .rk-k{ color:var(--matsuba); background:var(--matsuba-soft); border:1px solid rgba(147,186,161,0.3); }
+
+/* ---------- idea card（企画：フックを主役にしたカード） ---------- */
+.idea-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:0.7rem; margin:0.2rem 0 0; }
+.idea{
+  display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:8px;
+  background:var(--yoru-2); padding:0.9rem 1rem 0.85rem;
+}
+.idea .id-no{
+  font-family:var(--font-num); font-weight:700; font-size:0.66rem;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--azuki);
+}
+.idea .id-t{ margin:0.35rem 0 0; font-family:var(--font-head); font-weight:800; font-size:0.95rem; line-height:1.65; color:var(--sumi); }
+.idea .id-hook{
+  margin:0.65rem 0 0; padding:0.5rem 0.75rem;
+  border-left:2px solid var(--azuki); border-radius:0 6px 6px 0;
+  background:var(--azuki-soft);
+  font-weight:700; font-size:0.85rem; line-height:1.85; color:var(--sumi);
+}
+.idea .id-d{ margin:0.65rem 0 0; font-size:0.76rem; line-height:1.85; color:var(--sumi-soft); flex-grow:1; }
+
+/* ---------- A/Bテスト優先度レーン ---------- */
+.ab-lane-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.ab-lane{
+  list-style:none; display:flex; gap:0.45rem; align-items:stretch;
+  margin:0.2rem 0 0; padding:0; min-width:680px;
+}
+.ab-lane li{
+  flex:1 1 0; min-width:0; margin:0;
+  border:1px solid var(--line); border-radius:7px;
+  background:var(--yoru-2); padding:0.55rem 0.65rem 0.5rem;
+  font-size:0.71rem; line-height:1.7; color:var(--sumi-soft);
+}
+.ab-lane li b{
+  display:block; font-family:var(--font-num); font-weight:700; font-size:1.05rem;
+  color:var(--azuki); font-variant-numeric:tabular-nums;
+}
+.ab-lane li:first-child{
+  border-color:rgba(226,143,162,0.6); background:var(--azuki-soft);
+  color:var(--sumi); box-shadow:0 0 18px rgba(156,59,82,0.18);
+}
+.ab-axis{
+  min-width:680px; margin-top:0.6rem; padding-top:0.5rem;
+  background-image:var(--stitch); background-repeat:no-repeat; background-size:100% 1px;
+  display:flex; justify-content:space-between; gap:1rem;
+  font-size:0.7rem; font-weight:700; color:var(--sumi-faint); letter-spacing:0.04em;
+}
+.ab-axis .hi{ color:var(--azuki); }
