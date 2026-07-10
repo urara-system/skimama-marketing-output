@@ -734,6 +734,12 @@ small{ color:var(--sumi-soft); }
 .step.lp{ padding-left:3.1rem; }
 .step.lp::before{ left:0.98rem; }
 
+.step.hot .step-body{
+  background:var(--azuki-soft); border:1px solid rgba(226,143,162,0.35); border-radius:8px;
+  padding:0.8rem 1rem; margin-top:0.7rem;
+}
+.step.hot .step-title{ color:var(--azuki-deep); }
+
 /* フロー */
 .flow{ margin:1.4rem 0; display:flex; flex-direction:column; gap:0; }
 .flow .f-node{

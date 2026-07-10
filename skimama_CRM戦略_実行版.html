@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>skimama CRM戦略（L-step）｜実行版</title>
-<meta name="description" content="skimamaのCRM戦略（L-step・実行版）。オンライン秘書志望のボリューム層とInstagram運用代行・デザイナー志望の高確度層をトラック分岐させるタグ・シナリオ・スコアリング設計をまとめた公開資料。">
+<meta name="description" content="skimamaのCRM戦略（L-step・実行版 v2）。媒体・投稿別の入口アーキタイプから、オプトイン〜勉強会参加〜購入までの感情ジャーニーをロジックツリーで設計し、ブロック率ガバナンスまで踏み込んだ公開資料。">
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
 </head>
@@ -47,23 +47,23 @@
 <div class="doc-hero">
   <div class="amb" aria-hidden="true">
     <span class="v lg" style="top:10%;right:10%;">同じ配信を、同じ温度で送らない</span>
-    <span style="bottom:18%;left:2%;">ビジネスという言葉に、まだ距離がある人へ</span>
-    <span class="num" style="top:20%;left:28%;">TRACK A / B / C — TAG × SCENARIO</span>
+    <span style="bottom:18%;left:2%;">ブロックされるくらいなら、関係を薄く長く保つ</span>
+    <span class="num" style="top:20%;left:26%;">S0 → S7 — EMOTION STATE MACHINE</span>
   </div>
   <div class="doc-hero-inner hero-load">
-    <span class="doc-vertical" aria-hidden="true">実行版・定性設計フェーズ初版</span>
-    <p class="kicker">Document 04 — CRM (L-step)</p>
+    <span class="doc-vertical" aria-hidden="true">実行版v2・定性設計フェーズ</span>
+    <p class="kicker">Document 04 — CRM (L-step) · v2</p>
     <h1>skimama CRM戦略（L-step）<br>実行版</h1>
-    <p class="doc-lede">LINE登録者を一律に同じシナリオへ流すのではなく、オンライン秘書志望が中心の未経験・主婦層（最大ボリューム）と、Instagram運用代行・デザイナー志望の高確度層を<strong>登録直後の1問診断＋行動ログ</strong>でトラック分岐させ、トーン・接触速度・訴求をトラックごとに設計するCRM戦略。ステータス：<strong>社内一次データ取得前の定性設計フェーズ初版</strong>。</p>
+    <p class="doc-lede">LINE登録者を一律のシナリオへ流すのではなく、<strong>①どの媒体・投稿からどんな感情で登録したか（入口アーキタイプ）、②登録後の感情がどう遷移し態度変容するか（ロジックツリー）</strong>を行動ログ基準のIF-THEN分岐で設計するCRM戦略 v2。配信のしすぎによるブロック率上昇・信頼毀損を防ぐガバナンスまで踏み込む。ステータス：<strong>社内一次データ取得前の定性設計フェーズ</strong>。</p>
     <div class="meta-row">
       <span>最終更新：2026-07-10</span><span class="sep">／</span>
       <span class="hypo">定性設計フェーズ・要データ検証</span><span class="sep">／</span>
-      <span>3トラック分岐＋タグ／スコアリング設計</span>
+      <span>入口アーキタイプ×感情ステート×ブロック率ガバナンス</span>
     </div>
     <div class="notice">本リポジトリは社内ナレッジベースの一部を公開用に抜粋したものです。参照している社内ドキュメント（CLAUDE.md・競合リサーチ・思考フレームワーク集等）はここには含まれていません。</div>
-    <div class="callout amber" style="max-width:52em;">
+    <div class="callout amber" style="max-width:56em;">
       <span class="co-label">重要な前提</span>
-      <p>本書は社内一次データ（開封率・タップ率・勉強会予約率・卒業生職種内訳の最新値等）が揃う前の<strong>定性設計フェーズの成果物</strong>。分岐ロジック・トーン設計・シナリオ骨子・タグ／スコア設計はL-step構築にそのまま着手できる粒度まで書き下ろしているが、閾値・配信間隔・KPI目標値は仮説であり、データ到着後に§10〜11で更新する前提。</p>
+      <p>本書は社内一次データ（開封率・タップ率・勉強会予約率・ブロック率の現状値等）が揃う前の<strong>定性設計フェーズの成果物</strong>。v2では単なる職種トラック分岐から一段掘り下げ、入口アーキタイプ・感情ジャーニーのロジックツリー・配信頻度ガバナンスを追加した。分岐条件の閾値・配信間隔・KPI目標値は仮説であり、データ到着後に§13・§15で更新する前提。</p>
     </div>
   </div>
 </div>
@@ -76,14 +76,18 @@
         <a href="#s1"><b>01</b>CRM設計の全体方針</a>
         <a href="#s2"><b>02</b>L-stepの機能棚卸し</a>
         <a href="#s3"><b>03</b>トラック分岐の全体設計</a>
-        <a href="#s4"><b>04</b>トラック別ペルソナ・トーン</a>
-        <a href="#s5"><b>05</b>不安・検討ポイントへの回答</a>
-        <a href="#s6"><b>06</b>共通シナリオ骨子（Day0〜25）</a>
-        <a href="#s7"><b>07</b>タグ・スコアリング設計</a>
-        <a href="#s8"><b>08</b>リッチメニュー設計</a>
-        <a href="#s9"><b>09</b>測定・PDCA設計</a>
-        <a href="#s10"><b>10</b>表現コンプライアンス</a>
-        <a href="#s11"><b>11</b>未検証事項・次のアクション</a>
+        <a href="#s4"><b>04</b>入口アーキタイプ</a>
+        <a href="#s5"><b>05</b>感情ジャーニー・ロジックツリー</a>
+        <a href="#s6"><b>06</b>配信頻度・ブロック率ガバナンス</a>
+        <a href="#s7"><b>07</b>トラック別詳細設計・序</a>
+        <a href="#s8"><b>08</b>トラックA詳細設計</a>
+        <a href="#s9"><b>09</b>トラックB詳細設計</a>
+        <a href="#s10"><b>10</b>トラックC詳細設計</a>
+        <a href="#s11"><b>11</b>タグ・スコアリング設計</a>
+        <a href="#s12"><b>12</b>リッチメニュー設計</a>
+        <a href="#s13"><b>13</b>測定・PDCA設計</a>
+        <a href="#s14"><b>14</b>表現コンプライアンス</a>
+        <a href="#s15"><b>15</b>未検証事項・次のアクション</a>
       </nav>
     </details>
     <div class="rail-links">
@@ -100,20 +104,23 @@
       <div class="sec-head"><span class="no">§1</span><h2>CRM設計の全体方針</h2></div>
 
       <h3>1-1 なぜ「定性→データ」の順で進めるか</h3>
-      <p>L-stepは配信後に開封率・タップ率・回答率がすべてログとして残るツール。先に分岐ロジックとメッセージの型を決めておかないと、データが溜まっても「何が原因で数字が動いたか」を切り分けられない（トーンが悪いのか、分岐が粗いのか、配信間隔が悪いのかが混ざる）。本書は初期仮説シナリオを確定させることが目的で、運用開始後は§9のPDCA設計に沿ってトラック別の指標を比較し、仮説を棄却・更新していく。</p>
+      <p>L-stepは配信後に開封率・タップ率・回答率がすべてログとして残るツール。先に分岐ロジックとメッセージの型を決めておかないと、データが溜まっても「何が原因で数字が動いたか」を切り分けられない（トーンが悪いのか、分岐が粗いのか、配信間隔が悪いのか、ブロックを恐れて接触が弱すぎたのかが混ざる）。本書は初期仮説シナリオを確定させることが目的で、運用開始後は§13のPDCA設計に沿ってトラック別・アーキタイプ別の指標を比較し、仮説を棄却・更新していく。</p>
 
       <h3>1-2 CRMが解くべき問題（行動コスト3層モデルの接続）</h3>
-      <p>LINE登録した時点の相手は「行動コスト層2→層3」の境界にいる（すでに何か行動を起こした人）。CRMの仕事は比較検討・値踏みだけでなく、<strong>層3（新しい行動＝入会）に踏み切れない残りのハードルを、トラックに応じて的確に取り除くこと</strong>。</p>
-      <div class="twrap mid">
-        <table>
-          <thead>
-            <tr><th>トラック</th><th>層3に踏み切れない主な理由（仮説）</th><th>CRMが埋めるべきギャップ</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="rowh">オンライン秘書・未経験ボリューム層</td><td>「自分にPCスキルなんてない」「ビジネス用語が分からない時点で向いていない気がする」という自己効力感の低さ</td><td>専門用語を使わず、"あなたと同じ人ができた"実例を反復し、心理的ハードルを下げる</td></tr>
-            <tr><td class="rowh">IG運用代行・デザイナー志望層</td><td>「本当にこのスクールで案件が取れる実力がつくのか」「独学や他スクールとの比較で分が悪くないか」という実力・費用対効果の見極め</td><td>スキルの中身・案件相場・ポートフォリオ・卒業生の専門性の高さを具体的に見せ、比較検討に正面から答える</td></tr>
-          </tbody>
-        </table>
+      <p>LINE登録した時点の相手は「行動コスト層2→層3」の境界にいる（すでに何か行動を起こした人）。CRMの仕事は比較検討・値踏みだけでなく、<strong>層3（新しい行動＝入会）に踏み切れない残りのハードルを、状況に応じて的確に取り除くこと</strong>。ただし「的確に」を実現するには、トラック（何に興味があるか）だけでは足りず、<strong>どんな感情でここに来たか（入口アーキタイプ）</strong>まで踏み込む必要がある——これが本改訂の主眼。</p>
+      <div class="define">
+        <div class="row">
+          <div class="k">トラック（§3）</div>
+          <div class="v"><strong>何を学びたいか</strong>（秘書／SNS運用・デザイン／ライティング）。コンテンツの専門性・語彙レベルの出し分けに効く</div>
+        </div>
+        <div class="row">
+          <div class="k">入口アーキタイプ（§4）</div>
+          <div class="v"><strong>どんな感情・動機で登録したか</strong>（共感／自己肯定／比較検討／広告経由／紹介）。初動（Day0〜5）のトーン・警戒の解き方・CTAの強さに効く</div>
+        </div>
+        <div class="row">
+          <div class="k">感情ステート（§5）</div>
+          <div class="v"><strong>今どの態度変容段階にいるか</strong>（様子見／試し見／警戒混じりの興味／意思決定入口／検討中／無関心化）。メッセージの「仕事」の決定に効く</div>
+        </div>
       </div>
     </section>
 
@@ -126,21 +133,21 @@
             <tr><th>L-step機能</th><th>skimamaでの使い道</th></tr>
           </thead>
           <tbody>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-question"/></svg>回答フォーム（アンケート）</td><td>登録直後の「職種トラック診断」。回答内容をそのままタグ付けトリガーにする（§3）</td></tr>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-badge"/></svg>タグ管理</td><td>①職種トラック ②現在の就業状態 ③関心の強さ（診断回答＋クリック行動の累積） ④ファネル進捗を掛け合わせて管理</td></tr>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-chat"/></svg>シナリオ配信（ステップ配信）</td><td>トラック×進捗タグの組み合わせで配信内容を分岐（§6）</td></tr>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-megaphone"/></svg>流入経路別配信・URL計測</td><td>Organicのどの投稿・どのプラットフォーム経由の登録かをタグ化し、初期メッセージの温度感を微調整</td></tr>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-search"/></svg>クリック計測によるタグ追加</td><td>診断で「まだわからない」と回答した層を、その後どのリンクを繰り返しクリックしたかで後追いトラック判定する（§3-1）</td></tr>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-target"/></svg>スコアリング</td><td>開封・タップ・回答・動画視聴等の行動に点数を設定し、一定点数超で有人フォロー対象として抽出（§7）</td></tr>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-layout"/></svg>リッチメニュー出し分け</td><td>トラック別に文言・導線を出し分け（§8）</td></tr>
-            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-people"/></svg>配信予約・時間帯最適化</td><td>主婦層は日中〜夕方、専門職層は夜間の集中時間帯など、トラック別に配信時間帯を仮説設定し検証（§9）</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-question"/></svg>回答フォーム（アンケート）</td><td>登録直後の「職種トラック診断」（§3）。回答内容をそのままタグ付けトリガーにする</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-badge"/></svg>タグ管理</td><td>①職種トラック ②入口アーキタイプ ③感情ステート ④就業状態 ⑤ファネル進捗 ⑥反論シグナルを掛け合わせて管理（§11）</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-chat"/></svg>シナリオ配信（ステップ配信）</td><td>トラック×アーキタイプ×感情ステートの組み合わせで配信内容を分岐（§5）</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-megaphone"/></svg>流入経路別配信・URL計測</td><td>Organicのどの投稿・どのプラットフォーム経由の登録かをタグ化。入口アーキタイプ判定の一次情報源（§4）</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-search"/></svg>クリック計測によるタグ追加</td><td>どのリンクを繰り返しクリックしたかで、トラック・感情ステート・反論シグナルを後追い判定する（§5）</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-target"/></svg>スコアリング</td><td>開封・タップ・回答・動画視聴等の行動に点数を設定し、一定点数超で有人フォロー対象として抽出（§11）</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-layout"/></svg>リッチメニュー出し分け</td><td>トラック別に文言・導線を出し分け（§12）</td></tr>
+            <tr><td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-people"/></svg>配信予約・時間帯最適化／頻度制御</td><td>感情ステート・温度別に配信頻度の上限を変える。ブロック率ガバナンスの実装手段（§6）</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="sec fx" id="s3">
-      <div class="sec-head"><span class="no">§3</span><h2>トラック分岐の全体設計</h2></div>
+      <div class="sec-head"><span class="no">§3</span><h2>トラック分岐の全体設計（「何を学びたいか」軸）</h2></div>
 
       <h3>3-1 分岐点はどこに置くか</h3>
       <p>分岐は登録直後の自己申告だけに頼らない。<strong>申告と行動ログの2段構えで判定精度を上げる</strong>（自己申告だけだと「まだわからない」「秘書と答えたが実はデザインに興味がある」という取りこぼしが必ず出るため）。</p>
@@ -201,15 +208,15 @@
             <tr><th>トラック</th><th>対象</th><th>想定ボリューム（卒業生職種内訳からの仮説）</th><th>位置づけ</th></tr>
           </thead>
           <tbody>
-            <tr><td class="rowh">トラックA：ビギナー・生活密着型</td><td>オンライン秘書志望が中心。未経験・専業主婦／パート層</td><td>最大ボリューム（卒業生内訳の秘書50%が示唆）</td><td><strong>CRM全体のデフォルト仕様</strong>。診断未回答・「まだ決めていない」もここに初期配属</td></tr>
-            <tr><td class="rowh">トラックB：専門職・高確度型</td><td>Instagram運用代行・デザイナー志望</td><td>少数だが意思決定速度が速い（内訳17%＋9%）</td><td>訴求の専門性・比較検討への回答を厚くする</td></tr>
-            <tr><td class="rowh">トラックC：ハイブリッド（ライティング）</td><td>Webライティング志望。未経験だが言葉には自信がある層</td><td>内訳23%と無視できない規模</td><td>基本はAのトーン、実務訴求はBから借用（§6）</td></tr>
+            <tr><td class="rowh">トラックA：ビギナー・生活密着型</td><td>オンライン秘書志望が中心。未経験・専業主婦／パート層</td><td>最大ボリューム（卒業生内訳の秘書50%が示唆）</td><td><strong>CRM全体のデフォルト仕様</strong>。診断未回答・「まだ決めていない」もここに初期配属（§8）</td></tr>
+            <tr><td class="rowh">トラックB：専門職・高確度型</td><td>Instagram運用代行・デザイナー志望</td><td>少数だが意思決定速度が速い（内訳17%＋9%）</td><td>訴求の専門性・比較検討への回答を厚くする（§9）</td></tr>
+            <tr><td class="rowh">トラックC：ハイブリッド（ライティング）</td><td>Webライティング志望。未経験だが言葉には自信がある層</td><td>内訳23%と無視できない規模</td><td>基本はAのトーン、実務訴求はBから借用（§10）</td></tr>
           </tbody>
         </table>
       </div>
       <div class="callout amber">
         <span class="co-label">要検証</span>
-        <p>この3トラックの人数配分・トーン設計は「卒業生の最終職種内訳」からの逆算仮説にすぎず、<strong>入会前のリード段階での初期関心と一致するとは限らない</strong>。運用開始後、診断回答の分布と最終職種の突合データが取れ次第、トラック定義自体を見直す（§11）。</p>
+        <p>この3トラックの人数配分・トーン設計は「卒業生の最終職種内訳」からの逆算仮説にすぎず、<strong>入会前のリード段階での初期関心と一致するとは限らない</strong>。運用開始後、診断回答の分布と最終職種の突合データが取れ次第、トラック定義自体を見直す（§15）。</p>
       </div>
 
       <h3>3-3 なぜオンライン秘書層をデフォルトにするか</h3>
@@ -220,190 +227,431 @@
     </section>
 
     <section class="sec fx" id="s4">
-      <div class="sec-head"><span class="no">§4</span><h2>トラック別ペルソナ・トーン設計</h2></div>
-      <p>カード＝トラック（デフォルト優先）、バーは<strong>配信で使う専門用語・情報密度のレベル</strong>（5段階）、下段は入口（判定条件）→中間（トーン原則）→出口（接触速度・クロージング）の設計。</p>
-      <div class="persona-grid">
-        <article class="persona top">
-          <span class="ps-ghost" aria-hidden="true">A</span>
-          <span class="ps-rank">トラックA — デフォルト・最大ボリューム</span>
-          <p class="ps-who">オンライン秘書志望が中心。「PCは苦手ではないがWordとメールくらい」「"オンライン秘書"という言葉も勉強会で初めて知った」レベル感。ビジネス誌的な語彙は原則使わない</p>
-          <div class="ps-pain" role="img" aria-label="配信の専門用語・情報密度：5段階中2（易しい）">
-            <span class="k" aria-hidden="true">情報密度・専門度</span>
-            <span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>
-            <span class="v" aria-hidden="true">2/5</span>
-          </div>
-          <ol class="ps-route">
-            <li><b>入口</b><span>診断「秘書・事務系」を選択、または未回答・「まだ決めていない」</span></li>
-            <li><b>中間</b><span>専門用語を使わない／「あなたにもできる」を反復／小さな一歩に分解したCTA</span></li>
-            <li><b>出口</b><span>配信間隔は緩やかに、不安払拭FAQと個別相談で背中を押す</span></li>
-          </ol>
-        </article>
-        <article class="persona">
-          <span class="ps-ghost" aria-hidden="true">B</span>
-          <span class="ps-rank">トラックB — 専門職・高確度</span>
-          <p class="ps-who">Instagram運用代行・デザイナー志望。「フリーランス」「副業」「案件」という言葉に既に馴染みがある、準備状態が一段進んだ層</p>
-          <div class="ps-pain" role="img" aria-label="配信の専門用語・情報密度：5段階中5（専門的）">
-            <span class="k" aria-hidden="true">情報密度・専門度</span>
-            <span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
-            <span class="v" aria-hidden="true">5/5</span>
-          </div>
-          <ol class="ps-route">
-            <li><b>入口</b><span>診断「デザイン」「Instagram運用代行」を選択、または専門職系リンクへの反応が高い</span></li>
-            <li><b>中間</b><span>専門性を隠さない／比較検討に正面から回答／実例は実力の証拠として提示</span></li>
-            <li><b>出口</b><span>配信間隔を詰め、早期に予約導線・個別相談を提示</span></li>
-          </ol>
-        </article>
-        <article class="persona">
-          <span class="ps-ghost" aria-hidden="true">C</span>
-          <span class="ps-rank">トラックC — ハイブリッド（ライティング）</span>
-          <p class="ps-who">Webライティング志望。「未経験だが言葉には自信がある」層で、A・Bの中間的な心理状態</p>
-          <div class="ps-pain" role="img" aria-label="配信の専門用語・情報密度：5段階中3（中程度）">
-            <span class="k" aria-hidden="true">情報密度・専門度</span>
-            <span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
-            <span class="v" aria-hidden="true">3/5</span>
-          </div>
-          <ol class="ps-route">
-            <li><b>入口</b><span>診断「Webライティング」を選択</span></li>
-            <li><b>中間</b><span>序盤はAのトーン（安心材料）／終盤はBの実務情報（文字単価・案件例）を混ぜる</span></li>
-            <li><b>出口</b><span>独立トラックとして作り込みすぎず、A向けシナリオへの差し込みブロック2〜3通で運用</span></li>
-          </ol>
-        </article>
-      </div>
-    </section>
+      <div class="sec-head"><span class="no">§4</span><h2>オプトイン前の感情と入口アーキタイプ（「なぜ・どんな感情で登録したか」軸）</h2></div>
+      <p>トラック分岐だけでは「登録直後にどんなトーンで話しかけるべきか」が決まらない。同じ「秘書志望」タグでも、<strong>共感リールに涙腺を刺激されて衝動的に登録した人</strong>と、<strong>比較検討の末に合理的判断で登録した人</strong>とでは、Day0に送るべきメッセージのトーンがまったく違う。そこで媒体・投稿の種類ごとに登録前の感情状態を類型化し、L-stepのタグ設計・初動メッセージに反映する。</p>
 
-    <section class="sec fx" id="s5">
-      <div class="sec-head"><span class="no">§5</span><h2>不安・検討ポイントへの回答</h2></div>
-
-      <h3>トラックA：主な不安と配信での回答</h3>
-      <div class="twrap mid">
+      <div class="twrap wide">
         <table>
-          <thead><tr><th>不安（層2〜3ペイン）</th><th>配信での回答</th></tr></thead>
+          <thead>
+            <tr><th>アーキタイプ</th><th>代表的な媒体・投稿</th><th>登録前の感情状態</th><th>投稿が起こす心理的な仕事</th><th>なぜLINE登録するか</th><th>登録直後の感情状態</th></tr>
+          </thead>
           <tbody>
-            <tr><td>子供がいて決まった時間に学習できない</td><td>週4動画＋2日課題＋1日ワークショップの柔軟性、隙間時間学習の卒業生の声</td></tr>
-            <tr><td>そもそも「オンライン秘書」が何をする仕事か分からない</td><td>業務内容を家事・育児の延長でイメージできる言葉に翻訳（スケジュール調整＝家族の予定管理の延長、等）</td></tr>
-            <tr><td>稼げる自信がない</td><td>断定は避け、獲得率93%の根拠と算出条件を明示した上で「同じような状態だった人の実例」を反復提示</td></tr>
-            <tr><td>講座についていけるか不安</td><td>メンター伴走・少人数制・満足度99.3%を「一人にしない」という情緒面から説明</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>トラックB：主な検討ポイントと配信での回答</h3>
-      <div class="twrap mid">
-        <table>
-          <thead><tr><th>検討ポイント</th><th>配信での回答</th></tr></thead>
-          <tbody>
-            <tr><td>独学やYouTubeでも学べるのでは</td><td>独学の挫折率・迷子リスクを卒業生の実体験で言語化し、伴走の価値を提示</td></tr>
-            <tr><td>Fammの方がデザイン特化で強いのでは</td><td>単一スキル一点賭けのリスクと、複数職種から選べる柔軟性・仕事獲得までの伴走の違いを提示</td></tr>
-            <tr><td>本当に案件が取れるのか</td><td>獲得率93%の根拠、提携先の存在、卒業生の初案件までの実期間</td></tr>
+            <tr>
+              <td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-heart"/></svg>①層2ペイン共感型</td>
+              <td>リール「パート時給の現実算」等（認知共感軸）</td>
+              <td>顕在ペインに薄々気づいているが言語化されていない。受動閲覧中</td>
+              <td>数字・あるあるで「これ、私だ」を起こす</td>
+              <td>特典目当ての低コストな情報収集。「損はしない」という消極的動機</td>
+              <td><strong>半信半疑・様子見</strong>。「なんとなく登録した」</td>
+            </tr>
+            <tr>
+              <td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-bulb"/></svg>②層3潜在ペイン言語化型</td>
+              <td>リール「ママは毎日何してるの?」等（自己肯定感軸）</td>
+              <td>「自分は何者でもない」という漠然とした感覚。言語化されていない情緒</td>
+              <td>代弁による「分かってくれてる」という強い情緒的共鳴</td>
+              <td>関係性ベース。「この人をもっと知りたい」という衝動的登録</td>
+              <td><strong>情緒的に開いている</strong>が判断力は高くない</td>
+            </tr>
+            <tr>
+              <td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-search"/></svg>③信頼・証拠型</td>
+              <td>リール「独学2年 vs 伴走2ヶ月」等（比較検討層）</td>
+              <td>すでに在宅ワーク・副業を検討中。情報の質を吟味する比較検討モード</td>
+              <td>「なるほど、伴走の方が合理的だ」という論理的納得</td>
+              <td>機能的・実利的動機。「自分の状況に当てはめて具体的に知りたい」</td>
+              <td><strong>温度は高いが警戒も強い</strong>。「結局売り込みでは」</td>
+            </tr>
+            <tr>
+              <td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-target"/></svg>④広告流入型</td>
+              <td>Meta/TikTok広告（刈り取りチャネル）</td>
+              <td>検索・比較モード。Organicのような関係性の土台がなく「初対面」</td>
+              <td>短時間で実績数値・受賞歴の信頼シグナルを伝える</td>
+              <td>実績・価格の分かりやすさへの合理的反応</td>
+              <td>早く情報を得たいが<strong>信頼はまだ薄い</strong></td>
+            </tr>
+            <tr>
+              <td class="rowh"><svg class="ico ti" aria-hidden="true"><use href="#i-people"/></svg>⑤UGC・口コミ経由型</td>
+              <td>卒業生本人のSNS投稿／知人紹介</td>
+              <td>知人・卒業生の実例に触発された「あの人にできるなら」の状態</td>
+              <td>（第三者の自然な発信、または口頭紹介）</td>
+              <td>強い社会的証明による後押し</td>
+              <td><strong>最も温度が高い</strong>。紹介者への配慮が要る</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <div class="callout">
-        <span class="co-label">トラックCの扱い</span>
-        <p>ベースはトラックAのトーン（未経験前提・専門用語を避ける）を維持しつつ、「文字単価」「Webライティングの案件例」など実務寄りの具体性はトラックBから部分的に借用する。独立トラックとして作り込みすぎるとL-step運用の複雑度が上がるため、初期構築では「トラックAシナリオ＋ライティング専用の差し込みブロック2〜3通」という最小構成から始める。</p>
+        <span class="co-label">トラック×入口アーキタイプは独立した2軸</span>
+        <p>L-stepでは両方のタグを同時に付与し、組み合わせで初動メッセージを決める。例：<code>trk_A_秘書</code>×<code>arch_2_自己肯定</code>の人には、Day0でいきなり秘書の仕事内容を説明せず、まず情緒的な受け止めから入る。逆に<code>trk_B_デザイン</code>×<code>arch_3_比較検討</code>の人には、Day0から機能的な情報を出しても違和感がない。</p>
+        <p class="hypo" style="margin-top:0.6rem;">実装簡略化の指針：全パターンを作り込むのは過剰設計。<strong>初動48時間（Day0〜1）のみアーキタイプ別に分岐させ、Day1以降はトラック別分岐に収束させる</strong>設計が運用コストと効果のバランスが良い（§5参照）。</p>
       </div>
     </section>
 
-    <section class="sec fx" id="s6">
-      <div class="sec-head"><span class="no">§6</span><h2>共通シナリオ骨子とトラック別の出し分け</h2></div>
-      <p>実務戦略パターン集の4ステップ型（Day0／Day7前後／Day20前後／Day25前後）を土台に、トラック分岐点を明記して詳細化。</p>
+    <section class="sec fx" id="s5">
+      <div class="sec-head"><span class="no">§5</span><h2>オプトインから購入までの感情ジャーニー・ロジックツリー</h2></div>
+      <p>本書のコア。<strong>「感情のステート遷移」を主語にして、各ステートで配信が果たすべき仕事と、行動ログに応じたIF-THEN分岐</strong>を定義する。カレンダー（Day◯）はあくまで目安であり、実際の遷移条件は行動ログ（開封・クリック・未読）である。</p>
+
+      <h3>5-0 全体ステートマップ</h3>
+      <figure class="fig">
+        <figcaption class="fig-cap">S0（様子見）からS7（無関心化）または入会までの8ステート。S2→S3が最大の離脱点（§5-4）</figcaption>
+        <div class="tl-wrap">
+          <div class="tl" role="img" aria-label="感情ステートの遷移。S0様子見・匿名的、S1試し見・値踏み、S2警戒混じりの興味、S3意思決定の入口、S4予約後の期待と不安、S5参加後の再検証、S6検討期・反論処理、S7無関心化または入会。S2とS3が最大の離脱点。">
+            <div class="tl-seg" style="flex:1"><span class="t">S0</span><span class="d">様子見・匿名的</span></div>
+            <div class="tl-seg" style="flex:1"><span class="t">S1</span><span class="d">試し見・値踏み</span></div>
+            <div class="tl-seg hot" style="flex:1"><span class="t">S2</span><span class="d">警戒混じりの興味</span></div>
+            <div class="tl-seg hot" style="flex:1"><span class="t">S3</span><span class="d">意思決定の入口</span></div>
+            <div class="tl-seg" style="flex:1"><span class="t">S4</span><span class="d">予約後の期待と不安</span></div>
+            <div class="tl-seg" style="flex:1"><span class="t">S5</span><span class="d">参加後の再検証</span></div>
+            <div class="tl-seg" style="flex:1"><span class="t">S6</span><span class="d">検討期・反論処理</span></div>
+            <div class="tl-seg" style="flex:1"><span class="t">S7</span><span class="d">無関心化 or 入会</span></div>
+          </div>
+        </div>
+        <p class="fig-note">CLAUDE.mdの行動変容ステージとの対応：S0〜S1＝関心期の後半、S2〜S3＝準備期、S4〜S5＝行動期の入口、S6＝行動期の核、S7＝維持期または無関心期への回帰。</p>
+      </figure>
+
+      <h3>5-1 ワークド・イグザンプル①：アーキタイプ1（層2ペイン共感型）× トラックA</h3>
+      <p>最大ボリュームの入口。この経路の設計精度が全体のCVRに最も効く。入口：リール「パート時給の現実算」→特典目当てで登録。登録直後の感情：半信半疑・様子見。</p>
+
       <div class="steps">
         <div class="step">
-          <span class="step-no" aria-hidden="true">D0</span>
-          <p class="step-title">登録直後<span class="aim">ウェルカム＋診断</span></p>
+          <span class="step-no" aria-hidden="true">S0</span>
+          <p class="step-title">様子見・匿名的（Day0）<span class="aim">ウェルカム＋BOOK受け渡し＋1問診断</span></p>
           <div class="step-body">
-            <p>共通：ウェルカムメッセージ＋在宅ワークママBOOKの受け渡し／職種トラック診断（1問フォーム）でタグ付け・トラック仮確定</p>
-            <ul>
-              <li><strong>トラックA/C</strong>：「特別なスキルは不要です」の安心メッセージを追加</li>
-              <li><strong>トラックB</strong>：「あなたの興味に近い卒業生の実例」を1件先出し</li>
-            </ul>
+            <div class="define">
+              <div class="row"><div class="k">診断に回答（想定60〜70%）</div><div class="v">トラックタグ確定 → S1へ</div></div>
+              <div class="row"><div class="k">診断に未回答（想定30〜40%）</div><div class="v">24h後に選択式クイズで軽いリマインド。それでも未回答ならtrk_A・温度_低に分類し、§6の低頻度メンテルート（週1本以下）へ</div></div>
+            </div>
           </div>
         </div>
         <div class="step">
-          <span class="step-no" aria-hidden="true">D1</span>
-          <p class="step-title">Day 1〜3<span class="aim">初期ナーチャリング</span></p>
+          <span class="step-no" aria-hidden="true">S1</span>
+          <p class="step-title">試し見・値踏み（Day1〜3）<span class="aim">「売り込みだけじゃない」を証明。価値提供優先・CTAなし</span></p>
           <div class="step-body">
-            <ul>
-              <li><strong>トラックA/C</strong>：日常に寄せたペイン共感コンテンツ（パートの時給換算・送迎の合間時間の使い方等）</li>
-              <li><strong>トラックB</strong>：スキル訴求コンテンツ（案件相場・ポートフォリオの考え方）</li>
-            </ul>
+            <div class="define">
+              <div class="row"><div class="k">開封&クリックあり</div><div class="v">温度_中へ格上げ。通常ペースでS2へ</div></div>
+              <div class="row"><div class="k">開封のみ（クリックなし）</div><div class="v">温度維持。通常ペースでS2へ</div></div>
+              <div class="row"><div class="k">未開封が2通連続</div><div class="v">配信時間帯を変更しテスト。頻度を1段階落とす（§6）。ブロック回避を最優先し催促トーンは使わない</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="step hot">
+          <span class="step-no" aria-hidden="true">S2</span>
+          <p class="step-title">警戒混じりの興味（Day3〜5）<span class="aim">勉強会を「聞くだけの場」に再定義。詳細は§5-4</span></p>
+          <div class="step-body">
+            <div class="define">
+              <div class="row"><div class="k">勉強会ページをクリック</div><div class="v">温度_高へ。Day5を待たずS3の後押しメッセージへ前倒し</div></div>
+              <div class="row"><div class="k">クリックなし</div><div class="v">「不安Q&A」を1通追加（なぜ無料か・しつこい勧誘はしないか）してから再度CTA</div></div>
+              <div class="row"><div class="k">3通連続未開封</div><div class="v">§6の低温メンテ（月1〜2通）へダウングレード。無理に押さない</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="step hot">
+          <span class="step-no" aria-hidden="true">S3</span>
+          <p class="step-title">意思決定の入口（Day5〜7）<span class="aim">行動コストの再定義。「今日決めなくていい」「聞くだけでいい」</span></p>
+          <div class="step-body">
+            <div class="define">
+              <div class="row"><div class="k">予約完了</div><div class="v">S4へ</div></div>
+              <div class="row"><div class="k">未予約・FAQリンククリック済み</div><div class="v">「不安が強いタイプ」と推定。個別不安対応コンテンツを投入（§5-5）</div></div>
+              <div class="row"><div class="k">未予約・卒業生実例リンククリック済み</div><div class="v">「憧れはあるが自信がない」と推定。「あなたと同じ状態だった人」の実例を再送</div></div>
+              <div class="row"><div class="k">未予約・どこもクリックなし</div><div class="v">温度_低へ降格。押さずに月1配信へ。Organic側の再接触を待つ</div></div>
+            </div>
           </div>
         </div>
         <div class="step">
-          <span class="step-no" aria-hidden="true">D3</span>
-          <p class="step-title">Day 3〜5<span class="aim">勉強会案内</span></p>
+          <span class="step-no" aria-hidden="true">S4</span>
+          <p class="step-title">予約後：期待と不安の同居（予約後〜当日）<span class="aim">実務的障壁を潰す。リマインドは前日・当日朝の2回のみ</span></p>
           <div class="step-body">
-            <ul>
-              <li><strong>トラックA/C</strong>：「子供がいても大丈夫」等、参加ハードルを下げるFAQを厚めに</li>
-              <li><strong>トラックB</strong>：日程・当日の学べる内容の専門性を先に明示し、早めにCTAを出す（意思決定速度が速い仮説のため接触を早める）</li>
-            </ul>
+            <div class="define">
+              <div class="row"><div class="k">当日参加</div><div class="v">S5へ</div></div>
+              <div class="row"><div class="k">不参加（無断）</div><div class="v">「サボり扱い」しない。アーカイブ動画提供＋次回日程の柔らかい案内。頻度を上げない</div></div>
+            </div>
           </div>
         </div>
         <div class="step">
-          <span class="step-no" aria-hidden="true">D7</span>
-          <p class="step-title">Day 7前後<span class="aim">勉強会参加者へ</span></p>
+          <span class="step-no" aria-hidden="true">S5</span>
+          <p class="step-title">参加後の再検証（当日後）<span class="aim">感想の受け止め（一方的な追撃をしない）→個別の疑問に応える</span></p>
           <div class="step-body">
-            <p>共通：獲得率93%等の根拠提示</p>
-            <ul>
-              <li><strong>トラックA/C</strong>：「あなたと同じ状態だった卒業生」の情緒的ストーリー中心</li>
-              <li><strong>トラックB</strong>：専門性・案件獲得の具体プロセス中心</li>
-            </ul>
+            <div class="define">
+              <div class="row"><div class="k">個別相談リンクをクリック</div><div class="v">スコア加点、有人フォロー対象へ（§11）</div></div>
+              <div class="row"><div class="k">アンケートに前向き回答</div><div class="v">S6へ、頻度は通常のまま</div></div>
+              <div class="row"><div class="k">無反応</div><div class="v">3日空けて1通のみ、「返信不要」と明記した“置き手紙”メッセージ</div></div>
+            </div>
           </div>
         </div>
         <div class="step">
-          <span class="step-no" aria-hidden="true">D10</span>
-          <p class="step-title">Day 10〜14<span class="aim">比較検討・クロージング期</span></p>
+          <span class="step-no" aria-hidden="true">S6</span>
+          <p class="step-title">検討期・反論処理（Day10〜20）<span class="aim">詳細は§5-5「反論処理ロジックツリー」</span></p>
           <div class="step-body">
-            <ul>
-              <li><strong>トラックA/C</strong>：不安払拭FAQ、分割払い（月12,000円〜）の提示、個別相談導線</li>
-              <li><strong>トラックB</strong>：競合（Famm・SHElikes・独学）との比較コンテンツ、実力担保の証拠</li>
-            </ul>
+            <div class="define">
+              <div class="row"><div class="k">価格を気にしている様子</div><div class="v">分割払い訴求・投資としての情緒的再定義</div></div>
+              <div class="row"><div class="k">時間を気にしている様子</div><div class="v">スケジュール例・「止まってもいい」設計の再提示</div></div>
+              <div class="row"><div class="k">家族の理解を気にしている様子</div><div class="v">説明用資料、他の受講生の家族の反応例</div></div>
+              <div class="row"><div class="k">シグナルなし・完全沈黙</div><div class="v">理由を詮索しない。「今じゃなくていい」を1通送りS7へ</div></div>
+            </div>
           </div>
         </div>
         <div class="step">
-          <span class="step-no" aria-hidden="true">D14</span>
-          <p class="step-title">Day 14〜20<span class="aim">未申込者フォロー</span></p>
-          <div class="step-body">
-            <p>共通：未参加・未申込者への再アプローチ</p>
-            <ul>
-              <li><strong>トラックA/C</strong>：「まだ迷っていて大丈夫」という背中押し＋個別相談の軽い提案</li>
-              <li><strong>トラックB</strong>：期間限定の個別相談・質問受付など、意思決定を後押しする具体アクション</li>
-            </ul>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-no" aria-hidden="true">D20</span>
-          <p class="step-title">Day 20〜25<span class="aim">離脱防止・最終フォロー</span></p>
-          <div class="step-body">
-            <p>共通：未行動者への最終アプローチ（限定特典 or 個別相談）。この段階で反応がない場合はトラックを問わず「無関心期に戻す」タグへ移行し、頻度を落とした低温メンテ配信（月1回程度の有益コンテンツ）に切り替える</p>
-          </div>
+          <span class="step-no" aria-hidden="true">S7</span>
+          <p class="step-title">無関心化・低温メンテ（Day20〜）<span class="aim">関係を薄く長く保つ</span></p>
+          <div class="step-body"><p>「無関心期に戻す」タグへ。月1回の低頻度メンテに完全移行。ブロックされるくらいなら関係を薄く長く保つことを優先する（§6）。</p></div>
         </div>
       </div>
-      <div class="callout amber">
-        <span class="co-label">要検証</span>
-        <p>配信間隔・日数は仮説。トラックBは意思決定が速い可能性が高いという仮定のもと接触を早めているが、実データで逆の傾向（むしろ検討期間が長い等）が出れば§9で修正する。</p>
-      </div>
-    </section>
 
-    <section class="sec fx" id="s7">
-      <div class="sec-head"><span class="no">§7</span><h2>タグ・スコアリング設計（L-step実装用）</h2></div>
-
-      <h3>タグ設計表</h3>
+      <h3>5-2 ワークド・イグザンプル②：アーキタイプ3（信頼・証拠型）× トラックB</h3>
+      <p>意思決定速度が速い高確度層。骨格は5-1と同じだが、<strong>警戒の質と接触速度が異なる</strong>ため差分のみ示す。入口：リール「独学2年 vs 伴走2ヶ月」→比較検討の一環として登録。登録直後の感情：温度は高いが「結局売り込みでは」という値踏みも強い。</p>
       <div class="twrap wide">
         <table>
-          <thead><tr><th>タグ分類</th><th>タグ例</th><th>付与トリガー</th></tr></thead>
+          <thead><tr><th>ステート</th><th>5-1（トラックA）からの差分</th></tr></thead>
           <tbody>
-            <tr><td class="rowh">職種トラック</td><td>trk_A_秘書 / trk_B_SNS運用 / trk_B_デザイン / trk_C_ライティング / trk_未定</td><td>診断フォーム回答（初期）／行動ログ補正（§3-1）</td></tr>
-            <tr><td class="rowh">就業状態</td><td>就業_専業 / 就業_パート / 就業_育休中 / 就業_その他</td><td>診断フォームの補助設問（任意項目）</td></tr>
-            <tr><td class="rowh">ファネル進捗</td><td>進捗_登録済 / 進捗_勉強会予約済 / 進捗_勉強会参加済 / 進捗_未参加 / 進捗_検討中 / 進捗_離脱</td><td>シナリオ内の行動（予約リンククリック・参加確認等）</td></tr>
-            <tr><td class="rowh">関心強度スコア</td><td>温度_高 / 温度_中 / 温度_低</td><td>下記スコアリング結果に応じて自動付与</td></tr>
-            <tr><td class="rowh">流入経路</td><td>流入_Organic投稿名 / 流入_広告</td><td>登録URLのパラメータ計測</td></tr>
+            <tr><td class="rowh">S0</td><td>診断で③④（デザイン／SNS運用）を選んだ時点で「あなたの興味に近い卒業生実例」を即座に1件先出しする</td></tr>
+            <tr><td class="rowh">S1（Day0〜2、5-1より短く）</td><td>専門性のある情報を早期に提示（案件相場・ポートフォリオの考え方）。「学べる場」の証明を情緒より先に置く</td></tr>
+            <tr><td class="rowh">S2（Day2〜4、5-1より2日前倒し）</td><td>独学・他スクール（Famm・SHElikes）との比較に<strong>先回りで正面から答える</strong>。弱点も含めて誠実に語ることが信頼構築になる</td></tr>
+            <tr><td class="rowh">S3（Day4〜6）</td><td>獲得率93%の根拠・提携先の存在・初案件までの実期間を提示。予約導線を5-1より早く強く出す</td></tr>
+            <tr><td class="rowh">S4〜S7</td><td>ロジックは5-1と同型。検討期（S6）は「競合との比較」「実力担保の証拠」を優先投入</td></tr>
           </tbody>
         </table>
       </div>
 
-      <h3>スコアリング設計（有人フォローの優先順位づけ）</h3>
+      <h3>5-3 その他アーキタイプの差分（アーキタイプ②④⑤）</h3>
+      <p>フル・ロジックツリーを作らず、5-1の骨格に対する差分として運用する（5パターン全てをフル設計すると運用コストが跳ね上がるため）。</p>
+      <div class="twrap wide">
+        <table>
+          <thead><tr><th>アーキタイプ</th><th>S0〜S1で変える点</th><th>S2（警戒の解き方）で変える点</th><th>最大の注意点</th></tr></thead>
+          <tbody>
+            <tr><td class="rowh">②層3潜在ペイン言語化型</td><td>診断より先に情緒的な受け止めメッセージを1通挟む。機能訴求を急がない</td><td>「勉強会＝情報収集の場」という再定義を情緒的な文脈の中に溶かし込む</td><td>情緒で登録した人に機能情報だけを送ると一気に冷める。情緒→機能への橋渡しは2〜3通かけて緩やかに</td></tr>
+            <tr><td class="rowh">④広告流入型</td><td>関係性の土台がないため、実績数値・受賞歴等の信頼シグナルを通常より早く提示</td><td>売り込み色への警戒が最も強いため、通常よりCTA頻度を下げ価値提供比率を高める</td><td>最もブロックされやすい層という仮説。頻度は最初から抑えめに設計する</td></tr>
+            <tr><td class="rowh">⑤UGC・口コミ経由型</td><td>温度が最も高いため、S0の段階で個別相談導線を早期に見せてよい</td><td>紹介者への言及を自然に混ぜ、社会的証明を強化</td><td>CRMの圧が強すぎると紹介者の顔を潰す。強引なCTAは避ける</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="bridge">5-4 オプトイン→勉強会参加のブリッジ（最大の離脱ポイント）</h3>
+      <p>S2（警戒混じりの興味）→S3（意思決定の入口）→S4（予約後）の3ステートが<strong>LINE登録者を勉強会参加という実際の行動に変える核心</strong>であり、CRM設計の中で最も丁寧に作り込むべき区間。</p>
+      <div class="twrap wide">
+        <table>
+          <thead><tr><th>抵抗の種類</th><th>具体的な内心の声</th><th>解消するメッセージ設計</th></tr></thead>
+          <tbody>
+            <tr><td class="rowh">①行動コストへの誤解</td><td>「勉強会って結局セールスの場なんでしょう」「参加したら断りづらくなりそう」</td><td>勉強会を「聞くだけでいい」「その場で入会を迫らない」とS2で明言</td></tr>
+            <tr><td class="rowh">②実務的な参加障壁</td><td>「子供がいて決まった時間に参加できない」「オンライン操作が不安」</td><td>日程の柔軟性（複数回開催・アーカイブ視聴可）、参加に必要な準備を先に明示</td></tr>
+            <tr><td class="rowh">③自己効力感の低さ</td><td>「聞いてもどうせ自分には無理な気がする」</td><td>S3で卒業生実例を投入し、参加ハードルではなく「参加した後の自分」をイメージさせる</td></tr>
+            <tr><td class="rowh">④決断への恐怖</td><td>「予約する＝本気で検討することになる、まだ心の準備ができていない」</td><td>予約を「本講座への一歩」ではなく「情報を得るだけの一歩」として再定義</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="co-label">設計原則</span>
+        <p>S2でどの抵抗が強いかを、それまでのクリック行動（FAQリンク／スケジュール例リンク／卒業生実例リンク）から推定し、抵抗の種類に応じたメッセージを個別に当てる。全員に同じ「勉強会申込はこちら」を連投するのではなく、<strong>抵抗の正体を先に取り除いてからCTAを出す</strong>のがブリッジ設計の核心。</p>
+      </div>
+      <div class="callout amber">
+        <span class="co-label">予約後（S4）に絶対にやらないこと</span>
+        <p>リマインドの過剰配信（前日・当日朝の2回に限定する）、不参加者への叱責トーン、キャンセルを咎めるような文言。短期の参加率を上げても中長期のブロック率・信頼を毀損する。</p>
+      </div>
+
+      <h3>5-5 検討期（S6）の反論処理ロジックツリー</h3>
+      <p>勉強会参加後、価格259,800円という重い意思決定の前に必ず生じる反論に対し、<strong>行動ログから反論の種類を推定し、個別に対応する</strong>。</p>
+      <figure class="fig">
+        <figcaption class="fig-cap">検討期の反論シグナル推定から5つの対応への分岐（§5-5の視覚化）</figcaption>
+        <div class="chart-scroll">
+          <svg class="chart" viewBox="0 0 900 300" role="img" aria-label="検討期の反論シグナル推定から5つの対応への分岐図。価格・時間・家族・自信の各シグナル、およびシグナルなし・完全沈黙の場合の対応をそれぞれ示す。">
+            <title>検討期の反論処理ロジックツリー</title>
+            <path class="nd-link hot flow" d="M450,101 C420,125 300,140 87,160"/>
+            <path class="nd-link flow" d="M450,101 C440,125 340,140 257,160"/>
+            <path class="nd-link flow" d="M450,101 C450,125 450,140 450,160"/>
+            <path class="nd-link flow" d="M450,101 C460,125 560,140 643,160"/>
+            <path class="nd-link flow" d="M450,101 C480,125 700,140 813,160"/>
+            <circle class="nd-dot" cx="87" cy="160" r="3"/>
+            <circle class="nd-dot" cx="257" cy="160" r="3"/>
+            <circle class="nd-dot" cx="450" cy="160" r="3"/>
+            <circle class="nd-dot" cx="643" cy="160" r="3"/>
+            <circle class="nd-dot" cx="813" cy="160" r="3"/>
+            <circle class="nd-center" cx="450" cy="55" r="46"/>
+            <text x="450" y="50" text-anchor="middle" class="ct" style="font-size:12px;">検討期の</text>
+            <text x="450" y="66" text-anchor="middle" class="cs">反論シグナル推定</text>
+            <rect class="nd-box hot" x="10" y="160" width="154" height="112" rx="9"/>
+            <text x="24" y="182" class="nd-tag">concern_価格</text>
+            <text x="24" y="203" class="ct" style="font-size:13px;">価格ページ滞在長</text>
+            <text x="24" y="222" class="cf">分割12,000円〜の</text>
+            <text x="24" y="236" class="cf">再訴求・投資の</text>
+            <text x="24" y="250" class="cf">情緒的再定義</text>
+            <rect class="nd-box" x="180" y="160" width="154" height="112" rx="9"/>
+            <text x="194" y="182" class="nd-tag">concern_時間</text>
+            <text x="194" y="203" class="ct" style="font-size:13px;">日程ページ滞在長</text>
+            <text x="194" y="222" class="cf">スケジュール例、</text>
+            <text x="194" y="236" class="cf">「止まってもいい」</text>
+            <text x="194" y="250" class="cf">設計の再提示</text>
+            <rect class="nd-box" x="373" y="160" width="154" height="112" rx="9"/>
+            <text x="387" y="182" class="nd-tag">concern_家族</text>
+            <text x="387" y="203" class="ct" style="font-size:13px;">FAQ「夫に相談」</text>
+            <text x="387" y="222" class="cf">家族向け説明資料、</text>
+            <text x="387" y="236" class="cf">他の受講生の</text>
+            <text x="387" y="250" class="cf">家族の反応例</text>
+            <rect class="nd-box" x="566" y="160" width="154" height="112" rx="9"/>
+            <text x="580" y="182" class="nd-tag">concern_自信</text>
+            <text x="580" y="203" class="ct" style="font-size:13px;">実例ページ再訪問</text>
+            <text x="580" y="222" class="cf">実例の追加投入、</text>
+            <text x="580" y="236" class="cf">個別相談への</text>
+            <text x="580" y="250" class="cf">軽い誘導</text>
+            <rect class="nd-box" x="736" y="160" width="154" height="112" rx="9"/>
+            <text x="750" y="182" class="nd-tag">シグナルなし</text>
+            <text x="750" y="203" class="ct" style="font-size:13px;">完全沈黙</text>
+            <text x="750" y="222" class="cf">理由を詮索せず</text>
+            <text x="750" y="236" class="cf">「今じゃなくていい」</text>
+            <text x="750" y="250" class="cf">を1通のみ→S7</text>
+          </svg>
+        </div>
+        <p class="fig-note">反論処理メッセージの文面自体は§8〜9の「不安・検討ポイントへの回答」素材集を流用する。本図はその出し分けロジック。</p>
+      </figure>
+    </section>
+
+    <section class="sec fx" id="s6">
+      <div class="sec-head"><span class="no">§6</span><h2>配信頻度・ブロック率ガバナンス</h2></div>
+      <p>「配信すればするほどブロック率も上がり、ブランディングにも関わる」という懸念に対する設計。<strong>接触量を増やすこと自体を目的化しない</strong>——これを全シナリオの上位原則として置く。</p>
+
+      <h3>6-1 温度別・配信頻度の上限</h3>
+      <div class="twrap wide">
+        <table>
+          <thead><tr><th>感情ステート／温度</th><th>配信頻度の上限</th><th>価値提供：CTA の比率</th><th>補足</th></tr></thead>
+          <tbody>
+            <tr><td class="rowh">温度_高（S3後半〜S5）</td><td>週2〜3通まで</td><td>2:1</td><td>有人フォローが主役。L-step配信は補助線</td></tr>
+            <tr><td class="rowh">温度_中（S1〜S2）</td><td>週1〜2通</td><td>3:1</td><td>価値提供を優先し、CTAは週1回まで</td></tr>
+            <tr><td class="rowh">温度_低（未開封・未回答等）</td><td>月1〜2通</td><td>4:1以上、CTAはほぼなし</td><td>「役に立つ情報」のみ。売り込みを一切感じさせない</td></tr>
+            <tr><td class="rowh">無関心化（S7、3週間以上無反応）</td><td>月1通以下</td><td>価値提供のみ</td><td>関係維持が目的。無理に引き戻そうとしない</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout amber">
+        <span class="co-label">CTA連投禁止ルール</span>
+        <p>直近2通以内にすでにCTA（勉強会予約・個別相談等の行動要求）を送っている場合、次の配信はCTAなしの価値提供のみにする。連続してお願いされる体験がブロックの最大要因という仮説（要検証）。</p>
+      </div>
+
+      <h3>6-2 一通ごとの価値判定チェックリスト（配信作成時に毎回確認）</h3>
+      <ul class="checklist">
+        <li>これは受信者の<strong>今の悩み</strong>に対して新しい情報・視点を提供しているか</li>
+        <li>これを読んで「良かった」と思えるか、それとも「またこれか」と思われるか</li>
+        <li>CTAは「今すぐ買って」ではなく「知る／確かめる」という軽い一歩になっているか</li>
+        <li>直近2通以内にすでにCTAを送っていないか（6-1のCTA連投禁止ルール）</li>
+      </ul>
+
+      <h3>6-3 ブロック率のモニタリングとエスカレーション</h3>
+      <ul>
+        <li>ブロック率を<strong>トラック別・アーキタイプ別・配信種別（価値提供／CTA）別</strong>に計測する。全体平均だけでは「どの配信がブロックを誘発したか」が分からない</li>
+        <li>現状値が未取得のため、絶対値の閾値ではなく<strong>「特定配信の直後にブロック率がスパイクしていないか」</strong>を最初のモニタリング軸にする</li>
+        <li>スパイクを検知した配信は、次回配信までにトーン・頻度・タイミングを見直す。同じ轍を踏まない</li>
+        <li>温度_低・無関心化層への配信を最優先で間引く。離脱しやすい層に無理に接触し続けることがブロック率上昇の主因になりやすいという仮説（要検証）</li>
+      </ul>
+
+      <div class="callout">
+        <span class="co-label">6-4 沈黙設計の原則</span>
+        <p>「反応がない＝興味がない」ではなく<strong>「今はタイミングではない」</strong>として扱う。無理に引き戻すメッセージ（「まだ間に合います！」的な煽り）は使わない。これは<a href="skimama_LP戦略_実行版.html">skimama_LP戦略_実行版</a>§3「売り込み臭の徹底除去」原則のCRM版であり、LP・広告・CRMを通じてskimamaのポジショニング一文のトーンを一貫させることが目的。ブロックされること自体を過度に恐れず、<strong>「ブロックされてもいい関係の薄さで、長く繋がり続ける」ことを積極的な設計方針として選ぶ</strong>。オーガニックとの回遊導線（リッチメニュー④、§12）を残しておけば、LINEをブロックされてもOrganic経由での再接触の芽は残る。</p>
+      </div>
+    </section>
+
+    <section class="sec fx" id="s7">
+      <div class="sec-head"><span class="no">§7</span><h2>未経験ボリューム層と専門職層で分かれる、トラック別の詳細設計</h2></div>
+      <p>以下§8〜10は、§5のロジックツリーが参照する「トラック別の中身」（ペルソナ像・トーン原則・不安対応の素材集）を格納する。§5が「いつ・どの条件で何を送るか」を決め、本節が「その中身は具体的に何か」を決める、という役割分担。</p>
+    </section>
+
+    <section class="sec fx" id="s8">
+      <div class="sec-head"><span class="no">§8</span><h2>トラックA：ビギナー・生活密着型の設計</h2></div>
+
+      <h3>8-1 ペルソナ像</h3>
+      <p>「PCは苦手ではないがWordとメールくらい」「"オンライン秘書"という言葉も実は勉強会で初めて知った」「"Webライター""SNS運用代行"と言われてもピンとこない」というレベル感。ビジネス誌的な語彙（KPI、ポートフォリオ、単価交渉、案件受注、etc.）は原則使わない。</p>
+
+      <h3>8-2 トーン原則</h3>
+      <div class="twrap mid">
+        <table>
+          <thead><tr><th>原則</th><th>具体例</th></tr></thead>
+          <tbody>
+            <tr><td>専門用語を使わない／使う時は必ず言い換える</td><td>×「まずはポートフォリオを作成」→○「まずは"できます"を証明する実例を1つ作る」</td></tr>
+            <tr><td>「あなたにもできる」を否定形で裏付ける</td><td>「特別なスキルは要りません」を具体的な卒業生像とセットで出す（断定表現は§14参照）</td></tr>
+            <tr><td>小さな一歩を毎回具体的に示す</td><td>CTAは常に5分未満で終わる行動に分解する</td></tr>
+            <tr><td>失敗・不安への先回り共感</td><td>本人の想定質問を配信側から先に言語化する</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>8-3 主な不安と配信での回答（§5-4・5-5が参照する素材集）</h3>
+      <div class="twrap mid">
+        <table>
+          <thead><tr><th>不安（層2〜3ペイン）</th><th>配信での回答</th></tr></thead>
+          <tbody>
+            <tr><td>子供がいて決まった時間に学習できない</td><td>週4動画＋2日課題＋1日ワークショップの柔軟性、隙間時間学習の卒業生の声</td></tr>
+            <tr><td>そもそも「オンライン秘書」が何をする仕事か分からない</td><td>業務内容を家事・育児の延長でイメージできる言葉に翻訳</td></tr>
+            <tr><td>稼げる自信がない</td><td>断定は避け、獲得率93%の根拠と算出条件を明示した上で実例を反復提示</td></tr>
+            <tr><td>講座についていけるか不安</td><td>メンター伴走・少人数制・満足度99.3%を「一人にしない」という情緒面から説明</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>8-4 「まだ決めていない」層の扱い（行動ログ判定の起点）</h3>
+      <ul>
+        <li>デザイン・SNS運用系の卒業生実例リンクを複数回クリック</li>
+        <li>「案件相場」「ポートフォリオ」等、専門職向けコンテンツへの反応が秘書系コンテンツより明確に高い</li>
+      </ul>
+    </section>
+
+    <section class="sec fx" id="s9">
+      <div class="sec-head"><span class="no">§9</span><h2>トラックB：専門職・高確度型の設計</h2></div>
+
+      <h3>9-1 ペルソナ像</h3>
+      <p>「フリーランス」「副業」「案件」という言葉に既に馴染みがある。Instagramを個人でも触ったことがある、デザインツール（Canva等）を趣味で触ったことがある、といった<strong>準備状態が一段進んだ層</strong>。</p>
+
+      <h3>9-2 トーン原則</h3>
+      <div class="twrap mid">
+        <table>
+          <thead><tr><th>原則</th><th>具体例</th></tr></thead>
+          <tbody>
+            <tr><td>専門性を隠さない</td><td>トラックAより一段専門的な語彙をあえて使い、"本気で学べる場"であることを示す</td></tr>
+            <tr><td>比較検討に正面から答える</td><td>独学との違い、Fammのデザイン特化・SHElikesの学び放題との違いを早い段階で提示</td></tr>
+            <tr><td>実例は「実力」の証拠として見せる</td><td>卒業生の成果物をトラックAより早いタイミングで具体的に見せる</td></tr>
+            <tr><td>意思決定速度に合わせて接触を早める</td><td>トラックAより配信間隔を詰める、勉強会案内を早期に出す（§5-2）</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>9-3 主な検討ポイントと配信での回答</h3>
+      <div class="twrap mid">
+        <table>
+          <thead><tr><th>検討ポイント</th><th>配信での回答</th></tr></thead>
+          <tbody>
+            <tr><td>独学やYouTubeでも学べるのでは</td><td>独学の挫折率・迷子リスクを卒業生の実体験で言語化し、伴走の価値を提示</td></tr>
+            <tr><td>Fammの方がデザイン特化で強いのでは</td><td>単一スキル一点賭けのリスクと、複数職種から選べる柔軟性・伴走の違いを提示</td></tr>
+            <tr><td>本当に案件が取れるのか</td><td>獲得率93%の根拠、提携先の存在、卒業生の初案件までの実期間</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec fx" id="s10">
+      <div class="sec-head"><span class="no">§10</span><h2>（補助）トラックC：ハイブリッド・ライティング型</h2></div>
+      <ul>
+        <li>ベースはトラックAのトーン（未経験前提・専門用語を避ける）を維持しつつ、「文字単価」「Webライティングの案件例」など実務寄りの具体性はトラックBから部分的に借用する</li>
+        <li>診断で「Webライティング」を選んだ場合、S0〜S2はトラックA相当の安心材料を提示し、S3以降（比較検討フェーズ）からトラックB相当の実務情報を混ぜる、という<strong>時間差のハイブリッド</strong>が運用上シンプル</li>
+        <li>独立トラックとして作り込みすぎるとL-step運用の複雑度が上がるため、初期構築では「トラックAシナリオ＋ライティング専用の差し込みブロック2〜3通」という最小構成から始める</li>
+      </ul>
+    </section>
+
+    <section class="sec fx" id="s11">
+      <div class="sec-head"><span class="no">§11</span><h2>タグ・スコアリング設計（L-step実装用）</h2></div>
+
+      <h3>11-1 タグ設計表</h3>
+      <p>§3〜6で登場した全タグをL-step実装用にスキーマ化。</p>
+      <div class="twrap wide">
+        <table>
+          <thead><tr><th>タグ分類</th><th>タグ例</th><th>付与トリガー</th></tr></thead>
+          <tbody>
+            <tr><td class="rowh">職種トラック</td><td>trk_A_秘書 / trk_B_SNS運用 / trk_B_デザイン / trk_C_ライティング / trk_未定</td><td>診断フォーム回答（初期）／行動ログ補正（§8-4）</td></tr>
+            <tr><td class="rowh"><span class="hypo" style="margin-right:0.4em;">新</span>入口アーキタイプ</td><td>arch_1_共感 / arch_2_自己肯定 / arch_3_比較検討 / arch_4_広告 / arch_5_紹介</td><td>登録URLのパラメータ計測（流入投稿・流入経路単位で事前マッピング）</td></tr>
+            <tr><td class="rowh"><span class="hypo" style="margin-right:0.4em;">新</span>感情ステート</td><td>state_S0_様子見 〜 state_S7_無関心化</td><td>§5のロジックツリーの行動条件に応じて自動遷移</td></tr>
+            <tr><td class="rowh"><span class="hypo" style="margin-right:0.4em;">新</span>反論シグナル</td><td>concern_価格 / concern_時間 / concern_家族 / concern_自信</td><td>§5-5の検討期ロジックツリーの行動条件（ページ滞在・リンククリック）</td></tr>
+            <tr><td class="rowh">就業状態</td><td>就業_専業 / 就業_パート / 就業_育休中 / 就業_その他</td><td>診断フォームの補助設問（任意項目）</td></tr>
+            <tr><td class="rowh">ファネル進捗</td><td>進捗_登録済 / 進捗_勉強会予約済 / 進捗_勉強会参加済 / 進捗_未参加 / 進捗_検討中 / 進捗_離脱</td><td>シナリオ内の行動（予約リンククリック・参加確認等）</td></tr>
+            <tr><td class="rowh">関心強度スコア（温度）</td><td>温度_高 / 温度_中 / 温度_低 / 温度_無関心化</td><td>11-2のスコアリング結果、および§6の配信頻度ガバナンスと直結</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>11-2 スコアリング設計（有人フォローの優先順位づけ）</h3>
       <p>すべてのリードに人力フォローする体制はない前提で、<strong>スコアが一定を超えた人だけをCS・メンターの個別フォロー対象として抽出する</strong>。</p>
       <div class="twrap mid">
         <table>
@@ -414,18 +662,19 @@
             <tr><td>勉強会参加</td><td>+5</td></tr>
             <tr><td>勉強会後アンケート回答</td><td>+3</td></tr>
             <tr><td>個別相談リンクのクリック</td><td>+5</td></tr>
-            <tr><td>3日以上連続で配信未開封</td><td>−2（温度低下のシグナル）</td></tr>
+            <tr><td>検討期に反論シグナルタグが1つ以上付与される</td><td>+2（対応の優先度シグナルとして）</td></tr>
+            <tr><td>3日以上連続で配信未開封</td><td>−2（温度低下のシグナル。§6の頻度ダウングレードと連動）</td></tr>
           </tbody>
         </table>
       </div>
       <div class="callout amber">
         <span class="co-label">要検証</span>
-        <p>閾値（例：合計15点以上で有人フォロー対象）は現状値がないため仮置き。運用開始後、実際の成約者のスコア分布を見て閾値を再設定する。トラックBは意思決定速度が速い仮説のため、<strong>同じ行動でもトラックBは閾値を低めに設定</strong>し、早期に有人接触へつなげることを検討する。</p>
+        <p>閾値（例：合計15点以上で有人フォロー対象）は現状値がないため仮置き。運用開始後、実際の成約者のスコア分布を見て閾値を再設定する（§15）。トラックBは意思決定速度が速い仮説のため、<strong>同じ行動でもトラックBは閾値を低めに設定</strong>し、早期に有人接触へつなげることを検討する。</p>
       </div>
     </section>
 
-    <section class="sec fx" id="s8">
-      <div class="sec-head"><span class="no">§8</span><h2>リッチメニュー設計（トラック別出し分け）</h2></div>
+    <section class="sec fx" id="s12">
+      <div class="sec-head"><span class="no">§12</span><h2>リッチメニュー設計（トラック別出し分け）</h2></div>
       <p>4象限型をベースに、トラックで文言のみ出し分ける（メニュー構造自体は共通にして運用負荷を抑える）。</p>
       <div class="twrap mid">
         <table>
@@ -438,21 +687,24 @@
           </tbody>
         </table>
       </div>
+      <p class="fig-note">④のOrganic回遊導線は、§6-4「沈黙設計の原則」の実装手段でもある。LINEをブロック・低温化された場合でも、Organic経由での再接触の芽を残すための常設リンク。</p>
     </section>
 
-    <section class="sec fx" id="s9">
-      <div class="sec-head"><span class="no">§9</span><h2>測定・PDCA設計（データ到着後に埋める前提）</h2></div>
+    <section class="sec fx" id="s13">
+      <div class="sec-head"><span class="no">§13</span><h2>測定・PDCA設計（データ到着後に埋める前提）</h2></div>
       <p>現状値が未取得のため、<strong>「何を・どう比較するか」の設計だけを先に決めておく</strong>。</p>
       <ul>
-        <li>基本比較軸：<strong>トラックA vs トラックB vs トラックC</strong>で、開封率・タップ率・勉強会予約率・予約→参加率・参加→入会率をすべて分岐させて計測する。トラック横断の平均値だけを見ると、多数派のトラックAの傾向にトラックBの成果が埋もれるため、必ず分けて見る</li>
-        <li>診断フォームの回答分布と、最終的な入会後の職種選択の突合データを取り、§3-2のトラック定義（ボリューム配分の仮説）自体を検証する</li>
-        <li>「まだ決めていない」層が最終的にどのトラックへ収束したかを追跡し、§3-1の行動ログ補正ロジックの精度を検証する</li>
-        <li>スコアリング閾値（§7）は、実際に入会した人のスコア分布の中央値〜下位25%あたりを目安に再設定する</li>
+        <li>基本比較軸：<strong>トラックA vs B vs C</strong>、および<strong>入口アーキタイプ①〜⑤</strong>の両方で、開封率・タップ率・勉強会予約率・予約→参加率・参加→入会率・<strong>ブロック率</strong>をすべて分岐させて計測する。多数派（トラックA・アーキタイプ①）の傾向に他の成果が埋もれるため、必ず分けて見る</li>
+        <li><strong>ステージ別離脱率</strong>（S0→S1→S2→S3→S4→S5→S6の各遷移での離脱率）を計測し、§5-4「オプトイン→勉強会参加のブリッジ」が実際に最大の離脱点になっているかを検証する</li>
+        <li>診断フォームの回答分布と、最終的な入会後の職種選択の突合データを取り、§3-2のトラック定義自体を検証する</li>
+        <li>「まだ決めていない」層が最終的にどのトラックへ収束したかを追跡し、§8-4の行動ログ補正ロジックの精度を検証する</li>
+        <li><strong>ブロック率の配信別トレンド</strong>（§6-3）を継続監視し、スパイクが起きた配信のトーン・頻度・タイミングを個別に見直す</li>
+        <li>スコアリング閾値（§11-2）は、実際に入会した人のスコア分布の中央値〜下位25%あたりを目安に再設定する</li>
       </ul>
     </section>
 
-    <section class="sec fx" id="s10">
-      <div class="sec-head"><span class="no">§10</span><h2>表現コンプライアンス（景表法・特商法）</h2></div>
+    <section class="sec fx" id="s14">
+      <div class="sec-head"><span class="no">§14</span><h2>表現コンプライアンス（景表法・特商法）</h2></div>
       <p>CRMはLPや広告以上に<strong>1対1の会話に近い体裁</strong>になるため、断定表現が個人向けの「保証」と受け取られやすいリスクがある。特にトラックBでは「案件が取れる」「稼げる」に踏み込みたくなる場面が増えるため注意。</p>
       <div class="twrap wide">
         <table>
@@ -461,19 +713,30 @@
             <tr><td>「必ず案件が取れます」「誰でも稼げます」</td><td>「在宅ワーク獲得率93%（算出条件：〇〇）という実績があります」＋個別の実例提示</td></tr>
             <tr><td>「〇〇円稼げます」という断定的な収入提示</td><td>「卒業生の中には月〇万円の案件を受注した方もいます（個人の実績であり保証するものではありません）」</td></tr>
             <tr><td>診断結果を「あなたは絶対デザイナー向き」等、断定的に適性診断化する</td><td>「〇〇に関心が高い傾向が見られます」という提示にとどめ、最終選択は本人に委ねる文言にする</td></tr>
+            <tr><td>「絶対に後悔しません」「今だけの特別枠です」（事実でない場合）</td><td>実際に定員・期限がある場合のみその事実を記載。§6-4の沈黙設計の原則と矛盾しないよう煽り表現は避ける</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="sec fx" id="s11">
-      <div class="sec-head"><span class="no">§11</span><h2>未検証事項・次のアクション</h2></div>
+    <section class="sec fx" id="s15">
+      <div class="sec-head"><span class="no">§15</span><h2>未検証事項・次のアクション</h2></div>
+
+      <h3>従来からの未検証事項</h3>
       <ul class="checklist">
-        <li>3トラックの人数配分・トーン設計は卒業生職種内訳からの逆算仮説。<strong>登録時点の診断回答分布</strong>が取得でき次第、トラック定義自体を見直す</li>
+        <li>3トラックの人数配分・トーン設計は卒業生職種内訳からの逆算仮説。登録時点の診断回答分布が取得でき次第、トラック定義自体を見直す</li>
         <li>スコアリングの加点値・閾値は仮置き。実際の成約者データが取れ次第、統計的に再設定する</li>
-        <li>トラックBは「意思決定速度が速い」という仮説で配信間隔を詰める設計にしているが、逆の傾向が出た場合はシナリオの間隔設計を修正する</li>
+        <li>トラックBは「意思決定速度が速い」という仮説で配信間隔を詰めているが、逆の傾向が出た場合はシナリオの間隔設計を修正する</li>
         <li>配信時間帯（主婦層＝日中〜夕方／専門職層＝夜間）は仮説。開封率の時間帯別データが取れ次第検証する</li>
-        <li>L-stepの回答フォーム・タグ・シナリオ分岐の技術的な実装可否（同時に複数タグを条件分岐に使えるか等のツール仕様上の制約）は未確認。実装担当者による技術検証が必要</li>
+        <li>L-stepの回答フォーム・タグ・シナリオ分岐の技術的な実装可否（同時に複数タグを条件分岐に使えるか、行動ログに応じた自動タグ遷移が組めるか等）は未確認</li>
+      </ul>
+
+      <h3>本改訂（v2）で新たに生じた未検証事項</h3>
+      <ul class="checklist">
+        <li><strong>入口アーキタイプ5分類（§4）は投稿の一次分析からの類型化であり、実際の登録者の感情状態と一致するかは未検証</strong>。勉強会後アンケート等に「どんなきっかけで登録したか」を問う設問を追加し、答え合わせをする</li>
+        <li><strong>§5のロジックツリーの分岐条件（クリック回数・滞在時間の閾値等）はすべて仮置き</strong>。L-stepの計測粒度に依存するため、技術検証と同時に閾値も確定させる</li>
+        <li><strong>ブロック率の現状値・業界水準が未取得</strong>。§6の頻度上限・比率ルールは「常識的な保守設計」からの仮説であり、実データで緩めるか厳しくするかを判断する</li>
+        <li>§5-4「オプトイン→勉強会参加が最大の離脱点」という仮説自体が未検証。実際にはS1やS6の方が離脱率が高い可能性もあり、§13のステージ別離脱率計測で最初に検証すべき仮説</li>
       </ul>
       <p class="related">関連：CLAUDE.md（顧客理解・読み替えルール）／01_戦略/02_マーケティング戦略.md（上位戦略・チャネル役割分担）／01_戦略/01_競合リサーチ.md（競合の訴求）／brain/09_実務戦略パターン集.md（CRMステップ配信の型の原典）／<a href="skimama_マーケティング戦略_実行版.html">skimama_マーケティング戦略_実行版</a>（簡易版CRM設計・本書の前提）</p>
     </section>
@@ -487,12 +750,12 @@
     <div class="doc-nav-grid">
       <a href="index.html"><i>Hub</i><span class="t">資料一覧に戻る</span><span class="d">skimama マーケティング資料 トップ</span></a>
       <a href="skimama_マーケティング戦略_実行版.html"><i>Document 01</i><span class="t">マーケティング戦略（実行版）</span><span class="d">本書の前提となる上位戦略・簡易版CRM設計</span></a>
-      <a href="skimama_SNS戦略_実行版.html"><i>Document 02</i><span class="t">SNS戦略（Organic・実行版）</span><span class="d">卒業生ストーリーの型化・収集の設計</span></a>
+      <a href="skimama_SNS戦略_実行版.html"><i>Document 02</i><span class="t">SNS戦略（Organic・実行版）</span><span class="d">入口アーキタイプの元になる投稿設計</span></a>
       <a href="skimama_LP戦略_実行版.html"><i>Document 03</i><span class="t">LP戦略・LPO（実行版）</span><span class="d">LINE登録LP：CRMの一つ手前の受け皿</span></a>
     </div>
   </div>
 </footer>
-<div class="doc-foot">skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。最終更新 2026-07-10。</div>
+<div class="doc-foot">skimama マーケティング資料 — 社内ナレッジベースからの公開抜粋。最終更新 2026-07-10（v2）。</div>
 
 </body>
 </html>
